@@ -1,0 +1,109 @@
+syntax = "proto3";
+
+package sdx.v1;
+
+option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
+
+import "google/protobuf/timestamp.proto";
+import "sdx/v1/common.proto";
+import "sdx/v1/workitem.proto";
+import "sdx/v1/build.proto";
+import "sdx/v1/artifact.proto";
+
+// ─────────────────────────────────────────────
+// SDX Gateway Service — Public-facing unified API
+// Maps to REST endpoints via grpc-gateway annotations
+// ─────────────────────────────────────────────
+
+service SDXGatewayService {
+  // ── WorkItems ──
+  rpc SubmitWorkItem(SubmitWorkItemRequest) returns (SubmitWorkItemResponse);
+  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem);
+  rpc ListWorkItems(ListWorkItemsRequest) returns (ListWorkItemsResponse);
+  rpc ResolveAmbiguity(ResolveAmbiguityRequest) returns (ResolveAmbiguityResponse);
+  rpc ApproveManifest(ApproveManifestRequest) returns (ApproveManifestResponse);
+
+  // ── Builds ──
+  rpc GetBuild(GetBuildRequest) returns (Build);
+  rpc ListBuilds(ListBuildsRequest) returns (ListBuildsResponse);
+  rpc GetBuildGateResults(GetBuildGateResultsRequest) returns (GetBuildGateResultsResponse);
+  rpc CancelBuild(CancelBuildRequest) returns (CancelBuildResponse);
+
+  // ── Artifacts ──
+  rpc GetArtifact(GetArtifactRequest) returns (Artifact);
+  rpc ListArtifacts(ListArtifactsRequest) returns (ListArtifactsResponse);
+  rpc GetArtifactDownloadURL(GetArtifactDownloadURLRequest) returns (GetArtifactDownloadURLResponse);
+  rpc VerifyArtifact(VerifyArtifactRequest) returns (VerifyArtifactResponse);
+
+  // ── Webhooks ──
+  rpc CreateWebhook(CreateWebhookRequest) returns (WebhookConfig);
+  rpc ListWebhooks(ListWebhooksRequest) returns (ListWebhooksResponse);
+  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
+  rpc TestWebhook(TestWebhookRequest) returns (TestWebhookResponse);
+
+  // ── Health ──
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
+}
+
+// ─────────────────────────────────────────────
+// Webhook Messages
+// ─────────────────────────────────────────────
+
+message WebhookConfig {
+  string id = 1;
+  string tenant_id = 2;
+  string target_url = 3;
+  repeated string events = 4;     // build.completed, build.failed, gate.failed, artifact.signed, compliance.certified
+  string secret = 5;              // HMAC-SHA256 secret (write-only; never returned in reads)
+  bool active = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp last_triggered_at = 8;
+  uint32 failure_count = 9;       // Consecutive failures
+}
+
+message CreateWebhookRequest {
+  string target_url = 1;
+  repeated string events = 2;
+  string secret = 3;
+}
+
+message ListWebhooksRequest {
+  PaginationRequest pagination = 1;
+}
+
+message ListWebhooksResponse {
+  repeated WebhookConfig webhooks = 1;
+  PaginationResponse pagination = 2;
+}
+
+message DeleteWebhookRequest {
+  string webhook_id = 1;
+}
+
+message DeleteWebhookResponse {
+  bool deleted = 1;
+}
+
+message TestWebhookRequest {
+  string webhook_id = 1;
+}
+
+message TestWebhookResponse {
+  bool success = 1;
+  uint32 status_code = 2;
+  uint64 latency_ms = 3;
+  string error = 4;
+}
+
+// ─────────────────────────────────────────────
+// Health Check
+// ─────────────────────────────────────────────
+
+message HealthCheckRequest {}
+
+message HealthCheckResponse {
+  string status = 1;             // SERVING, NOT_SERVING
+  string version = 2;
+  map<string, string> components = 3; // component -> status
+  google.protobuf.Timestamp timestamp = 4;
+}

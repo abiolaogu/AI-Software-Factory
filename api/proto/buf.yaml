@@ -1,0 +1,17 @@
+version: v2
+modules:
+  - path: .
+    name: buf.build/stratogroup/neuroforge-sdx
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_VERSION_SUFFIX
+breaking:
+  use:
+    - FILE
+  except:
+    - EXTENSION_NO_DELETE
+    - FIELD_SAME_DEFAULT
+deps:
+  - buf.build/googleapis/googleapis
