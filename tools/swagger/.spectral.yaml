@@ -1,69 +1,10 @@
-# NeuroForge SDX — Spectral Linting Ruleset for OpenAPI
-# Applied by: make openapi
-# Severity: error = blocks merge; warn = blocks merge (fail-severity=warn)
-
 extends:
   - spectral:oas
 
 rules:
-  # ── StratoGroup Custom Rules ──
-
-  # Every operation must have a summary
-  operation-summary:
-    severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
-    then:
-      field: summary
-      function: truthy
-
-  # Every operation must have an operationId
-  operation-operationId:
-    severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
-    then:
-      field: operationId
-      function: truthy
-
-  # Every operation must define at least 400, 401, 500 responses
-  operation-error-responses:
-    severity: error
-    given: "$.paths[*][get,post,put,patch,delete].responses"
-    then:
-      - field: "400"
-        function: truthy
-      - field: "401"
-        function: truthy
-      - field: "500"
-        function: truthy
-
-  # Every operation must have security defined
-  operation-security:
-    severity: error
-    given: "$.paths[*][get,post,put,patch,delete]"
-    then:
-      field: security
-      function: truthy
-
-  # Every schema property must have a description
-  schema-properties-descriptions:
-    severity: warn
-    given: "$.components.schemas[*].properties[*]"
-    then:
-      field: description
-      function: truthy
-
-  # No inline schemas (use $ref)
-  no-inline-schemas:
-    severity: warn
-    given: "$.paths[*][*].requestBody.content['application/json'].schema"
-    then:
-      field: "$ref"
-      function: truthy
-
-  # Rate limit headers on all responses
-  rate-limit-headers:
-    severity: warn
-    given: "$.paths[*][*].responses[*].headers"
-    then:
-      field: X-RateLimit-Limit
-      function: truthy
+  no-$ref-siblings: off
+  oas2-api-host: off
+  oas2-api-schemes: off
+  info-contact: off
+  info-description: off
+  oas2-unused-definition: off

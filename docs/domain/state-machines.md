@@ -98,6 +98,39 @@
   RECOVERING ──► FAILED (if max recovery exceeded)
 ```
 
+### Stage-to-Status Deterministic Mapping (ADR-014)
+
+The Build has a **dual-track model**: `current_stage` (1-16) is the source of truth for pipeline position; `status` (BuildStatus enum) is the coarse-grained API-visible state derived deterministically from the stage.
+
+**Invariant:** `build.status == stage_to_status(build.current_stage)` at all times.
+
+```
+stage_to_status(stage_number) → BuildStatus:
+  Stage 1  (Ingestion)          → INITIATED
+  Stage 2  (DomainModelling)    → DOMAIN_MODELLING
+  Stage 3  (ArchitectureDesign) → ARCHITECTING
+  Stage 4  (ContractGeneration) → CONTRACTING
+  Stage 5  (TestSpecification)  → TESTING_RED
+  Stage 6  (CodeGeneration)     → CODING_GREEN
+  Stage 7  (StaticAnalysis)     → VERIFYING
+  Stage 8  (TestExecution)      → VERIFYING
+  Stage 9  (SecurityScanning)   → VERIFYING
+  Stage 10 (ComplianceMapping)  → CERTIFYING
+  Stage 11 (PerformanceTesting) → CERTIFYING
+  Stage 12 (Documentation)      → CERTIFYING
+  Stage 13 (InfraAsCode)        → CERTIFYING
+  Stage 14 (ArtifactSigning)    → SIGNING
+  Stage 15 (Deployment)         → DEPLOYING
+  Stage 16 (LearningLoop)       → DEPLOYING
+```
+
+**Rules:**
+- Status changes are **always** derived from `current_stage` — never set directly.
+- Remediation loops revert `current_stage` to the failing stage; status follows automatically.
+- Recovery from checkpoint restores `current_stage`; status follows automatically.
+- `COMPLETED` is set only after stage 16 completes successfully.
+- `FAILED` and `RECOVERING` override the stage-derived status (they are terminal/recovery states).
+
 **Transition Table:**
 
 | From | To | Trigger | Guard |

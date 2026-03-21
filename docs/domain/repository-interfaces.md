@@ -425,6 +425,135 @@ type Repository interface {
 
 ---
 
+## ContractRepository
+
+```go
+package contract
+
+import (
+    "context"
+    "neuroforge-sdx/domain/shared"
+)
+
+type Repository interface {
+    // Save persists a new or updated Contract. Version-aware upsert.
+    Save(ctx context.Context, contract *Contract) error
+
+    // FindByID loads a Contract by its ID.
+    FindByID(ctx context.Context, id ContractID) (*Contract, error)
+
+    // FindByBlueprint returns all contracts generated from a blueprint.
+    FindByBlueprint(ctx context.Context, blueprintID BlueprintID) ([]*Contract, error)
+
+    // FindByVersion returns a specific version of a contract for a blueprint.
+    FindByVersion(ctx context.Context, blueprintID BlueprintID, version string) (*Contract, error)
+
+    // FindByTenant returns paginated contracts for a tenant.
+    FindByTenant(ctx context.Context, tenantID TenantID, filter ContractFilter, page shared.Pagination) (*shared.PaginatedResult[*Contract], error)
+}
+
+type ContractFilter struct {
+    BlueprintID *BlueprintID
+    Type        *ContractType // OPENAPI, ASYNCAPI, GRPC
+    Status      *ContractStatus
+    DateRange   *shared.DateRange
+}
+```
+
+---
+
+## ModelRoutingConfigRepository
+
+```go
+package modelrouting
+
+import "context"
+
+type Repository interface {
+    // Save persists a model routing config (DragonflyDB or YugabyteDB).
+    Save(ctx context.Context, config *ModelRoutingConfig) error
+
+    // FindByAgentType returns the routing config for a specific agent type.
+    FindByAgentType(ctx context.Context, agentType AgentType) (*ModelRoutingConfig, error)
+
+    // FindByAgentID returns the routing config for a specific agent instance.
+    FindByAgentID(ctx context.Context, agentID AgentID) (*ModelRoutingConfig, error)
+
+    // FindDefault returns the default routing config (fallback when no agent-specific config exists).
+    FindDefault(ctx context.Context) (*ModelRoutingConfig, error)
+
+    // FindAll returns all routing configs for admin dashboard.
+    FindAll(ctx context.Context) ([]*ModelRoutingConfig, error)
+}
+```
+
+---
+
+## LLMRequestRepository
+
+```go
+package llmrequest
+
+import (
+    "context"
+    "neuroforge-sdx/domain/shared"
+)
+
+// LLMRequestRepository stores LLM request/response records for cost tracking and learning.
+// Backed by ClickHouse (append-only, time-series optimised).
+type Repository interface {
+    // Append writes a new LLM request record. Never updates.
+    Append(ctx context.Context, record *LLMRequestRecord) error
+
+    // GetCostByTenant returns aggregated cost for a tenant over a period.
+    GetCostByTenant(ctx context.Context, tenantID TenantID, period shared.DateRange) (*CostReport, error)
+
+    // GetCostByBuild returns aggregated cost for a specific build.
+    GetCostByBuild(ctx context.Context, buildID BuildID) (*CostReport, error)
+
+    // GetCostByModel returns aggregated cost per model over a period.
+    GetCostByModel(ctx context.Context, model ModelID, period shared.DateRange) (*ModelCostBreakdown, error)
+
+    // GetRequestsByBuild returns all LLM requests for a build (for learning analysis).
+    GetRequestsByBuild(ctx context.Context, buildID BuildID) ([]*LLMRequestRecord, error)
+}
+
+type LLMRequestRecord struct {
+    RequestID       string
+    BuildID         string
+    TenantID        string
+    AgentID         string
+    Model           string
+    TaskClass       string
+    InputTokens     uint64
+    OutputTokens    uint64
+    LatencyMS       uint64
+    CostMicrodollar uint64
+    FallbackUsed    bool
+    Timestamp       shared.Timestamp
+}
+
+type CostReport struct {
+    TotalCostMicrodollars uint64
+    TotalInputTokens      uint64
+    TotalOutputTokens     uint64
+    RequestCount          uint64
+    OnPremPct             float64
+    ByModel               []ModelCostBreakdown
+}
+
+type ModelCostBreakdown struct {
+    Model             string
+    InputTokens       uint64
+    OutputTokens      uint64
+    CostMicrodollars  uint64
+    RequestCount      uint64
+    AvgLatencyMS      float64
+}
+```
+
+---
+
 ## Error Conventions
 
 ```go
