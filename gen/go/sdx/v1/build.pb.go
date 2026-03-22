@@ -1306,7 +1306,7 @@ const file_sdx_v1_build_proto_rawDesc = "" +
 	"ListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/builds\x12\x87\x01\n" +
 	"\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/builds/{build_id}/gates\x12y\n" +
 	"\x0eGetBuildStages\x12\x1d.sdx.v1.GetBuildStagesRequest\x1a\x1e.sdx.v1.GetBuildStagesResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/v1/builds/{build_id}/stages\x12s\n" +
-	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/builds/{build_id}/cancelB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/builds/{build_id}/cancelB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_build_proto_rawDescOnce sync.Once

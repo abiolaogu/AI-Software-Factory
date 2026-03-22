@@ -1,0 +1,66 @@
+name: release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.8"
+          cache: true
+
+      - uses: azure/setup-helm@v4
+
+      - name: Sync dependencies
+        run: make tidy
+
+      - name: Contract artifact drift
+        run: |
+          make proto
+          bash scripts/compliance/openapi-drift.sh
+
+      - name: Release verification
+        run: |
+          make swagger
+          make redoc
+          make ci
+          make test-integration
+          make compliance-test
+          make helm-validate
+
+      - name: Build binaries
+        run: make build
+
+      - name: Package release artifacts
+        run: |
+          mkdir -p release-artifacts
+          cp bin/api-server release-artifacts/
+          cp bin/worker release-artifacts/
+          cp bin/mock-api release-artifacts/
+          cp api/openapi/openapi.yaml release-artifacts/
+          cp api/openapi/openapi.json release-artifacts/
+          cp api/proto/neuroforge/sdx/v1/sdx.proto release-artifacts/
+          sha256sum release-artifacts/* > release-artifacts/checksums.txt
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release-artifacts/api-server
+            release-artifacts/worker
+            release-artifacts/mock-api
+            release-artifacts/openapi.yaml
+            release-artifacts/openapi.json
+            release-artifacts/sdx.proto
+            release-artifacts/checksums.txt

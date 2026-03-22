@@ -1422,7 +1422,7 @@ const file_sdx_v1_quality_proto_rawDesc = "" +
 	"\x10GetQualityReport\x12\x1f.sdx.v1.GetQualityReportRequest\x1a\x15.sdx.v1.QualityReport\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/quality/reports/{build_id}\x12|\n" +
 	"\x12ListQualityReports\x12!.sdx.v1.ListQualityReportsRequest\x1a\".sdx.v1.ListQualityReportsResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/quality/reports\x12\x83\x01\n" +
 	"\x12TriggerRemediation\x12!.sdx.v1.TriggerRemediationRequest\x1a\".sdx.v1.TriggerRemediationResponse\"&\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/api/v1/quality/remediation\x12z\n" +
-	"\x0eGetGateMetrics\x12\x1d.sdx.v1.GetGateMetricsRequest\x1a\x1e.sdx.v1.GetGateMetricsResponse\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/quality/metrics/{gate_id}B!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x0eGetGateMetrics\x12\x1d.sdx.v1.GetGateMetricsRequest\x1a\x1e.sdx.v1.GetGateMetricsResponse\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/quality/metrics/{gate_id}B!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_quality_proto_rawDescOnce sync.Once

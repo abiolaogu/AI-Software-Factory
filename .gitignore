@@ -1,3 +1,12 @@
+# Binaries
+bin/
+dist/
+*.exe
+
+# Coverage
+coverage.out
+coverage.html
+
 # OS
 .DS_Store
 Thumbs.db
@@ -8,19 +17,17 @@ Thumbs.db
 *.swp
 *.swo
 
+# Environment
+.env
+.env.local
+
 # Go
-/bin/
 /vendor/
-*.exe
 *.test
 *.out
 
 # Node
 node_modules/
-
-# Build artifacts (rebuild with `make proto`)
-# Note: gen/ is committed for Codex reproducibility.
-# After M1 CI is stable, move gen/ into .gitignore and regenerate in CI.
 
 # Temporary
 *.tmp

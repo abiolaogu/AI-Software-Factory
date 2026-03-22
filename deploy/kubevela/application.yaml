@@ -1,0 +1,33 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  name: neuroforge-sdx
+spec:
+  components:
+    - name: api-server
+      type: webservice
+      properties:
+        image: ghcr.io/stratogroup/neuroforge-sdx-api:latest
+        ports:
+          - port: 8080
+            expose: true
+        env:
+          - name: NF_HTTP_ADDR
+            value: ":8080"
+          - name: NF_SERVICE_NAME
+            value: "neuroforge-sdx"
+      traits:
+        - type: scaler
+          properties:
+            replicas: 2
+    - name: worker
+      type: worker
+      properties:
+        image: ghcr.io/stratogroup/neuroforge-sdx-worker:latest
+        env:
+          - name: NF_SERVICE_NAME
+            value: "neuroforge-sdx"
+      traits:
+        - type: scaler
+          properties:
+            replicas: 1

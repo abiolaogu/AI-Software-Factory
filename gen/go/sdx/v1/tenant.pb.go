@@ -1738,7 +1738,7 @@ const file_sdx_v1_tenant_proto_rawDesc = "" +
 	"\x12AddWorkspaceMember\x12!.sdx.v1.AddWorkspaceMemberRequest\x1a\x17.sdx.v1.WorkspaceMember\"H\x82\xd3\xe4\x93\x02B:\x01*\"=/api/v1/tenants/{tenant_id}/workspaces/{workspace_id}/members\x12\xb5\x01\n" +
 	"\x15RemoveWorkspaceMember\x12$.sdx.v1.RemoveWorkspaceMemberRequest\x1a%.sdx.v1.RemoveWorkspaceMemberResponse\"O\x82\xd3\xe4\x93\x02I*G/api/v1/tenants/{tenant_id}/workspaces/{workspace_id}/members/{user_id}\x12\x91\x01\n" +
 	"\x14SetComplianceProfile\x12#.sdx.v1.SetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\"9\x82\xd3\xe4\x93\x023:\x01*\x1a./api/v1/tenants/{tenant_id}/compliance-profile\x12\x8e\x01\n" +
-	"\x14GetComplianceProfile\x12#.sdx.v1.GetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\"6\x82\xd3\xe4\x93\x020\x12./api/v1/tenants/{tenant_id}/compliance-profileB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x14GetComplianceProfile\x12#.sdx.v1.GetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\"6\x82\xd3\xe4\x93\x020\x12./api/v1/tenants/{tenant_id}/compliance-profileB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_tenant_proto_rawDescOnce sync.Once

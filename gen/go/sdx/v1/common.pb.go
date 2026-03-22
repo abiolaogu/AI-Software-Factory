@@ -1530,7 +1530,7 @@ const file_sdx_v1_common_proto_rawDesc = "" +
 	"\x15MODEL_ID_MIXTRAL_8X7B\x10\n" +
 	"\x12\x18\n" +
 	"\x14MODEL_ID_NOMIC_EMBED\x10\v\x12#\n" +
-	"\x1fMODEL_ID_TEXT_EMBEDDING_3_LARGE\x10\fB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x1fMODEL_ID_TEXT_EMBEDDING_3_LARGE\x10\fB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_common_proto_rawDescOnce sync.Once

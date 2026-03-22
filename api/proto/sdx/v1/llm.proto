@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package sdx.v1;
 
-option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
+option go_package = "github.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";

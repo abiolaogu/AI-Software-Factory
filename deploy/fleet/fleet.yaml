@@ -1,0 +1,11 @@
+defaultNamespace: neuroforge-sdx
+helm:
+  chart: ../helm/neuroforge-sdx
+  releaseName: neuroforge-sdx
+  valuesFiles:
+    - values.yaml
+targetCustomizations:
+  - name: production
+    clusterSelector:
+      matchLabels:
+        env: production

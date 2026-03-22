@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "neuroforge-sdx.fullname" . }}-api
+  labels:
+    {{- include "neuroforge-sdx.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app.kubernetes.io/name: {{ include "neuroforge-sdx.name" . }}
+    app.kubernetes.io/component: api
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort }}
+    - name: grpc
+      port: {{ .Values.service.grpcPort }}
+      targetPort: {{ .Values.service.grpcTargetPort }}

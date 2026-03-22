@@ -1,0 +1,51 @@
+name: nightly-verification
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  nightly:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.8"
+          cache: true
+
+      - uses: azure/setup-helm@v4
+
+      - name: Sync dependencies
+        run: make tidy
+
+      - name: Contract artifact drift
+        run: |
+          make proto
+          bash scripts/compliance/openapi-drift.sh
+
+      - name: Nightly verification
+        run: |
+          make swagger
+          make redoc
+          make ci
+          make test-integration
+          make compliance-test
+          make helm-validate
+          make build
+
+      - name: Upload nightly artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-artifacts
+          path: |
+            coverage.out
+            coverage.html
+            api/openapi/openapi.json
+            api/openapi/openapi.yaml

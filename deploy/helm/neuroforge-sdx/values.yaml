@@ -1,0 +1,102 @@
+# ─────────────────────────────────────────────────────────────
+# NeuroForge SDX — Default Helm Values
+# ─────────────────────────────────────────────────────────────
+
+# ── Global ──
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+
+nameOverride: ""
+fullnameOverride: ""
+
+# ── API Server ──
+image:
+  repository: ghcr.io/stratogroup/neuroforge-sdx-api
+  tag: latest
+  pullPolicy: IfNotPresent
+
+workerImage:
+  repository: ghcr.io/stratogroup/neuroforge-sdx-worker
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+  grpcPort: 9090
+  grpcTargetPort: 9090
+  metricsPort: 9091
+
+api:
+  replicaCount: 2
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: "1"
+      memory: 512Mi
+  env:
+    NF_HTTP_ADDR: ":8080"
+    NF_GRPC_ADDR: ":9090"
+    NF_ENVIRONMENT: "production"
+    NF_SERVICE_NAME: "neuroforge-sdx"
+    LOG_LEVEL: info
+    LOG_FORMAT: json
+    OTEL_EXPORTER_OTLP_ENDPOINT: "http://tempo.observability:4317"
+    NATS_URL: "nats://nats.sdx-system:4222"
+    DRAGONFLY_URL: "dragonfly.sdx-system:6379"
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+  podAnnotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/port: "9091"
+    prometheus.io/path: "/metrics"
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  podDisruptionBudget:
+    enabled: true
+    minAvailable: 1
+
+worker:
+  replicaCount: 1
+  resources: {}
+  env:
+    NF_ENVIRONMENT: "production"
+    NF_SERVICE_NAME: "neuroforge-sdx"
+
+# ── Auth ──
+auth:
+  issuerUrl: "https://auth.sdx.stratogroup.io/application/o/sdx/"
+  jwksUrl: "https://auth.sdx.stratogroup.io/application/o/sdx/jwks/"
+  audience: "sdx-api"
+
+# ── Database ──
+database:
+  host: yugabytedb-ysql.sdx-system
+  port: 5433
+  name: sdx
+  sslMode: require
+  existingSecret: sdx-db-credentials
+  secretKeys:
+    username: username
+    password: password
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+# ── YugabyteDB subchart ──
+yugabytedb:
+  enabled: true
+
+# ── ClickHouse subchart ──
+clickhouse:
+  enabled: true

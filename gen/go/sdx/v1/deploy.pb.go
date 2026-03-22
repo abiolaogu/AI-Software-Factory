@@ -1037,7 +1037,7 @@ const file_sdx_v1_deploy_proto_rawDesc = "" +
 	"\rGetDeployment\x12\x1c.sdx.v1.GetDeploymentRequest\x1a\x12.sdx.v1.Deployment\"+\x82\xd3\xe4\x93\x02%\x12#/api/v1/deployments/{deployment_id}\x12o\n" +
 	"\x0fListDeployments\x12\x1e.sdx.v1.ListDeploymentsRequest\x1a\x1f.sdx.v1.ListDeploymentsResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/api/v1/deployments\x12\x84\x01\n" +
 	"\x12RollbackDeployment\x12!.sdx.v1.RollbackDeploymentRequest\x1a\x12.sdx.v1.Deployment\"7\x82\xd3\xe4\x93\x021:\x01*\",/api/v1/deployments/{deployment_id}/rollback\x12\x8a\x01\n" +
-	"\x11GetDeploymentLogs\x12 .sdx.v1.GetDeploymentLogsRequest\x1a!.sdx.v1.GetDeploymentLogsResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/deployments/{deployment_id}/logsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x11GetDeploymentLogs\x12 .sdx.v1.GetDeploymentLogsRequest\x1a!.sdx.v1.GetDeploymentLogsResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/deployments/{deployment_id}/logsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_deploy_proto_rawDescOnce sync.Once

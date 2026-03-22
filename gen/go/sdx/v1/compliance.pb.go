@@ -992,7 +992,7 @@ const file_sdx_v1_compliance_proto_rawDesc = "" +
 	"\x12GetComplianceBadge\x12!.sdx.v1.GetComplianceBadgeRequest\x1a\x17.sdx.v1.ComplianceBadge\",\x82\xd3\xe4\x93\x02&\x12$/api/v1/compliance/badges/{build_id}\x12\x82\x01\n" +
 	"\x13GetComplianceReport\x12\".sdx.v1.GetComplianceReportRequest\x1a\x18.sdx.v1.ComplianceReport\"-\x82\xd3\xe4\x93\x02'\x12%/api/v1/compliance/reports/{build_id}\x12\x88\x01\n" +
 	"\x15ListComplianceReports\x12$.sdx.v1.ListComplianceReportsRequest\x1a%.sdx.v1.ListComplianceReportsResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/api/v1/compliance/reports\x12}\n" +
-	"\x11GetControlCatalog\x12 .sdx.v1.GetControlCatalogRequest\x1a!.sdx.v1.GetControlCatalogResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/api/v1/compliance/controlsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x11GetControlCatalog\x12 .sdx.v1.GetControlCatalogRequest\x1a!.sdx.v1.GetControlCatalogResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/api/v1/compliance/controlsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_compliance_proto_rawDescOnce sync.Once
