@@ -1233,7 +1233,7 @@ const file_sdx_v1_artifact_proto_rawDesc = "" +
 	"\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\".\x82\xd3\xe4\x93\x02(\"&/api/v1/artifacts/{artifact_id}/verify\x12\x82\x01\n" +
 	"\x0eRevokeArtifact\x12\x1d.sdx.v1.RevokeArtifactRequest\x1a\x1e.sdx.v1.RevokeArtifactResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/api/v1/artifacts/{artifact_id}/revoke\x12\x8c\x01\n" +
 	"\x10AttachProvenance\x12\x1f.sdx.v1.AttachProvenanceRequest\x1a .sdx.v1.AttachProvenanceResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/api/v1/artifacts/{artifact_id}/provenance\x12\x9b\x01\n" +
-	"\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/api/v1/artifacts/{artifact_id}/provenance/generateB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/api/v1/artifacts/{artifact_id}/provenance/generateB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_artifact_proto_rawDescOnce sync.Once

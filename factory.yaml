@@ -1,0 +1,80 @@
+version: "1"
+factory:
+  name: neuroforge-sdx
+  display_name: NeuroForge SDX
+  organization: StratoGroup
+  methodology:
+    - xp
+    - tdd
+    - ddd
+    - aidd
+  source_of_truth:
+    architecture: "NeuroForge SDX PRD v1.0"
+    openapi: api/openapi/openapi.yaml
+    openapi_json: api/openapi/openapi.json
+    proto_dir: api/proto
+  runtime:
+    language: go
+    module: github.com/stratogroup/neuroforge-sdx
+    entrypoints:
+      api_server: cmd/api-server
+      worker: cmd/worker
+      mock_api: cmd/mock-api
+    docs:
+      swagger: /swagger
+      redoc: /docs
+      openapi_json: /openapi.json
+  repository:
+    bounded_context_docs: docs/domain
+    adr_docs: docs/adr
+    domain: internal/domain
+    usecases: internal/usecases
+    adapters: internal/adapters
+    ports: internal/ports
+  platform_stack:
+    databases:
+      - yugabytedb
+      - scylladb
+      - tidb
+      - mongodb
+      - dragonflydb
+    access_layer:
+      - hasura
+    authn:
+      - authentik
+    authz:
+      - spicedb
+    secrets:
+      - vault
+      - kms
+    messaging:
+      - nats-jetstream
+      - redpanda
+    search:
+      - meilisearch
+      - qdrant
+      - openobserve
+      - clickhouse
+    observability:
+      - opentelemetry
+      - vqrgo
+      - victoriastack
+  quality_gates:
+    coverage:
+      line: 80
+      branch: 85
+    codebleu_min: 0.80
+    max_cyclomatic_complexity: 10
+    critical_cves_at_merge: 0
+  automation:
+    build: make build
+    lint: make lint
+    test: make test
+    contract: make test-contract
+    security: make security
+    compliance: make compliance
+    swagger: make swagger
+  delivery:
+    helm: deploy/helm/neuroforge-sdx
+    kubevela: deploy/kubevela/application.yaml
+    fleet: deploy/fleet/fleet.yaml

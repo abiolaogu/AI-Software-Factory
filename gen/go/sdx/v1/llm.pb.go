@@ -1148,7 +1148,7 @@ const file_sdx_v1_llm_proto_rawDesc = "" +
 	"\x0eGetModelStatus\x12\x1d.sdx.v1.GetModelStatusRequest\x1a\x1e.sdx.v1.GetModelStatusResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/status\x12\\\n" +
 	"\rGetCostReport\x12\x1c.sdx.v1.GetCostReportRequest\x1a\x12.sdx.v1.CostReport\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/llm/costs\x12_\n" +
 	"\n" +
-	"ListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/modelsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"ListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/modelsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_llm_proto_rawDescOnce sync.Once

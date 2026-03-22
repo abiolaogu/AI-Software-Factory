@@ -794,7 +794,7 @@ const file_sdx_v1_audit_proto_rawDesc = "" +
 	"\rQueryAuditLog\x12\x1c.sdx.v1.QueryAuditLogRequest\x1a\x1d.sdx.v1.QueryAuditLogResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/audit-log\x12w\n" +
 	"\x0fVerifyIntegrity\x12\x1e.sdx.v1.VerifyIntegrityRequest\x1a\x1f.sdx.v1.VerifyIntegrityResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/api/v1/audit-log/verify\x12t\n" +
 	"\x0eExportEvidence\x12\x1d.sdx.v1.ExportEvidenceRequest\x1a\x1e.sdx.v1.ExportEvidenceResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/api/v1/audit-log/export\x12b\n" +
-	"\rGetAuditStats\x12\x1c.sdx.v1.GetAuditStatsRequest\x1a\x12.sdx.v1.AuditStats\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/audit-log/statsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\rGetAuditStats\x12\x1c.sdx.v1.GetAuditStatsRequest\x1a\x12.sdx.v1.AuditStats\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/audit-log/statsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_audit_proto_rawDescOnce sync.Once

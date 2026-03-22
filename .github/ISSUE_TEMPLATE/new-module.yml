@@ -1,0 +1,55 @@
+name: New Module Request
+description: Propose a new software factory module with the architecture and compliance details needed for implementation.
+title: "[module] "
+labels:
+  - module
+  - triage
+body:
+  - type: input
+    id: module_name
+    attributes:
+      label: Module name
+      description: Production name of the module or bounded context.
+      placeholder: neuroforge-sdx
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem statement
+      description: What business problem does this module solve?
+      placeholder: Describe the problem, users, and expected outcomes.
+    validations:
+      required: true
+  - type: textarea
+    id: api_surface
+    attributes:
+      label: API surface
+      description: REST, gRPC, events, docs routes, and expected compliance requirements.
+      placeholder: List endpoints, events, proto packages, and docs obligations.
+    validations:
+      required: true
+  - type: textarea
+    id: data_model
+    attributes:
+      label: Data and tenancy model
+      description: Storage, tenancy, idempotency, migrations, and retention expectations.
+      placeholder: Describe tables, collections, tenant boundaries, and migration constraints.
+    validations:
+      required: true
+  - type: textarea
+    id: integrations
+    attributes:
+      label: Platform integrations
+      description: Auth, authorization, messaging, secrets, search, observability, and deployment requirements.
+      placeholder: Authentik, SpiceDB, Hasura, NATS, Vault, OpenTelemetry, Helm, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: The concrete conditions that must be true before merge.
+      placeholder: Include tests, docs, OpenAPI, compliance terminal, rollout, and SLO expectations.
+    validations:
+      required: true

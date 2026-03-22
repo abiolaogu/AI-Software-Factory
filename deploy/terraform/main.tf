@@ -32,7 +32,7 @@ variable "namespace" {
 variable "chart_path" {
   description = "Path to the SDX Helm chart. Use a relative path for local dev, or a chart repository URL for CI."
   type        = string
-  default     = "../helm/sdx"
+  default     = "../helm/neuroforge-sdx"
 }
 
 variable "chart_values_file" {

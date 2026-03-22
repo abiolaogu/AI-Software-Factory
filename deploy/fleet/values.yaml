@@ -1,0 +1,17 @@
+image:
+  repository: ghcr.io/stratogroup/neuroforge-sdx-api
+  tag: latest
+
+workerImage:
+  repository: ghcr.io/stratogroup/neuroforge-sdx-worker
+  tag: latest
+
+api:
+  env:
+    NF_ENVIRONMENT: production
+    NF_SERVICE_NAME: neuroforge-sdx
+
+worker:
+  env:
+    NF_ENVIRONMENT: production
+    NF_SERVICE_NAME: neuroforge-sdx

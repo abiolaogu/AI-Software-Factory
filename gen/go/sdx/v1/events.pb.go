@@ -4758,7 +4758,7 @@ const file_sdx_v1_events_proto_rawDesc = "" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1d\n" +
 	"\n" +
 	"event_type\x18\x03 \x01(\tR\teventType\x12%\n" +
-	"\x0etotal_attempts\x18\x04 \x01(\rR\rtotalAttemptsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x0etotal_attempts\x18\x04 \x01(\rR\rtotalAttemptsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_events_proto_rawDescOnce sync.Once

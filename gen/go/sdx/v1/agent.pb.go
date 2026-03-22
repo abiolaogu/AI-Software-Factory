@@ -1360,7 +1360,7 @@ const file_sdx_v1_agent_proto_rawDesc = "" +
 	"\x0fRecordHeartbeat\x12\x1e.sdx.v1.RecordHeartbeatRequest\x1a\x1f.sdx.v1.RecordHeartbeatResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/api/v1/agents/{agent_id}/heartbeat\x12t\n" +
 	"\x0eGetAgentHealth\x12\x1d.sdx.v1.GetAgentHealthRequest\x1a\x19.sdx.v1.AgentHealthReport\"(\x82\xd3\xe4\x93\x02\"\x12 /api/v1/agents/{agent_id}/health\x12n\n" +
 	"\x0eTerminateAgent\x12\x1d.sdx.v1.TerminateAgentRequest\x1a\r.sdx.v1.Agent\".\x82\xd3\xe4\x93\x02(:\x01*\"#/api/v1/agents/{agent_id}/terminate\x12r\n" +
-	"\x0fGetAgentMetrics\x12\x1e.sdx.v1.GetAgentMetricsRequest\x1a\x14.sdx.v1.AgentMetrics\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/agents/{agent_id}/metricsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x0fGetAgentMetrics\x12\x1e.sdx.v1.GetAgentMetricsRequest\x1a\x14.sdx.v1.AgentMetrics\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/agents/{agent_id}/metricsB!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_agent_proto_rawDescOnce sync.Once

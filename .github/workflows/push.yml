@@ -1,0 +1,60 @@
+name: push-verification
+
+on:
+  push:
+    branches:
+      - main
+      - "codex/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: push-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.8"
+          cache: true
+
+      - uses: azure/setup-helm@v4
+
+      - name: Sync dependencies
+        run: make tidy
+
+      - name: Contract artifact drift
+        run: |
+          make proto
+          bash scripts/compliance/openapi-drift.sh
+
+      - name: Full push verification
+        run: |
+          make swagger
+          make redoc
+          make lint
+          make complexity
+          make test
+          make test-integration
+          make coverage
+          make test-contract
+          make compliance-test
+          make helm-validate
+          make build
+
+      - name: Upload verification artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: push-verification
+          path: |
+            coverage.out
+            coverage.html
+            api/openapi/openapi.json
+            api/openapi/openapi.yaml

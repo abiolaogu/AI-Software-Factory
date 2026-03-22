@@ -1535,7 +1535,7 @@ const file_sdx_v1_workitem_proto_rawDesc = "" +
 	"\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\"G\x82\xd3\xe4\x93\x02A:\x01*2</api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}\x12\x88\x01\n" +
 	"\x0fApproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/api/v1/work-items/{work_item_id}/approve\x12v\n" +
 	"\x0fRestartWorkItem\x12\x1e.sdx.v1.RestartWorkItemRequest\x1a\x10.sdx.v1.WorkItem\"1\x82\xd3\xe4\x93\x02+\")/api/v1/work-items/{work_item_id}/restart\x12z\n" +
-	"\x0eDeleteWorkItem\x12\x1d.sdx.v1.DeleteWorkItemRequest\x1a\x1e.sdx.v1.DeleteWorkItemResponse\")\x82\xd3\xe4\x93\x02#*!/api/v1/work-items/{work_item_id}B!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x0eDeleteWorkItem\x12\x1d.sdx.v1.DeleteWorkItemRequest\x1a\x1e.sdx.v1.DeleteWorkItemResponse\")\x82\xd3\xe4\x93\x02#*!/api/v1/work-items/{work_item_id}B!Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_workitem_proto_rawDescOnce sync.Once

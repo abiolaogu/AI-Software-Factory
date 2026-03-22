@@ -680,7 +680,7 @@ const file_sdx_v1_gateway_proto_rawDesc = "" +
 	"BearerAuth\x12S\b\x02\x12>Bearer JWT token from Authentik OIDC. Format: 'Bearer {token}'\x1a\rAuthorization \x02b\x10\n" +
 	"\x0e\n" +
 	"\n" +
-	"BearerAuth\x12\x00Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"BearerAuth\x12\x00Z\x1fgithub.com/stratogroup/neuroforge-sdx/gen/go/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_gateway_proto_rawDescOnce sync.Once

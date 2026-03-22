@@ -25,7 +25,7 @@ methodology:
 stack:
   backend:
     primary_language: go
-    go_version: "1.22"
+    go_version: "1.25.8"
     module_path: github.com/stratogroup/neuroforge-sdx
   frontend:
     language: typescript
