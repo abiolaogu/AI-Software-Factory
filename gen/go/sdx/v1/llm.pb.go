@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -1047,7 +1048,7 @@ var File_sdx_v1_llm_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_llm_proto_rawDesc = "" +
 	"\n" +
-	"\x10sdx/v1/llm.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x13sdx/v1/common.proto\"\xb5\x02\n" +
+	"\x10sdx/v1/llm.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xb5\x02\n" +
 	"\x0fCompleteRequest\x120\n" +
 	"\n" +
 	"task_class\x18\x01 \x01(\x0e2\x11.sdx.v1.TaskClassR\ttaskClass\x12#\n" +
@@ -1139,15 +1140,15 @@ const file_sdx_v1_llm_proto_rawDesc = "" +
 	"!CIRCUIT_BREAKER_STATE_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cCIRCUIT_BREAKER_STATE_CLOSED\x10\x01\x12\x1e\n" +
 	"\x1aCIRCUIT_BREAKER_STATE_OPEN\x10\x02\x12#\n" +
-	"\x1fCIRCUIT_BREAKER_STATE_HALF_OPEN\x10\x032\xda\x02\n" +
+	"\x1fCIRCUIT_BREAKER_STATE_HALF_OPEN\x10\x032\xf4\x03\n" +
 	"\n" +
-	"LLMService\x12=\n" +
-	"\bComplete\x12\x17.sdx.v1.CompleteRequest\x1a\x18.sdx.v1.CompleteResponse\x124\n" +
-	"\x05Embed\x12\x14.sdx.v1.EmbedRequest\x1a\x15.sdx.v1.EmbedResponse\x12O\n" +
-	"\x0eGetModelStatus\x12\x1d.sdx.v1.GetModelStatusRequest\x1a\x1e.sdx.v1.GetModelStatusResponse\x12A\n" +
-	"\rGetCostReport\x12\x1c.sdx.v1.GetCostReportRequest\x1a\x12.sdx.v1.CostReport\x12C\n" +
+	"LLMService\x12a\n" +
+	"\bComplete\x12\x17.sdx.v1.CompleteRequest\x1a\x18.sdx.v1.CompleteResponse\"\"\x82\xd3\xe4\x93\x02\x1c:\x01*\"\x17/api/v1/llm/completions\x12W\n" +
+	"\x05Embed\x12\x14.sdx.v1.EmbedRequest\x1a\x15.sdx.v1.EmbedResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/llm/embeddings\x12k\n" +
+	"\x0eGetModelStatus\x12\x1d.sdx.v1.GetModelStatusRequest\x1a\x1e.sdx.v1.GetModelStatusResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/status\x12\\\n" +
+	"\rGetCostReport\x12\x1c.sdx.v1.GetCostReportRequest\x1a\x12.sdx.v1.CostReport\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/llm/costs\x12_\n" +
 	"\n" +
-	"ListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"ListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/modelsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_llm_proto_rawDescOnce sync.Once

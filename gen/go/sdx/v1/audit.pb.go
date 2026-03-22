@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -714,7 +715,7 @@ var File_sdx_v1_audit_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_audit_proto_rawDesc = "" +
 	"\n" +
-	"\x12sdx/v1/audit.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\x84\x04\n" +
+	"\x12sdx/v1/audit.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\x84\x04\n" +
 	"\n" +
 	"AuditEntry\x12\x19\n" +
 	"\bentry_id\x18\x01 \x01(\tR\aentryId\x12\x1d\n" +
@@ -788,12 +789,12 @@ const file_sdx_v1_audit_proto_rawDesc = "" +
 	"\x16ACTOR_TYPE_UNSPECIFIED\x10\x00\x12\x14\n" +
 	"\x10ACTOR_TYPE_AGENT\x10\x01\x12\x14\n" +
 	"\x10ACTOR_TYPE_HUMAN\x10\x02\x12\x15\n" +
-	"\x11ACTOR_TYPE_SYSTEM\x10\x032\xc4\x02\n" +
-	"\fAuditService\x12L\n" +
-	"\rQueryAuditLog\x12\x1c.sdx.v1.QueryAuditLogRequest\x1a\x1d.sdx.v1.QueryAuditLogResponse\x12R\n" +
-	"\x0fVerifyIntegrity\x12\x1e.sdx.v1.VerifyIntegrityRequest\x1a\x1f.sdx.v1.VerifyIntegrityResponse\x12O\n" +
-	"\x0eExportEvidence\x12\x1d.sdx.v1.ExportEvidenceRequest\x1a\x1e.sdx.v1.ExportEvidenceResponse\x12A\n" +
-	"\rGetAuditStats\x12\x1c.sdx.v1.GetAuditStatsRequest\x1a\x12.sdx.v1.AuditStatsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x11ACTOR_TYPE_SYSTEM\x10\x032\xca\x03\n" +
+	"\fAuditService\x12g\n" +
+	"\rQueryAuditLog\x12\x1c.sdx.v1.QueryAuditLogRequest\x1a\x1d.sdx.v1.QueryAuditLogResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/audit-log\x12w\n" +
+	"\x0fVerifyIntegrity\x12\x1e.sdx.v1.VerifyIntegrityRequest\x1a\x1f.sdx.v1.VerifyIntegrityResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/api/v1/audit-log/verify\x12t\n" +
+	"\x0eExportEvidence\x12\x1d.sdx.v1.ExportEvidenceRequest\x1a\x1e.sdx.v1.ExportEvidenceResponse\"#\x82\xd3\xe4\x93\x02\x1d:\x01*\"\x18/api/v1/audit-log/export\x12b\n" +
+	"\rGetAuditStats\x12\x1c.sdx.v1.GetAuditStatsRequest\x1a\x12.sdx.v1.AuditStats\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/audit-log/statsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_audit_proto_rawDescOnce sync.Once

@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1124,7 +1125,7 @@ var File_sdx_v1_artifact_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_artifact_proto_rawDesc = "" +
 	"\n" +
-	"\x15sdx/v1/artifact.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\x8b\x05\n" +
+	"\x15sdx/v1/artifact.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\x8b\x05\n" +
 	"\bArtifact\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
 	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12\x1b\n" +
@@ -1222,17 +1223,17 @@ const file_sdx_v1_artifact_proto_rawDesc = "" +
 	"\x16ARTIFACT_STATUS_SIGNED\x10\x02\x12\x1d\n" +
 	"\x19ARTIFACT_STATUS_PUBLISHED\x10\x03\x12\x1c\n" +
 	"\x18ARTIFACT_STATUS_DEPLOYED\x10\x04\x12\x1b\n" +
-	"\x17ARTIFACT_STATUS_REVOKED\x10\x052\xfa\x05\n" +
-	"\x0fArtifactService\x12;\n" +
-	"\vGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\x12L\n" +
-	"\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\x12g\n" +
-	"\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\x12I\n" +
-	"\fSignArtifact\x12\x1b.sdx.v1.SignArtifactRequest\x1a\x1c.sdx.v1.SignArtifactResponse\x12R\n" +
-	"\x0fPublishArtifact\x12\x1e.sdx.v1.PublishArtifactRequest\x1a\x1f.sdx.v1.PublishArtifactResponse\x12O\n" +
-	"\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\x12O\n" +
-	"\x0eRevokeArtifact\x12\x1d.sdx.v1.RevokeArtifactRequest\x1a\x1e.sdx.v1.RevokeArtifactResponse\x12U\n" +
-	"\x10AttachProvenance\x12\x1f.sdx.v1.AttachProvenanceRequest\x1a .sdx.v1.AttachProvenanceResponse\x12[\n" +
-	"\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x17ARTIFACT_STATUS_REVOKED\x10\x052\xb4\t\n" +
+	"\x0fArtifactService\x12d\n" +
+	"\vGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/artifacts/{artifact_id}\x12g\n" +
+	"\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/artifacts\x12\x99\x01\n" +
+	"\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/artifacts/{artifact_id}/download\x12z\n" +
+	"\fSignArtifact\x12\x1b.sdx.v1.SignArtifactRequest\x1a\x1c.sdx.v1.SignArtifactResponse\"/\x82\xd3\xe4\x93\x02):\x01*\"$/api/v1/artifacts/{artifact_id}/sign\x12\x86\x01\n" +
+	"\x0fPublishArtifact\x12\x1e.sdx.v1.PublishArtifactRequest\x1a\x1f.sdx.v1.PublishArtifactResponse\"2\x82\xd3\xe4\x93\x02,:\x01*\"'/api/v1/artifacts/{artifact_id}/publish\x12\x7f\n" +
+	"\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\".\x82\xd3\xe4\x93\x02(\"&/api/v1/artifacts/{artifact_id}/verify\x12\x82\x01\n" +
+	"\x0eRevokeArtifact\x12\x1d.sdx.v1.RevokeArtifactRequest\x1a\x1e.sdx.v1.RevokeArtifactResponse\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/api/v1/artifacts/{artifact_id}/revoke\x12\x8c\x01\n" +
+	"\x10AttachProvenance\x12\x1f.sdx.v1.AttachProvenanceRequest\x1a .sdx.v1.AttachProvenanceResponse\"5\x82\xd3\xe4\x93\x02/:\x01*\"*/api/v1/artifacts/{artifact_id}/provenance\x12\x9b\x01\n" +
+	"\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponse\">\x82\xd3\xe4\x93\x028:\x01*\"3/api/v1/artifacts/{artifact_id}/provenance/generateB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_artifact_proto_rawDescOnce sync.Once

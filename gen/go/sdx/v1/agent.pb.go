@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	durationpb "google.golang.org/protobuf/types/known/durationpb"
@@ -1243,7 +1244,7 @@ var File_sdx_v1_agent_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_agent_proto_rawDesc = "" +
 	"\n" +
-	"\x12sdx/v1/agent.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x13sdx/v1/common.proto\"\x8e\x04\n" +
+	"\x12sdx/v1/agent.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\x8e\x04\n" +
 	"\x05Agent\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12%\n" +
 	"\x04type\x18\x02 \x01(\x0e2\x11.sdx.v1.AgentTypeR\x04type\x12+\n" +
@@ -1348,18 +1349,18 @@ const file_sdx_v1_agent_proto_rawDesc = "" +
 	"\x18HEALTH_STATE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14HEALTH_STATE_HEALTHY\x10\x01\x12\x19\n" +
 	"\x15HEALTH_STATE_DEGRADED\x10\x02\x12\x1a\n" +
-	"\x16HEALTH_STATE_UNHEALTHY\x10\x032\xf2\x04\n" +
-	"\fAgentService\x12<\n" +
-	"\rRegisterAgent\x12\x1c.sdx.v1.RegisterAgentRequest\x1a\r.sdx.v1.Agent\x122\n" +
-	"\bGetAgent\x12\x17.sdx.v1.GetAgentRequest\x1a\r.sdx.v1.Agent\x12C\n" +
+	"\x16HEALTH_STATE_UNHEALTHY\x10\x032\xd9\a\n" +
+	"\fAgentService\x12W\n" +
+	"\rRegisterAgent\x12\x1c.sdx.v1.RegisterAgentRequest\x1a\r.sdx.v1.Agent\"\x19\x82\xd3\xe4\x93\x02\x13:\x01*\"\x0e/api/v1/agents\x12U\n" +
+	"\bGetAgent\x12\x17.sdx.v1.GetAgentRequest\x1a\r.sdx.v1.Agent\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/api/v1/agents/{agent_id}\x12[\n" +
 	"\n" +
-	"ListAgents\x12\x19.sdx.v1.ListAgentsRequest\x1a\x1a.sdx.v1.ListAgentsResponse\x12F\n" +
-	"\vAssignAgent\x12\x1a.sdx.v1.AssignAgentRequest\x1a\x1b.sdx.v1.AssignAgentResponse\x12:\n" +
-	"\fReleaseAgent\x12\x1b.sdx.v1.ReleaseAgentRequest\x1a\r.sdx.v1.Agent\x12R\n" +
-	"\x0fRecordHeartbeat\x12\x1e.sdx.v1.RecordHeartbeatRequest\x1a\x1f.sdx.v1.RecordHeartbeatResponse\x12J\n" +
-	"\x0eGetAgentHealth\x12\x1d.sdx.v1.GetAgentHealthRequest\x1a\x19.sdx.v1.AgentHealthReport\x12>\n" +
-	"\x0eTerminateAgent\x12\x1d.sdx.v1.TerminateAgentRequest\x1a\r.sdx.v1.Agent\x12G\n" +
-	"\x0fGetAgentMetrics\x12\x1e.sdx.v1.GetAgentMetricsRequest\x1a\x14.sdx.v1.AgentMetricsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"ListAgents\x12\x19.sdx.v1.ListAgentsRequest\x1a\x1a.sdx.v1.ListAgentsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/agents\x12s\n" +
+	"\vAssignAgent\x12\x1a.sdx.v1.AssignAgentRequest\x1a\x1b.sdx.v1.AssignAgentResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/agents/{agent_id}/assign\x12h\n" +
+	"\fReleaseAgent\x12\x1b.sdx.v1.ReleaseAgentRequest\x1a\r.sdx.v1.Agent\",\x82\xd3\xe4\x93\x02&:\x01*\"!/api/v1/agents/{agent_id}/release\x12\x82\x01\n" +
+	"\x0fRecordHeartbeat\x12\x1e.sdx.v1.RecordHeartbeatRequest\x1a\x1f.sdx.v1.RecordHeartbeatResponse\".\x82\xd3\xe4\x93\x02(:\x01*\"#/api/v1/agents/{agent_id}/heartbeat\x12t\n" +
+	"\x0eGetAgentHealth\x12\x1d.sdx.v1.GetAgentHealthRequest\x1a\x19.sdx.v1.AgentHealthReport\"(\x82\xd3\xe4\x93\x02\"\x12 /api/v1/agents/{agent_id}/health\x12n\n" +
+	"\x0eTerminateAgent\x12\x1d.sdx.v1.TerminateAgentRequest\x1a\r.sdx.v1.Agent\".\x82\xd3\xe4\x93\x02(:\x01*\"#/api/v1/agents/{agent_id}/terminate\x12r\n" +
+	"\x0fGetAgentMetrics\x12\x1e.sdx.v1.GetAgentMetricsRequest\x1a\x14.sdx.v1.AgentMetrics\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/agents/{agent_id}/metricsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_agent_proto_rawDescOnce sync.Once

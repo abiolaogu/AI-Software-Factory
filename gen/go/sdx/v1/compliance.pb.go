@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -910,7 +911,7 @@ var File_sdx_v1_compliance_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_compliance_proto_rawDesc = "" +
 	"\n" +
-	"\x17sdx/v1/compliance.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\xbc\x02\n" +
+	"\x17sdx/v1/compliance.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xbc\x02\n" +
 	"\x10ComplianceReport\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
 	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12\x1b\n" +
@@ -984,14 +985,14 @@ const file_sdx_v1_compliance_proto_rawDesc = "" +
 	"\x18GetControlCatalogRequest\x129\n" +
 	"\tframework\x18\x01 \x01(\x0e2\x1b.sdx.v1.ComplianceFrameworkR\tframework\"R\n" +
 	"\x19GetControlCatalogResponse\x125\n" +
-	"\bcontrols\x18\x01 \x03(\v2\x19.sdx.v1.ControlDefinitionR\bcontrols2\x99\x04\n" +
-	"\x11ComplianceService\x12F\n" +
-	"\vMapControls\x12\x1a.sdx.v1.MapControlsRequest\x1a\x1b.sdx.v1.MapControlsResponse\x12U\n" +
-	"\x10GenerateEvidence\x12\x1f.sdx.v1.GenerateEvidenceRequest\x1a .sdx.v1.GenerateEvidenceResponse\x12P\n" +
-	"\x12GetComplianceBadge\x12!.sdx.v1.GetComplianceBadgeRequest\x1a\x17.sdx.v1.ComplianceBadge\x12S\n" +
-	"\x13GetComplianceReport\x12\".sdx.v1.GetComplianceReportRequest\x1a\x18.sdx.v1.ComplianceReport\x12d\n" +
-	"\x15ListComplianceReports\x12$.sdx.v1.ListComplianceReportsRequest\x1a%.sdx.v1.ListComplianceReportsResponse\x12X\n" +
-	"\x11GetControlCatalog\x12 .sdx.v1.GetControlCatalogRequest\x1a!.sdx.v1.GetControlCatalogResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\bcontrols\x18\x01 \x03(\v2\x19.sdx.v1.ControlDefinitionR\bcontrols2\x8c\x06\n" +
+	"\x11ComplianceService\x12i\n" +
+	"\vMapControls\x12\x1a.sdx.v1.MapControlsRequest\x1a\x1b.sdx.v1.MapControlsResponse\"!\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/api/v1/compliance/map\x12}\n" +
+	"\x10GenerateEvidence\x12\x1f.sdx.v1.GenerateEvidenceRequest\x1a .sdx.v1.GenerateEvidenceResponse\"&\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/api/v1/compliance/evidence\x12~\n" +
+	"\x12GetComplianceBadge\x12!.sdx.v1.GetComplianceBadgeRequest\x1a\x17.sdx.v1.ComplianceBadge\",\x82\xd3\xe4\x93\x02&\x12$/api/v1/compliance/badges/{build_id}\x12\x82\x01\n" +
+	"\x13GetComplianceReport\x12\".sdx.v1.GetComplianceReportRequest\x1a\x18.sdx.v1.ComplianceReport\"-\x82\xd3\xe4\x93\x02'\x12%/api/v1/compliance/reports/{build_id}\x12\x88\x01\n" +
+	"\x15ListComplianceReports\x12$.sdx.v1.ListComplianceReportsRequest\x1a%.sdx.v1.ListComplianceReportsResponse\"\"\x82\xd3\xe4\x93\x02\x1c\x12\x1a/api/v1/compliance/reports\x12}\n" +
+	"\x11GetControlCatalog\x12 .sdx.v1.GetControlCatalogRequest\x1a!.sdx.v1.GetControlCatalogResponse\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/api/v1/compliance/controlsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_compliance_proto_rawDescOnce sync.Once

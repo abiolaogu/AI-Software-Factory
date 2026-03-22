@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1587,7 +1588,7 @@ var File_sdx_v1_tenant_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_tenant_proto_rawDesc = "" +
 	"\n" +
-	"\x13sdx/v1/tenant.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\x88\x04\n" +
+	"\x13sdx/v1/tenant.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\x88\x04\n" +
 	"\x06Tenant\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12$\n" +
@@ -1722,22 +1723,22 @@ const file_sdx_v1_tenant_proto_rawDesc = "" +
 	"\x1cBILLING_METER_TYPE_PIPELINES\x10\x01\x12!\n" +
 	"\x1dBILLING_METER_TYPE_LLM_TOKENS\x10\x02\x12&\n" +
 	"\"BILLING_METER_TYPE_COMPUTE_MINUTES\x10\x03\x12!\n" +
-	"\x1dBILLING_METER_TYPE_STORAGE_GB\x10\x042\xcd\a\n" +
-	"\rTenantService\x12;\n" +
-	"\fCreateTenant\x12\x1b.sdx.v1.CreateTenantRequest\x1a\x0e.sdx.v1.Tenant\x125\n" +
-	"\tGetTenant\x12\x18.sdx.v1.GetTenantRequest\x1a\x0e.sdx.v1.Tenant\x12F\n" +
-	"\vListTenants\x12\x1a.sdx.v1.ListTenantsRequest\x1a\x1b.sdx.v1.ListTenantsResponse\x127\n" +
+	"\x1dBILLING_METER_TYPE_STORAGE_GB\x10\x042\xd5\f\n" +
+	"\rTenantService\x12W\n" +
+	"\fCreateTenant\x12\x1b.sdx.v1.CreateTenantRequest\x1a\x0e.sdx.v1.Tenant\"\x1a\x82\xd3\xe4\x93\x02\x14:\x01*\"\x0f/api/v1/tenants\x12Z\n" +
+	"\tGetTenant\x12\x18.sdx.v1.GetTenantRequest\x1a\x0e.sdx.v1.Tenant\"#\x82\xd3\xe4\x93\x02\x1d\x12\x1b/api/v1/tenants/{tenant_id}\x12_\n" +
+	"\vListTenants\x12\x1a.sdx.v1.ListTenantsRequest\x1a\x1b.sdx.v1.ListTenantsResponse\"\x17\x82\xd3\xe4\x93\x02\x11\x12\x0f/api/v1/tenants\x12d\n" +
 	"\n" +
-	"UpdatePlan\x12\x19.sdx.v1.UpdatePlanRequest\x1a\x0e.sdx.v1.Tenant\x12=\n" +
-	"\rSuspendTenant\x12\x1c.sdx.v1.SuspendTenantRequest\x1a\x0e.sdx.v1.Tenant\x12C\n" +
-	"\x10ReactivateTenant\x12\x1f.sdx.v1.ReactivateTenantRequest\x1a\x0e.sdx.v1.Tenant\x12D\n" +
-	"\x0eGetQuotaStatus\x12\x1d.sdx.v1.GetQuotaStatusRequest\x1a\x13.sdx.v1.QuotaStatus\x12D\n" +
-	"\x0fCreateWorkspace\x12\x1e.sdx.v1.CreateWorkspaceRequest\x1a\x11.sdx.v1.Workspace\x12O\n" +
-	"\x0eListWorkspaces\x12\x1d.sdx.v1.ListWorkspacesRequest\x1a\x1e.sdx.v1.ListWorkspacesResponse\x12P\n" +
-	"\x12AddWorkspaceMember\x12!.sdx.v1.AddWorkspaceMemberRequest\x1a\x17.sdx.v1.WorkspaceMember\x12d\n" +
-	"\x15RemoveWorkspaceMember\x12$.sdx.v1.RemoveWorkspaceMemberRequest\x1a%.sdx.v1.RemoveWorkspaceMemberResponse\x12V\n" +
-	"\x14SetComplianceProfile\x12#.sdx.v1.SetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\x12V\n" +
-	"\x14GetComplianceProfile\x12#.sdx.v1.GetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfileB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"UpdatePlan\x12\x19.sdx.v1.UpdatePlanRequest\x1a\x0e.sdx.v1.Tenant\"+\x82\xd3\xe4\x93\x02%:\x01*2 /api/v1/tenants/{tenant_id}/plan\x12m\n" +
+	"\rSuspendTenant\x12\x1c.sdx.v1.SuspendTenantRequest\x1a\x0e.sdx.v1.Tenant\".\x82\xd3\xe4\x93\x02(:\x01*\"#/api/v1/tenants/{tenant_id}/suspend\x12s\n" +
+	"\x10ReactivateTenant\x12\x1f.sdx.v1.ReactivateTenantRequest\x1a\x0e.sdx.v1.Tenant\".\x82\xd3\xe4\x93\x02(\"&/api/v1/tenants/{tenant_id}/reactivate\x12p\n" +
+	"\x0eGetQuotaStatus\x12\x1d.sdx.v1.GetQuotaStatusRequest\x1a\x13.sdx.v1.QuotaStatus\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/tenants/{tenant_id}/quotas\x12w\n" +
+	"\x0fCreateWorkspace\x12\x1e.sdx.v1.CreateWorkspaceRequest\x1a\x11.sdx.v1.Workspace\"1\x82\xd3\xe4\x93\x02+:\x01*\"&/api/v1/tenants/{tenant_id}/workspaces\x12\x7f\n" +
+	"\x0eListWorkspaces\x12\x1d.sdx.v1.ListWorkspacesRequest\x1a\x1e.sdx.v1.ListWorkspacesResponse\".\x82\xd3\xe4\x93\x02(\x12&/api/v1/tenants/{tenant_id}/workspaces\x12\x9a\x01\n" +
+	"\x12AddWorkspaceMember\x12!.sdx.v1.AddWorkspaceMemberRequest\x1a\x17.sdx.v1.WorkspaceMember\"H\x82\xd3\xe4\x93\x02B:\x01*\"=/api/v1/tenants/{tenant_id}/workspaces/{workspace_id}/members\x12\xb5\x01\n" +
+	"\x15RemoveWorkspaceMember\x12$.sdx.v1.RemoveWorkspaceMemberRequest\x1a%.sdx.v1.RemoveWorkspaceMemberResponse\"O\x82\xd3\xe4\x93\x02I*G/api/v1/tenants/{tenant_id}/workspaces/{workspace_id}/members/{user_id}\x12\x91\x01\n" +
+	"\x14SetComplianceProfile\x12#.sdx.v1.SetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\"9\x82\xd3\xe4\x93\x023:\x01*\x1a./api/v1/tenants/{tenant_id}/compliance-profile\x12\x8e\x01\n" +
+	"\x14GetComplianceProfile\x12#.sdx.v1.GetComplianceProfileRequest\x1a\x19.sdx.v1.ComplianceProfile\"6\x82\xd3\xe4\x93\x020\x12./api/v1/tenants/{tenant_id}/compliance-profileB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_tenant_proto_rawDescOnce sync.Once

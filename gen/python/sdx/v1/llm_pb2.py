@@ -24,10 +24,11 @@ _sym_db = _symbol_database.Default()
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 from google.protobuf import duration_pb2 as google_dot_protobuf_dot_duration__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from sdx.v1 import common_pb2 as sdx_dot_v1_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10sdx/v1/llm.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x13sdx/v1/common.proto\"\xb5\x02\n\x0f\x43ompleteRequest\x12\x30\n\ntask_class\x18\x01 \x01(\x0e\x32\x11.sdx.v1.TaskClassR\ttaskClass\x12#\n\rsystem_prompt\x18\x02 \x01(\tR\x0csystemPrompt\x12\x1f\n\x0buser_prompt\x18\x03 \x01(\tR\nuserPrompt\x12\x1d\n\nmax_tokens\x18\x04 \x01(\rR\tmaxTokens\x12 \n\x0btemperature\x18\x05 \x01(\x01R\x0btemperature\x12\x19\n\x08\x61gent_id\x18\x06 \x01(\tR\x07\x61gentId\x12\x19\n\x08\x62uild_id\x18\x07 \x01(\tR\x07\x62uildId\x12\x33\n\x07timeout\x18\x08 \x01(\x0b\x32\x19.google.protobuf.DurationR\x07timeout\"\xfa\x01\n\x10\x43ompleteResponse\x12\x18\n\x07\x63ontent\x18\x01 \x01(\tR\x07\x63ontent\x12.\n\nmodel_used\x18\x02 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\tmodelUsed\x12#\n\rfallback_used\x18\x03 \x01(\x08R\x0c\x66\x61llbackUsed\x12\x33\n\x0btoken_usage\x18\x04 \x01(\x0b\x32\x12.sdx.v1.TokenUsageR\ntokenUsage\x12\x1d\n\nlatency_ms\x18\x05 \x01(\x04R\tlatencyMs\x12#\n\rfinish_reason\x18\x06 \x01(\tR\x0c\x66inishReason\"K\n\x0c\x45mbedRequest\x12\x14\n\x05texts\x18\x01 \x03(\tR\x05texts\x12%\n\x05model\x18\x02 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\"w\n\rEmbedResponse\x12\x31\n\nembeddings\x18\x01 \x03(\x0b\x32\x11.sdx.v1.EmbeddingR\nembeddings\x12\x33\n\x0btoken_usage\x18\x02 \x01(\x0b\x32\x12.sdx.v1.TokenUsageR\ntokenUsage\"C\n\tEmbedding\x12\x16\n\x06values\x18\x01 \x03(\x02R\x06values\x12\x1e\n\ndimensions\x18\x02 \x01(\rR\ndimensions\"\x17\n\x15GetModelStatusRequest\"E\n\x16GetModelStatusResponse\x12+\n\x06models\x18\x01 \x03(\x0b\x32\x13.sdx.v1.ModelStatusR\x06models\"\x82\x02\n\x0bModelStatus\x12%\n\x05model\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\x12\x1c\n\tavailable\x18\x02 \x01(\x08R\tavailable\x12\x44\n\x0f\x63ircuit_breaker\x18\x03 \x01(\x0e\x32\x1b.sdx.v1.CircuitBreakerStateR\x0e\x63ircuitBreaker\x12$\n\x0e\x61vg_latency_ms\x18\x04 \x01(\rR\x0c\x61vgLatencyMs\x12$\n\x0e\x65rror_rate_pct\x18\x05 \x01(\x01R\x0c\x65rrorRatePct\x12\x1c\n\nis_on_prem\x18\x06 \x01(\x08R\x08isOnPrem\"y\n\x14GetCostReportRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\x12)\n\x06period\x18\x03 \x01(\x0b\x32\x11.sdx.v1.DateRangeR\x06period\"\xf9\x01\n\nCostReport\x12\x35\n\x08\x62y_model\x18\x01 \x03(\x0b\x32\x1a.sdx.v1.ModelCostBreakdownR\x07\x62yModel\x12\x36\n\x17total_cost_microdollars\x18\x02 \x01(\x04R\x15totalCostMicrodollars\x12,\n\x12total_input_tokens\x18\x03 \x01(\x04R\x10totalInputTokens\x12.\n\x13total_output_tokens\x18\x04 \x01(\x04R\x11totalOutputTokens\x12\x1e\n\x0bon_prem_pct\x18\x05 \x01(\x01R\tonPremPct\"\xfb\x01\n\x12ModelCostBreakdown\x12%\n\x05model\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\x12!\n\x0cinput_tokens\x18\x02 \x01(\x04R\x0binputTokens\x12#\n\routput_tokens\x18\x03 \x01(\x04R\x0coutputTokens\x12+\n\x11\x63ost_microdollars\x18\x04 \x01(\x04R\x10\x63ostMicrodollars\x12#\n\rrequest_count\x18\x05 \x01(\x04R\x0crequestCount\x12$\n\x0e\x61vg_latency_ms\x18\x06 \x01(\x01R\x0c\x61vgLatencyMs\"\x13\n\x11ListModelsRequest\"A\n\x12ListModelsResponse\x12+\n\x06models\x18\x01 \x03(\x0b\x32\x13.sdx.v1.ModelConfigR\x06models\"\xe1\x02\n\x0bModelConfig\x12\x1f\n\x02id\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x02id\x12!\n\x0c\x64isplay_name\x18\x02 \x01(\tR\x0b\x64isplayName\x12\x1a\n\x08provider\x18\x03 \x01(\tR\x08provider\x12\x1c\n\nis_on_prem\x18\x04 \x01(\x08R\x08isOnPrem\x12:\n\x0fsupported_tasks\x18\x05 \x03(\x0e\x32\x11.sdx.v1.TaskClassR\x0esupportedTasks\x12,\n\x12max_context_tokens\x18\x06 \x01(\rR\x10maxContextTokens\x12\x33\n\x16\x63ost_per_million_input\x18\x07 \x01(\x04R\x13\x63ostPerMillionInput\x12\x35\n\x17\x63ost_per_million_output\x18\x08 \x01(\x04R\x14\x63ostPerMillionOutput*\x86\x02\n\tTaskClass\x12\x1a\n\x16TASK_CLASS_UNSPECIFIED\x10\x00\x12\x1b\n\x17TASK_CLASS_ARCHITECTURE\x10\x01\x12\x1f\n\x1bTASK_CLASS_CODE_GEN_COMPLEX\x10\x02\x12#\n\x1fTASK_CLASS_CODE_GEN_BOILERPLATE\x10\x03\x12\"\n\x1eTASK_CLASS_SECURITY_COMPLIANCE\x10\x04\x12\x1e\n\x1aTASK_CLASS_TEST_GENERATION\x10\x05\x12\x1c\n\x18TASK_CLASS_DOCUMENTATION\x10\x06\x12\x18\n\x14TASK_CLASS_EMBEDDING\x10\x07*\xa3\x01\n\x13\x43ircuitBreakerState\x12%\n!CIRCUIT_BREAKER_STATE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43IRCUIT_BREAKER_STATE_CLOSED\x10\x01\x12\x1e\n\x1a\x43IRCUIT_BREAKER_STATE_OPEN\x10\x02\x12#\n\x1f\x43IRCUIT_BREAKER_STATE_HALF_OPEN\x10\x03\x32\xda\x02\n\nLLMService\x12=\n\x08\x43omplete\x12\x17.sdx.v1.CompleteRequest\x1a\x18.sdx.v1.CompleteResponse\x12\x34\n\x05\x45mbed\x12\x14.sdx.v1.EmbedRequest\x1a\x15.sdx.v1.EmbedResponse\x12O\n\x0eGetModelStatus\x12\x1d.sdx.v1.GetModelStatusRequest\x1a\x1e.sdx.v1.GetModelStatusResponse\x12\x41\n\rGetCostReport\x12\x1c.sdx.v1.GetCostReportRequest\x1a\x12.sdx.v1.CostReport\x12\x43\n\nListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x10sdx/v1/llm.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xb5\x02\n\x0f\x43ompleteRequest\x12\x30\n\ntask_class\x18\x01 \x01(\x0e\x32\x11.sdx.v1.TaskClassR\ttaskClass\x12#\n\rsystem_prompt\x18\x02 \x01(\tR\x0csystemPrompt\x12\x1f\n\x0buser_prompt\x18\x03 \x01(\tR\nuserPrompt\x12\x1d\n\nmax_tokens\x18\x04 \x01(\rR\tmaxTokens\x12 \n\x0btemperature\x18\x05 \x01(\x01R\x0btemperature\x12\x19\n\x08\x61gent_id\x18\x06 \x01(\tR\x07\x61gentId\x12\x19\n\x08\x62uild_id\x18\x07 \x01(\tR\x07\x62uildId\x12\x33\n\x07timeout\x18\x08 \x01(\x0b\x32\x19.google.protobuf.DurationR\x07timeout\"\xfa\x01\n\x10\x43ompleteResponse\x12\x18\n\x07\x63ontent\x18\x01 \x01(\tR\x07\x63ontent\x12.\n\nmodel_used\x18\x02 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\tmodelUsed\x12#\n\rfallback_used\x18\x03 \x01(\x08R\x0c\x66\x61llbackUsed\x12\x33\n\x0btoken_usage\x18\x04 \x01(\x0b\x32\x12.sdx.v1.TokenUsageR\ntokenUsage\x12\x1d\n\nlatency_ms\x18\x05 \x01(\x04R\tlatencyMs\x12#\n\rfinish_reason\x18\x06 \x01(\tR\x0c\x66inishReason\"K\n\x0c\x45mbedRequest\x12\x14\n\x05texts\x18\x01 \x03(\tR\x05texts\x12%\n\x05model\x18\x02 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\"w\n\rEmbedResponse\x12\x31\n\nembeddings\x18\x01 \x03(\x0b\x32\x11.sdx.v1.EmbeddingR\nembeddings\x12\x33\n\x0btoken_usage\x18\x02 \x01(\x0b\x32\x12.sdx.v1.TokenUsageR\ntokenUsage\"C\n\tEmbedding\x12\x16\n\x06values\x18\x01 \x03(\x02R\x06values\x12\x1e\n\ndimensions\x18\x02 \x01(\rR\ndimensions\"\x17\n\x15GetModelStatusRequest\"E\n\x16GetModelStatusResponse\x12+\n\x06models\x18\x01 \x03(\x0b\x32\x13.sdx.v1.ModelStatusR\x06models\"\x82\x02\n\x0bModelStatus\x12%\n\x05model\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\x12\x1c\n\tavailable\x18\x02 \x01(\x08R\tavailable\x12\x44\n\x0f\x63ircuit_breaker\x18\x03 \x01(\x0e\x32\x1b.sdx.v1.CircuitBreakerStateR\x0e\x63ircuitBreaker\x12$\n\x0e\x61vg_latency_ms\x18\x04 \x01(\rR\x0c\x61vgLatencyMs\x12$\n\x0e\x65rror_rate_pct\x18\x05 \x01(\x01R\x0c\x65rrorRatePct\x12\x1c\n\nis_on_prem\x18\x06 \x01(\x08R\x08isOnPrem\"y\n\x14GetCostReportRequest\x12\x1b\n\ttenant_id\x18\x01 \x01(\tR\x08tenantId\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\x12)\n\x06period\x18\x03 \x01(\x0b\x32\x11.sdx.v1.DateRangeR\x06period\"\xf9\x01\n\nCostReport\x12\x35\n\x08\x62y_model\x18\x01 \x03(\x0b\x32\x1a.sdx.v1.ModelCostBreakdownR\x07\x62yModel\x12\x36\n\x17total_cost_microdollars\x18\x02 \x01(\x04R\x15totalCostMicrodollars\x12,\n\x12total_input_tokens\x18\x03 \x01(\x04R\x10totalInputTokens\x12.\n\x13total_output_tokens\x18\x04 \x01(\x04R\x11totalOutputTokens\x12\x1e\n\x0bon_prem_pct\x18\x05 \x01(\x01R\tonPremPct\"\xfb\x01\n\x12ModelCostBreakdown\x12%\n\x05model\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x05model\x12!\n\x0cinput_tokens\x18\x02 \x01(\x04R\x0binputTokens\x12#\n\routput_tokens\x18\x03 \x01(\x04R\x0coutputTokens\x12+\n\x11\x63ost_microdollars\x18\x04 \x01(\x04R\x10\x63ostMicrodollars\x12#\n\rrequest_count\x18\x05 \x01(\x04R\x0crequestCount\x12$\n\x0e\x61vg_latency_ms\x18\x06 \x01(\x01R\x0c\x61vgLatencyMs\"\x13\n\x11ListModelsRequest\"A\n\x12ListModelsResponse\x12+\n\x06models\x18\x01 \x03(\x0b\x32\x13.sdx.v1.ModelConfigR\x06models\"\xe1\x02\n\x0bModelConfig\x12\x1f\n\x02id\x18\x01 \x01(\x0e\x32\x0f.sdx.v1.ModelIDR\x02id\x12!\n\x0c\x64isplay_name\x18\x02 \x01(\tR\x0b\x64isplayName\x12\x1a\n\x08provider\x18\x03 \x01(\tR\x08provider\x12\x1c\n\nis_on_prem\x18\x04 \x01(\x08R\x08isOnPrem\x12:\n\x0fsupported_tasks\x18\x05 \x03(\x0e\x32\x11.sdx.v1.TaskClassR\x0esupportedTasks\x12,\n\x12max_context_tokens\x18\x06 \x01(\rR\x10maxContextTokens\x12\x33\n\x16\x63ost_per_million_input\x18\x07 \x01(\x04R\x13\x63ostPerMillionInput\x12\x35\n\x17\x63ost_per_million_output\x18\x08 \x01(\x04R\x14\x63ostPerMillionOutput*\x86\x02\n\tTaskClass\x12\x1a\n\x16TASK_CLASS_UNSPECIFIED\x10\x00\x12\x1b\n\x17TASK_CLASS_ARCHITECTURE\x10\x01\x12\x1f\n\x1bTASK_CLASS_CODE_GEN_COMPLEX\x10\x02\x12#\n\x1fTASK_CLASS_CODE_GEN_BOILERPLATE\x10\x03\x12\"\n\x1eTASK_CLASS_SECURITY_COMPLIANCE\x10\x04\x12\x1e\n\x1aTASK_CLASS_TEST_GENERATION\x10\x05\x12\x1c\n\x18TASK_CLASS_DOCUMENTATION\x10\x06\x12\x18\n\x14TASK_CLASS_EMBEDDING\x10\x07*\xa3\x01\n\x13\x43ircuitBreakerState\x12%\n!CIRCUIT_BREAKER_STATE_UNSPECIFIED\x10\x00\x12 \n\x1c\x43IRCUIT_BREAKER_STATE_CLOSED\x10\x01\x12\x1e\n\x1a\x43IRCUIT_BREAKER_STATE_OPEN\x10\x02\x12#\n\x1f\x43IRCUIT_BREAKER_STATE_HALF_OPEN\x10\x03\x32\xf4\x03\n\nLLMService\x12\x61\n\x08\x43omplete\x12\x17.sdx.v1.CompleteRequest\x1a\x18.sdx.v1.CompleteResponse\"\"\x82\xd3\xe4\x93\x02\x1c\"\x17/api/v1/llm/completions:\x01*\x12W\n\x05\x45mbed\x12\x14.sdx.v1.EmbedRequest\x1a\x15.sdx.v1.EmbedResponse\"!\x82\xd3\xe4\x93\x02\x1b\"\x16/api/v1/llm/embeddings:\x01*\x12k\n\x0eGetModelStatus\x12\x1d.sdx.v1.GetModelStatusRequest\x1a\x1e.sdx.v1.GetModelStatusResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/status\x12\\\n\rGetCostReport\x12\x1c.sdx.v1.GetCostReportRequest\x1a\x12.sdx.v1.CostReport\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/llm/costs\x12_\n\nListModels\x12\x19.sdx.v1.ListModelsRequest\x1a\x1a.sdx.v1.ListModelsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/llm/modelsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -35,38 +36,48 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sdx.v1.llm_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z\037neuroforge-sdx/api/sdx/v1;sdxv1'
-  _globals['_TASKCLASS']._serialized_start=2377
-  _globals['_TASKCLASS']._serialized_end=2639
-  _globals['_CIRCUITBREAKERSTATE']._serialized_start=2642
-  _globals['_CIRCUITBREAKERSTATE']._serialized_end=2805
-  _globals['_COMPLETEREQUEST']._serialized_start=115
-  _globals['_COMPLETEREQUEST']._serialized_end=424
-  _globals['_COMPLETERESPONSE']._serialized_start=427
-  _globals['_COMPLETERESPONSE']._serialized_end=677
-  _globals['_EMBEDREQUEST']._serialized_start=679
-  _globals['_EMBEDREQUEST']._serialized_end=754
-  _globals['_EMBEDRESPONSE']._serialized_start=756
-  _globals['_EMBEDRESPONSE']._serialized_end=875
-  _globals['_EMBEDDING']._serialized_start=877
-  _globals['_EMBEDDING']._serialized_end=944
-  _globals['_GETMODELSTATUSREQUEST']._serialized_start=946
-  _globals['_GETMODELSTATUSREQUEST']._serialized_end=969
-  _globals['_GETMODELSTATUSRESPONSE']._serialized_start=971
-  _globals['_GETMODELSTATUSRESPONSE']._serialized_end=1040
-  _globals['_MODELSTATUS']._serialized_start=1043
-  _globals['_MODELSTATUS']._serialized_end=1301
-  _globals['_GETCOSTREPORTREQUEST']._serialized_start=1303
-  _globals['_GETCOSTREPORTREQUEST']._serialized_end=1424
-  _globals['_COSTREPORT']._serialized_start=1427
-  _globals['_COSTREPORT']._serialized_end=1676
-  _globals['_MODELCOSTBREAKDOWN']._serialized_start=1679
-  _globals['_MODELCOSTBREAKDOWN']._serialized_end=1930
-  _globals['_LISTMODELSREQUEST']._serialized_start=1932
-  _globals['_LISTMODELSREQUEST']._serialized_end=1951
-  _globals['_LISTMODELSRESPONSE']._serialized_start=1953
-  _globals['_LISTMODELSRESPONSE']._serialized_end=2018
-  _globals['_MODELCONFIG']._serialized_start=2021
-  _globals['_MODELCONFIG']._serialized_end=2374
-  _globals['_LLMSERVICE']._serialized_start=2808
-  _globals['_LLMSERVICE']._serialized_end=3154
+  _globals['_LLMSERVICE'].methods_by_name['Complete']._loaded_options = None
+  _globals['_LLMSERVICE'].methods_by_name['Complete']._serialized_options = b'\202\323\344\223\002\034\"\027/api/v1/llm/completions:\001*'
+  _globals['_LLMSERVICE'].methods_by_name['Embed']._loaded_options = None
+  _globals['_LLMSERVICE'].methods_by_name['Embed']._serialized_options = b'\202\323\344\223\002\033\"\026/api/v1/llm/embeddings:\001*'
+  _globals['_LLMSERVICE'].methods_by_name['GetModelStatus']._loaded_options = None
+  _globals['_LLMSERVICE'].methods_by_name['GetModelStatus']._serialized_options = b'\202\323\344\223\002\024\022\022/api/v1/llm/status'
+  _globals['_LLMSERVICE'].methods_by_name['GetCostReport']._loaded_options = None
+  _globals['_LLMSERVICE'].methods_by_name['GetCostReport']._serialized_options = b'\202\323\344\223\002\023\022\021/api/v1/llm/costs'
+  _globals['_LLMSERVICE'].methods_by_name['ListModels']._loaded_options = None
+  _globals['_LLMSERVICE'].methods_by_name['ListModels']._serialized_options = b'\202\323\344\223\002\024\022\022/api/v1/llm/models'
+  _globals['_TASKCLASS']._serialized_start=2407
+  _globals['_TASKCLASS']._serialized_end=2669
+  _globals['_CIRCUITBREAKERSTATE']._serialized_start=2672
+  _globals['_CIRCUITBREAKERSTATE']._serialized_end=2835
+  _globals['_COMPLETEREQUEST']._serialized_start=145
+  _globals['_COMPLETEREQUEST']._serialized_end=454
+  _globals['_COMPLETERESPONSE']._serialized_start=457
+  _globals['_COMPLETERESPONSE']._serialized_end=707
+  _globals['_EMBEDREQUEST']._serialized_start=709
+  _globals['_EMBEDREQUEST']._serialized_end=784
+  _globals['_EMBEDRESPONSE']._serialized_start=786
+  _globals['_EMBEDRESPONSE']._serialized_end=905
+  _globals['_EMBEDDING']._serialized_start=907
+  _globals['_EMBEDDING']._serialized_end=974
+  _globals['_GETMODELSTATUSREQUEST']._serialized_start=976
+  _globals['_GETMODELSTATUSREQUEST']._serialized_end=999
+  _globals['_GETMODELSTATUSRESPONSE']._serialized_start=1001
+  _globals['_GETMODELSTATUSRESPONSE']._serialized_end=1070
+  _globals['_MODELSTATUS']._serialized_start=1073
+  _globals['_MODELSTATUS']._serialized_end=1331
+  _globals['_GETCOSTREPORTREQUEST']._serialized_start=1333
+  _globals['_GETCOSTREPORTREQUEST']._serialized_end=1454
+  _globals['_COSTREPORT']._serialized_start=1457
+  _globals['_COSTREPORT']._serialized_end=1706
+  _globals['_MODELCOSTBREAKDOWN']._serialized_start=1709
+  _globals['_MODELCOSTBREAKDOWN']._serialized_end=1960
+  _globals['_LISTMODELSREQUEST']._serialized_start=1962
+  _globals['_LISTMODELSREQUEST']._serialized_end=1981
+  _globals['_LISTMODELSRESPONSE']._serialized_start=1983
+  _globals['_LISTMODELSRESPONSE']._serialized_end=2048
+  _globals['_MODELCONFIG']._serialized_start=2051
+  _globals['_MODELCONFIG']._serialized_end=2404
+  _globals['_LLMSERVICE']._serialized_start=2838
+  _globals['_LLMSERVICE']._serialized_end=3338
 # @@protoc_insertion_point(module_scope)

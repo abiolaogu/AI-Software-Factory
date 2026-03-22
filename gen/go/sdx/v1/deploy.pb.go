@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -942,7 +943,7 @@ var File_sdx_v1_deploy_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_deploy_proto_rawDesc = "" +
 	"\n" +
-	"\x13sdx/v1/deploy.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\xbc\x04\n" +
+	"\x13sdx/v1/deploy.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xbc\x04\n" +
 	"\n" +
 	"Deployment\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n" +
@@ -1030,13 +1031,13 @@ const file_sdx_v1_deploy_proto_rawDesc = "" +
 	"\x1eTARGET_ENVIRONMENT_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16TARGET_ENVIRONMENT_DEV\x10\x01\x12\x1e\n" +
 	"\x1aTARGET_ENVIRONMENT_STAGING\x10\x02\x12\x1b\n" +
-	"\x17TARGET_ENVIRONMENT_PROD\x10\x032\x8a\x03\n" +
-	"\x11DeploymentService\x127\n" +
-	"\x06Deploy\x12\x15.sdx.v1.DeployRequest\x1a\x16.sdx.v1.DeployResponse\x12A\n" +
-	"\rGetDeployment\x12\x1c.sdx.v1.GetDeploymentRequest\x1a\x12.sdx.v1.Deployment\x12R\n" +
-	"\x0fListDeployments\x12\x1e.sdx.v1.ListDeploymentsRequest\x1a\x1f.sdx.v1.ListDeploymentsResponse\x12K\n" +
-	"\x12RollbackDeployment\x12!.sdx.v1.RollbackDeploymentRequest\x1a\x12.sdx.v1.Deployment\x12X\n" +
-	"\x11GetDeploymentLogs\x12 .sdx.v1.GetDeploymentLogsRequest\x1a!.sdx.v1.GetDeploymentLogsResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x17TARGET_ENVIRONMENT_PROD\x10\x032\xe1\x04\n" +
+	"\x11DeploymentService\x12W\n" +
+	"\x06Deploy\x12\x15.sdx.v1.DeployRequest\x1a\x16.sdx.v1.DeployResponse\"\x1e\x82\xd3\xe4\x93\x02\x18:\x01*\"\x13/api/v1/deployments\x12n\n" +
+	"\rGetDeployment\x12\x1c.sdx.v1.GetDeploymentRequest\x1a\x12.sdx.v1.Deployment\"+\x82\xd3\xe4\x93\x02%\x12#/api/v1/deployments/{deployment_id}\x12o\n" +
+	"\x0fListDeployments\x12\x1e.sdx.v1.ListDeploymentsRequest\x1a\x1f.sdx.v1.ListDeploymentsResponse\"\x1b\x82\xd3\xe4\x93\x02\x15\x12\x13/api/v1/deployments\x12\x84\x01\n" +
+	"\x12RollbackDeployment\x12!.sdx.v1.RollbackDeploymentRequest\x1a\x12.sdx.v1.Deployment\"7\x82\xd3\xe4\x93\x021:\x01*\",/api/v1/deployments/{deployment_id}/rollback\x12\x8a\x01\n" +
+	"\x11GetDeploymentLogs\x12 .sdx.v1.GetDeploymentLogsRequest\x1a!.sdx.v1.GetDeploymentLogsResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/deployments/{deployment_id}/logsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_deploy_proto_rawDescOnce sync.Once

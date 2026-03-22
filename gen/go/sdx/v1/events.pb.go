@@ -967,6 +967,3414 @@ func (x *QuotaExhaustedPayload) GetLimit() uint64 {
 	return 0
 }
 
+type WorkItemCreatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId    string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	SourceType    string                 `protobuf:"bytes,3,opt,name=source_type,json=sourceType,proto3" json:"source_type,omitempty"`
+	SourceHash    string                 `protobuf:"bytes,4,opt,name=source_hash,json=sourceHash,proto3" json:"source_hash,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WorkItemCreatedPayload) Reset() {
+	*x = WorkItemCreatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkItemCreatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkItemCreatedPayload) ProtoMessage() {}
+
+func (x *WorkItemCreatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkItemCreatedPayload.ProtoReflect.Descriptor instead.
+func (*WorkItemCreatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *WorkItemCreatedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *WorkItemCreatedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *WorkItemCreatedPayload) GetSourceType() string {
+	if x != nil {
+		return x.SourceType
+	}
+	return ""
+}
+
+func (x *WorkItemCreatedPayload) GetSourceHash() string {
+	if x != nil {
+		return x.SourceHash
+	}
+	return ""
+}
+
+type WorkItemParsedPayload struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId       string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	RequirementCount uint32                 `protobuf:"varint,2,opt,name=requirement_count,json=requirementCount,proto3" json:"requirement_count,omitempty"`
+	AmbiguityCount   uint32                 `protobuf:"varint,3,opt,name=ambiguity_count,json=ambiguityCount,proto3" json:"ambiguity_count,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *WorkItemParsedPayload) Reset() {
+	*x = WorkItemParsedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkItemParsedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkItemParsedPayload) ProtoMessage() {}
+
+func (x *WorkItemParsedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkItemParsedPayload.ProtoReflect.Descriptor instead.
+func (*WorkItemParsedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *WorkItemParsedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *WorkItemParsedPayload) GetRequirementCount() uint32 {
+	if x != nil {
+		return x.RequirementCount
+	}
+	return 0
+}
+
+func (x *WorkItemParsedPayload) GetAmbiguityCount() uint32 {
+	if x != nil {
+		return x.AmbiguityCount
+	}
+	return 0
+}
+
+type AmbiguityDetectedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId    string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	AmbiguityId   string                 `protobuf:"bytes,2,opt,name=ambiguity_id,json=ambiguityId,proto3" json:"ambiguity_id,omitempty"`
+	Question      string                 `protobuf:"bytes,3,opt,name=question,proto3" json:"question,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AmbiguityDetectedPayload) Reset() {
+	*x = AmbiguityDetectedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AmbiguityDetectedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AmbiguityDetectedPayload) ProtoMessage() {}
+
+func (x *AmbiguityDetectedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AmbiguityDetectedPayload.ProtoReflect.Descriptor instead.
+func (*AmbiguityDetectedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *AmbiguityDetectedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *AmbiguityDetectedPayload) GetAmbiguityId() string {
+	if x != nil {
+		return x.AmbiguityId
+	}
+	return ""
+}
+
+func (x *AmbiguityDetectedPayload) GetQuestion() string {
+	if x != nil {
+		return x.Question
+	}
+	return ""
+}
+
+type AmbiguityResolvedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId    string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	AmbiguityId   string                 `protobuf:"bytes,2,opt,name=ambiguity_id,json=ambiguityId,proto3" json:"ambiguity_id,omitempty"`
+	Resolution    string                 `protobuf:"bytes,3,opt,name=resolution,proto3" json:"resolution,omitempty"`
+	ResolvedBy    string                 `protobuf:"bytes,4,opt,name=resolved_by,json=resolvedBy,proto3" json:"resolved_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AmbiguityResolvedPayload) Reset() {
+	*x = AmbiguityResolvedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AmbiguityResolvedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AmbiguityResolvedPayload) ProtoMessage() {}
+
+func (x *AmbiguityResolvedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AmbiguityResolvedPayload.ProtoReflect.Descriptor instead.
+func (*AmbiguityResolvedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *AmbiguityResolvedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *AmbiguityResolvedPayload) GetAmbiguityId() string {
+	if x != nil {
+		return x.AmbiguityId
+	}
+	return ""
+}
+
+func (x *AmbiguityResolvedPayload) GetResolution() string {
+	if x != nil {
+		return x.Resolution
+	}
+	return ""
+}
+
+func (x *AmbiguityResolvedPayload) GetResolvedBy() string {
+	if x != nil {
+		return x.ResolvedBy
+	}
+	return ""
+}
+
+type ManifestApprovedPayload struct {
+	state                protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId           string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	Languages            []string               `protobuf:"bytes,2,rep,name=languages,proto3" json:"languages,omitempty"`
+	ComplianceFrameworks []string               `protobuf:"bytes,3,rep,name=compliance_frameworks,json=complianceFrameworks,proto3" json:"compliance_frameworks,omitempty"`
+	TargetEnvironment    string                 `protobuf:"bytes,4,opt,name=target_environment,json=targetEnvironment,proto3" json:"target_environment,omitempty"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *ManifestApprovedPayload) Reset() {
+	*x = ManifestApprovedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ManifestApprovedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ManifestApprovedPayload) ProtoMessage() {}
+
+func (x *ManifestApprovedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ManifestApprovedPayload.ProtoReflect.Descriptor instead.
+func (*ManifestApprovedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *ManifestApprovedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *ManifestApprovedPayload) GetLanguages() []string {
+	if x != nil {
+		return x.Languages
+	}
+	return nil
+}
+
+func (x *ManifestApprovedPayload) GetComplianceFrameworks() []string {
+	if x != nil {
+		return x.ComplianceFrameworks
+	}
+	return nil
+}
+
+func (x *ManifestApprovedPayload) GetTargetEnvironment() string {
+	if x != nil {
+		return x.TargetEnvironment
+	}
+	return ""
+}
+
+type WorkItemFailedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WorkItemId    string                 `protobuf:"bytes,1,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WorkItemFailedPayload) Reset() {
+	*x = WorkItemFailedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkItemFailedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkItemFailedPayload) ProtoMessage() {}
+
+func (x *WorkItemFailedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkItemFailedPayload.ProtoReflect.Descriptor instead.
+func (*WorkItemFailedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *WorkItemFailedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *WorkItemFailedPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type BuildInitiatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	WorkItemId    string                 `protobuf:"bytes,2,opt,name=work_item_id,json=workItemId,proto3" json:"work_item_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *BuildInitiatedPayload) Reset() {
+	*x = BuildInitiatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildInitiatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildInitiatedPayload) ProtoMessage() {}
+
+func (x *BuildInitiatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildInitiatedPayload.ProtoReflect.Descriptor instead.
+func (*BuildInitiatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *BuildInitiatedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *BuildInitiatedPayload) GetWorkItemId() string {
+	if x != nil {
+		return x.WorkItemId
+	}
+	return ""
+}
+
+func (x *BuildInitiatedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type StageStartedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	StageNumber   uint32                 `protobuf:"varint,2,opt,name=stage_number,json=stageNumber,proto3" json:"stage_number,omitempty"`
+	StageName     string                 `protobuf:"bytes,3,opt,name=stage_name,json=stageName,proto3" json:"stage_name,omitempty"`
+	AgentId       string                 `protobuf:"bytes,4,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *StageStartedPayload) Reset() {
+	*x = StageStartedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *StageStartedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*StageStartedPayload) ProtoMessage() {}
+
+func (x *StageStartedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use StageStartedPayload.ProtoReflect.Descriptor instead.
+func (*StageStartedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *StageStartedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *StageStartedPayload) GetStageNumber() uint32 {
+	if x != nil {
+		return x.StageNumber
+	}
+	return 0
+}
+
+func (x *StageStartedPayload) GetStageName() string {
+	if x != nil {
+		return x.StageName
+	}
+	return ""
+}
+
+func (x *StageStartedPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+type BuildCheckpointedPayload struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	BuildId        string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	CheckpointHash string                 `protobuf:"bytes,2,opt,name=checkpoint_hash,json=checkpointHash,proto3" json:"checkpoint_hash,omitempty"`
+	StageNumber    uint32                 `protobuf:"varint,3,opt,name=stage_number,json=stageNumber,proto3" json:"stage_number,omitempty"`
+	CheckpointedAt *timestamppb.Timestamp `protobuf:"bytes,4,opt,name=checkpointed_at,json=checkpointedAt,proto3" json:"checkpointed_at,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *BuildCheckpointedPayload) Reset() {
+	*x = BuildCheckpointedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildCheckpointedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildCheckpointedPayload) ProtoMessage() {}
+
+func (x *BuildCheckpointedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildCheckpointedPayload.ProtoReflect.Descriptor instead.
+func (*BuildCheckpointedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *BuildCheckpointedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *BuildCheckpointedPayload) GetCheckpointHash() string {
+	if x != nil {
+		return x.CheckpointHash
+	}
+	return ""
+}
+
+func (x *BuildCheckpointedPayload) GetStageNumber() uint32 {
+	if x != nil {
+		return x.StageNumber
+	}
+	return 0
+}
+
+func (x *BuildCheckpointedPayload) GetCheckpointedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.CheckpointedAt
+	}
+	return nil
+}
+
+type BuildRecoveryStartedPayload struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	BuildId         string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	CheckpointHash  string                 `protobuf:"bytes,2,opt,name=checkpoint_hash,json=checkpointHash,proto3" json:"checkpoint_hash,omitempty"`
+	LastValidStage  uint32                 `protobuf:"varint,3,opt,name=last_valid_stage,json=lastValidStage,proto3" json:"last_valid_stage,omitempty"`
+	RecoveryAttempt uint32                 `protobuf:"varint,4,opt,name=recovery_attempt,json=recoveryAttempt,proto3" json:"recovery_attempt,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *BuildRecoveryStartedPayload) Reset() {
+	*x = BuildRecoveryStartedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[21]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildRecoveryStartedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildRecoveryStartedPayload) ProtoMessage() {}
+
+func (x *BuildRecoveryStartedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[21]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildRecoveryStartedPayload.ProtoReflect.Descriptor instead.
+func (*BuildRecoveryStartedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{21}
+}
+
+func (x *BuildRecoveryStartedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *BuildRecoveryStartedPayload) GetCheckpointHash() string {
+	if x != nil {
+		return x.CheckpointHash
+	}
+	return ""
+}
+
+func (x *BuildRecoveryStartedPayload) GetLastValidStage() uint32 {
+	if x != nil {
+		return x.LastValidStage
+	}
+	return 0
+}
+
+func (x *BuildRecoveryStartedPayload) GetRecoveryAttempt() uint32 {
+	if x != nil {
+		return x.RecoveryAttempt
+	}
+	return 0
+}
+
+type BuildRecoverySucceededPayload struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	BuildId        string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	ResumedAtStage uint32                 `protobuf:"varint,2,opt,name=resumed_at_stage,json=resumedAtStage,proto3" json:"resumed_at_stage,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *BuildRecoverySucceededPayload) Reset() {
+	*x = BuildRecoverySucceededPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[22]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *BuildRecoverySucceededPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*BuildRecoverySucceededPayload) ProtoMessage() {}
+
+func (x *BuildRecoverySucceededPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[22]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use BuildRecoverySucceededPayload.ProtoReflect.Descriptor instead.
+func (*BuildRecoverySucceededPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{22}
+}
+
+func (x *BuildRecoverySucceededPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *BuildRecoverySucceededPayload) GetResumedAtStage() uint32 {
+	if x != nil {
+		return x.ResumedAtStage
+	}
+	return 0
+}
+
+type EscalationTriggeredPayload struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	BuildId             string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	Reason              string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	ContextUrl          string                 `protobuf:"bytes,3,opt,name=context_url,json=contextUrl,proto3" json:"context_url,omitempty"`
+	PagerdutyIncidentId string                 `protobuf:"bytes,4,opt,name=pagerduty_incident_id,json=pagerdutyIncidentId,proto3" json:"pagerduty_incident_id,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *EscalationTriggeredPayload) Reset() {
+	*x = EscalationTriggeredPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[23]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *EscalationTriggeredPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EscalationTriggeredPayload) ProtoMessage() {}
+
+func (x *EscalationTriggeredPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[23]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EscalationTriggeredPayload.ProtoReflect.Descriptor instead.
+func (*EscalationTriggeredPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{23}
+}
+
+func (x *EscalationTriggeredPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *EscalationTriggeredPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *EscalationTriggeredPayload) GetContextUrl() string {
+	if x != nil {
+		return x.ContextUrl
+	}
+	return ""
+}
+
+func (x *EscalationTriggeredPayload) GetPagerdutyIncidentId() string {
+	if x != nil {
+		return x.PagerdutyIncidentId
+	}
+	return ""
+}
+
+type GateEvaluatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	GateId        string                 `protobuf:"bytes,2,opt,name=gate_id,json=gateId,proto3" json:"gate_id,omitempty"`
+	MetricName    string                 `protobuf:"bytes,3,opt,name=metric_name,json=metricName,proto3" json:"metric_name,omitempty"`
+	Value         float64                `protobuf:"fixed64,4,opt,name=value,proto3" json:"value,omitempty"`
+	Threshold     float64                `protobuf:"fixed64,5,opt,name=threshold,proto3" json:"threshold,omitempty"`
+	Passed        bool                   `protobuf:"varint,6,opt,name=passed,proto3" json:"passed,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GateEvaluatedPayload) Reset() {
+	*x = GateEvaluatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GateEvaluatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GateEvaluatedPayload) ProtoMessage() {}
+
+func (x *GateEvaluatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GateEvaluatedPayload.ProtoReflect.Descriptor instead.
+func (*GateEvaluatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *GateEvaluatedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *GateEvaluatedPayload) GetGateId() string {
+	if x != nil {
+		return x.GateId
+	}
+	return ""
+}
+
+func (x *GateEvaluatedPayload) GetMetricName() string {
+	if x != nil {
+		return x.MetricName
+	}
+	return ""
+}
+
+func (x *GateEvaluatedPayload) GetValue() float64 {
+	if x != nil {
+		return x.Value
+	}
+	return 0
+}
+
+func (x *GateEvaluatedPayload) GetThreshold() float64 {
+	if x != nil {
+		return x.Threshold
+	}
+	return 0
+}
+
+func (x *GateEvaluatedPayload) GetPassed() bool {
+	if x != nil {
+		return x.Passed
+	}
+	return false
+}
+
+type GatePassedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	GateId        string                 `protobuf:"bytes,2,opt,name=gate_id,json=gateId,proto3" json:"gate_id,omitempty"`
+	MetricName    string                 `protobuf:"bytes,3,opt,name=metric_name,json=metricName,proto3" json:"metric_name,omitempty"`
+	Value         float64                `protobuf:"fixed64,4,opt,name=value,proto3" json:"value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GatePassedPayload) Reset() {
+	*x = GatePassedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GatePassedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GatePassedPayload) ProtoMessage() {}
+
+func (x *GatePassedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GatePassedPayload.ProtoReflect.Descriptor instead.
+func (*GatePassedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *GatePassedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *GatePassedPayload) GetGateId() string {
+	if x != nil {
+		return x.GateId
+	}
+	return ""
+}
+
+func (x *GatePassedPayload) GetMetricName() string {
+	if x != nil {
+		return x.MetricName
+	}
+	return ""
+}
+
+func (x *GatePassedPayload) GetValue() float64 {
+	if x != nil {
+		return x.Value
+	}
+	return 0
+}
+
+type RemediationStartedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	GateId        string                 `protobuf:"bytes,2,opt,name=gate_id,json=gateId,proto3" json:"gate_id,omitempty"`
+	Attempt       uint32                 `protobuf:"varint,3,opt,name=attempt,proto3" json:"attempt,omitempty"`
+	AgentId       string                 `protobuf:"bytes,4,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	Action        string                 `protobuf:"bytes,5,opt,name=action,proto3" json:"action,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemediationStartedPayload) Reset() {
+	*x = RemediationStartedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemediationStartedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemediationStartedPayload) ProtoMessage() {}
+
+func (x *RemediationStartedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemediationStartedPayload.ProtoReflect.Descriptor instead.
+func (*RemediationStartedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{26}
+}
+
+func (x *RemediationStartedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *RemediationStartedPayload) GetGateId() string {
+	if x != nil {
+		return x.GateId
+	}
+	return ""
+}
+
+func (x *RemediationStartedPayload) GetAttempt() uint32 {
+	if x != nil {
+		return x.Attempt
+	}
+	return 0
+}
+
+func (x *RemediationStartedPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+func (x *RemediationStartedPayload) GetAction() string {
+	if x != nil {
+		return x.Action
+	}
+	return ""
+}
+
+type RemediationSucceededPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	GateId        string                 `protobuf:"bytes,2,opt,name=gate_id,json=gateId,proto3" json:"gate_id,omitempty"`
+	Attempt       uint32                 `protobuf:"varint,3,opt,name=attempt,proto3" json:"attempt,omitempty"`
+	NewValue      float64                `protobuf:"fixed64,4,opt,name=new_value,json=newValue,proto3" json:"new_value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemediationSucceededPayload) Reset() {
+	*x = RemediationSucceededPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemediationSucceededPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemediationSucceededPayload) ProtoMessage() {}
+
+func (x *RemediationSucceededPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemediationSucceededPayload.ProtoReflect.Descriptor instead.
+func (*RemediationSucceededPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *RemediationSucceededPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *RemediationSucceededPayload) GetGateId() string {
+	if x != nil {
+		return x.GateId
+	}
+	return ""
+}
+
+func (x *RemediationSucceededPayload) GetAttempt() uint32 {
+	if x != nil {
+		return x.Attempt
+	}
+	return 0
+}
+
+func (x *RemediationSucceededPayload) GetNewValue() float64 {
+	if x != nil {
+		return x.NewValue
+	}
+	return 0
+}
+
+type RemediationExhaustedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	GateId        string                 `protobuf:"bytes,2,opt,name=gate_id,json=gateId,proto3" json:"gate_id,omitempty"`
+	Attempts      uint32                 `protobuf:"varint,3,opt,name=attempts,proto3" json:"attempts,omitempty"`
+	LastValue     float64                `protobuf:"fixed64,4,opt,name=last_value,json=lastValue,proto3" json:"last_value,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RemediationExhaustedPayload) Reset() {
+	*x = RemediationExhaustedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[28]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RemediationExhaustedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RemediationExhaustedPayload) ProtoMessage() {}
+
+func (x *RemediationExhaustedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[28]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RemediationExhaustedPayload.ProtoReflect.Descriptor instead.
+func (*RemediationExhaustedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{28}
+}
+
+func (x *RemediationExhaustedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *RemediationExhaustedPayload) GetGateId() string {
+	if x != nil {
+		return x.GateId
+	}
+	return ""
+}
+
+func (x *RemediationExhaustedPayload) GetAttempts() uint32 {
+	if x != nil {
+		return x.Attempts
+	}
+	return 0
+}
+
+func (x *RemediationExhaustedPayload) GetLastValue() float64 {
+	if x != nil {
+		return x.LastValue
+	}
+	return 0
+}
+
+type ArtifactCreatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ArtifactId    string                 `protobuf:"bytes,1,opt,name=artifact_id,json=artifactId,proto3" json:"artifact_id,omitempty"`
+	BuildId       string                 `protobuf:"bytes,2,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	ArtifactType  string                 `protobuf:"bytes,3,opt,name=artifact_type,json=artifactType,proto3" json:"artifact_type,omitempty"`
+	ContentHash   string                 `protobuf:"bytes,4,opt,name=content_hash,json=contentHash,proto3" json:"content_hash,omitempty"`
+	SizeBytes     uint64                 `protobuf:"varint,5,opt,name=size_bytes,json=sizeBytes,proto3" json:"size_bytes,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ArtifactCreatedPayload) Reset() {
+	*x = ArtifactCreatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[29]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ArtifactCreatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ArtifactCreatedPayload) ProtoMessage() {}
+
+func (x *ArtifactCreatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[29]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ArtifactCreatedPayload.ProtoReflect.Descriptor instead.
+func (*ArtifactCreatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{29}
+}
+
+func (x *ArtifactCreatedPayload) GetArtifactId() string {
+	if x != nil {
+		return x.ArtifactId
+	}
+	return ""
+}
+
+func (x *ArtifactCreatedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *ArtifactCreatedPayload) GetArtifactType() string {
+	if x != nil {
+		return x.ArtifactType
+	}
+	return ""
+}
+
+func (x *ArtifactCreatedPayload) GetContentHash() string {
+	if x != nil {
+		return x.ContentHash
+	}
+	return ""
+}
+
+func (x *ArtifactCreatedPayload) GetSizeBytes() uint64 {
+	if x != nil {
+		return x.SizeBytes
+	}
+	return 0
+}
+
+type ArtifactPublishedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ArtifactId    string                 `protobuf:"bytes,1,opt,name=artifact_id,json=artifactId,proto3" json:"artifact_id,omitempty"`
+	RegistryUri   string                 `protobuf:"bytes,2,opt,name=registry_uri,json=registryUri,proto3" json:"registry_uri,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ArtifactPublishedPayload) Reset() {
+	*x = ArtifactPublishedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[30]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ArtifactPublishedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ArtifactPublishedPayload) ProtoMessage() {}
+
+func (x *ArtifactPublishedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[30]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ArtifactPublishedPayload.ProtoReflect.Descriptor instead.
+func (*ArtifactPublishedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{30}
+}
+
+func (x *ArtifactPublishedPayload) GetArtifactId() string {
+	if x != nil {
+		return x.ArtifactId
+	}
+	return ""
+}
+
+func (x *ArtifactPublishedPayload) GetRegistryUri() string {
+	if x != nil {
+		return x.RegistryUri
+	}
+	return ""
+}
+
+type ArtifactDeployedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ArtifactId    string                 `protobuf:"bytes,1,opt,name=artifact_id,json=artifactId,proto3" json:"artifact_id,omitempty"`
+	DeploymentId  string                 `protobuf:"bytes,2,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	Environment   string                 `protobuf:"bytes,3,opt,name=environment,proto3" json:"environment,omitempty"`
+	Region        string                 `protobuf:"bytes,4,opt,name=region,proto3" json:"region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ArtifactDeployedPayload) Reset() {
+	*x = ArtifactDeployedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[31]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ArtifactDeployedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ArtifactDeployedPayload) ProtoMessage() {}
+
+func (x *ArtifactDeployedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[31]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ArtifactDeployedPayload.ProtoReflect.Descriptor instead.
+func (*ArtifactDeployedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{31}
+}
+
+func (x *ArtifactDeployedPayload) GetArtifactId() string {
+	if x != nil {
+		return x.ArtifactId
+	}
+	return ""
+}
+
+func (x *ArtifactDeployedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *ArtifactDeployedPayload) GetEnvironment() string {
+	if x != nil {
+		return x.Environment
+	}
+	return ""
+}
+
+func (x *ArtifactDeployedPayload) GetRegion() string {
+	if x != nil {
+		return x.Region
+	}
+	return ""
+}
+
+type ArtifactRevokedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ArtifactId    string                 `protobuf:"bytes,1,opt,name=artifact_id,json=artifactId,proto3" json:"artifact_id,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	RevokedBy     string                 `protobuf:"bytes,3,opt,name=revoked_by,json=revokedBy,proto3" json:"revoked_by,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ArtifactRevokedPayload) Reset() {
+	*x = ArtifactRevokedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ArtifactRevokedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ArtifactRevokedPayload) ProtoMessage() {}
+
+func (x *ArtifactRevokedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ArtifactRevokedPayload.ProtoReflect.Descriptor instead.
+func (*ArtifactRevokedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *ArtifactRevokedPayload) GetArtifactId() string {
+	if x != nil {
+		return x.ArtifactId
+	}
+	return ""
+}
+
+func (x *ArtifactRevokedPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *ArtifactRevokedPayload) GetRevokedBy() string {
+	if x != nil {
+		return x.RevokedBy
+	}
+	return ""
+}
+
+type TenantCreatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Plan          string                 `protobuf:"bytes,3,opt,name=plan,proto3" json:"plan,omitempty"`
+	NexoRegion    string                 `protobuf:"bytes,4,opt,name=nexo_region,json=nexoRegion,proto3" json:"nexo_region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantCreatedPayload) Reset() {
+	*x = TenantCreatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantCreatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantCreatedPayload) ProtoMessage() {}
+
+func (x *TenantCreatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantCreatedPayload.ProtoReflect.Descriptor instead.
+func (*TenantCreatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *TenantCreatedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantCreatedPayload) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TenantCreatedPayload) GetPlan() string {
+	if x != nil {
+		return x.Plan
+	}
+	return ""
+}
+
+func (x *TenantCreatedPayload) GetNexoRegion() string {
+	if x != nil {
+		return x.NexoRegion
+	}
+	return ""
+}
+
+type TenantPlanChangedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	OldPlan       string                 `protobuf:"bytes,2,opt,name=old_plan,json=oldPlan,proto3" json:"old_plan,omitempty"`
+	NewPlan       string                 `protobuf:"bytes,3,opt,name=new_plan,json=newPlan,proto3" json:"new_plan,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantPlanChangedPayload) Reset() {
+	*x = TenantPlanChangedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[34]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantPlanChangedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantPlanChangedPayload) ProtoMessage() {}
+
+func (x *TenantPlanChangedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[34]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantPlanChangedPayload.ProtoReflect.Descriptor instead.
+func (*TenantPlanChangedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{34}
+}
+
+func (x *TenantPlanChangedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantPlanChangedPayload) GetOldPlan() string {
+	if x != nil {
+		return x.OldPlan
+	}
+	return ""
+}
+
+func (x *TenantPlanChangedPayload) GetNewPlan() string {
+	if x != nil {
+		return x.NewPlan
+	}
+	return ""
+}
+
+type TenantSuspendedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantSuspendedPayload) Reset() {
+	*x = TenantSuspendedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[35]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantSuspendedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantSuspendedPayload) ProtoMessage() {}
+
+func (x *TenantSuspendedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[35]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantSuspendedPayload.ProtoReflect.Descriptor instead.
+func (*TenantSuspendedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{35}
+}
+
+func (x *TenantSuspendedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *TenantSuspendedPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type TenantReactivatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *TenantReactivatedPayload) Reset() {
+	*x = TenantReactivatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *TenantReactivatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TenantReactivatedPayload) ProtoMessage() {}
+
+func (x *TenantReactivatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TenantReactivatedPayload.ProtoReflect.Descriptor instead.
+func (*TenantReactivatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *TenantReactivatedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+type QuotaResetPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	MeterType     string                 `protobuf:"bytes,2,opt,name=meter_type,json=meterType,proto3" json:"meter_type,omitempty"`
+	PeriodStart   *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=period_start,json=periodStart,proto3" json:"period_start,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *QuotaResetPayload) Reset() {
+	*x = QuotaResetPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *QuotaResetPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*QuotaResetPayload) ProtoMessage() {}
+
+func (x *QuotaResetPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use QuotaResetPayload.ProtoReflect.Descriptor instead.
+func (*QuotaResetPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *QuotaResetPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *QuotaResetPayload) GetMeterType() string {
+	if x != nil {
+		return x.MeterType
+	}
+	return ""
+}
+
+func (x *QuotaResetPayload) GetPeriodStart() *timestamppb.Timestamp {
+	if x != nil {
+		return x.PeriodStart
+	}
+	return nil
+}
+
+type WorkspaceCreatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	WorkspaceId   string                 `protobuf:"bytes,2,opt,name=workspace_id,json=workspaceId,proto3" json:"workspace_id,omitempty"`
+	Name          string                 `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WorkspaceCreatedPayload) Reset() {
+	*x = WorkspaceCreatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkspaceCreatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkspaceCreatedPayload) ProtoMessage() {}
+
+func (x *WorkspaceCreatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkspaceCreatedPayload.ProtoReflect.Descriptor instead.
+func (*WorkspaceCreatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *WorkspaceCreatedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *WorkspaceCreatedPayload) GetWorkspaceId() string {
+	if x != nil {
+		return x.WorkspaceId
+	}
+	return ""
+}
+
+func (x *WorkspaceCreatedPayload) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+type WorkspaceMemberAddedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	TenantId      string                 `protobuf:"bytes,1,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	WorkspaceId   string                 `protobuf:"bytes,2,opt,name=workspace_id,json=workspaceId,proto3" json:"workspace_id,omitempty"`
+	UserId        string                 `protobuf:"bytes,3,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Role          string                 `protobuf:"bytes,4,opt,name=role,proto3" json:"role,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WorkspaceMemberAddedPayload) Reset() {
+	*x = WorkspaceMemberAddedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WorkspaceMemberAddedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WorkspaceMemberAddedPayload) ProtoMessage() {}
+
+func (x *WorkspaceMemberAddedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WorkspaceMemberAddedPayload.ProtoReflect.Descriptor instead.
+func (*WorkspaceMemberAddedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *WorkspaceMemberAddedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *WorkspaceMemberAddedPayload) GetWorkspaceId() string {
+	if x != nil {
+		return x.WorkspaceId
+	}
+	return ""
+}
+
+func (x *WorkspaceMemberAddedPayload) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
+func (x *WorkspaceMemberAddedPayload) GetRole() string {
+	if x != nil {
+		return x.Role
+	}
+	return ""
+}
+
+type AgentRegisteredPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	AgentType     string                 `protobuf:"bytes,2,opt,name=agent_type,json=agentType,proto3" json:"agent_type,omitempty"`
+	SpiffeId      string                 `protobuf:"bytes,3,opt,name=spiffe_id,json=spiffeId,proto3" json:"spiffe_id,omitempty"`
+	PodName       string                 `protobuf:"bytes,4,opt,name=pod_name,json=podName,proto3" json:"pod_name,omitempty"`
+	NexoRegion    string                 `protobuf:"bytes,5,opt,name=nexo_region,json=nexoRegion,proto3" json:"nexo_region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgentRegisteredPayload) Reset() {
+	*x = AgentRegisteredPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[40]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentRegisteredPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentRegisteredPayload) ProtoMessage() {}
+
+func (x *AgentRegisteredPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[40]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentRegisteredPayload.ProtoReflect.Descriptor instead.
+func (*AgentRegisteredPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{40}
+}
+
+func (x *AgentRegisteredPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+func (x *AgentRegisteredPayload) GetAgentType() string {
+	if x != nil {
+		return x.AgentType
+	}
+	return ""
+}
+
+func (x *AgentRegisteredPayload) GetSpiffeId() string {
+	if x != nil {
+		return x.SpiffeId
+	}
+	return ""
+}
+
+func (x *AgentRegisteredPayload) GetPodName() string {
+	if x != nil {
+		return x.PodName
+	}
+	return ""
+}
+
+func (x *AgentRegisteredPayload) GetNexoRegion() string {
+	if x != nil {
+		return x.NexoRegion
+	}
+	return ""
+}
+
+type AgentAssignedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	BuildId       string                 `protobuf:"bytes,2,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	StageNumber   uint32                 `protobuf:"varint,3,opt,name=stage_number,json=stageNumber,proto3" json:"stage_number,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgentAssignedPayload) Reset() {
+	*x = AgentAssignedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[41]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentAssignedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentAssignedPayload) ProtoMessage() {}
+
+func (x *AgentAssignedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[41]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentAssignedPayload.ProtoReflect.Descriptor instead.
+func (*AgentAssignedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{41}
+}
+
+func (x *AgentAssignedPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+func (x *AgentAssignedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *AgentAssignedPayload) GetStageNumber() uint32 {
+	if x != nil {
+		return x.StageNumber
+	}
+	return 0
+}
+
+type AgentReleasedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	BuildId       string                 `protobuf:"bytes,2,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgentReleasedPayload) Reset() {
+	*x = AgentReleasedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[42]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentReleasedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentReleasedPayload) ProtoMessage() {}
+
+func (x *AgentReleasedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[42]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentReleasedPayload.ProtoReflect.Descriptor instead.
+func (*AgentReleasedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{42}
+}
+
+func (x *AgentReleasedPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+func (x *AgentReleasedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+type AgentRecoveredPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgentRecoveredPayload) Reset() {
+	*x = AgentRecoveredPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[43]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentRecoveredPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentRecoveredPayload) ProtoMessage() {}
+
+func (x *AgentRecoveredPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[43]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentRecoveredPayload.ProtoReflect.Descriptor instead.
+func (*AgentRecoveredPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{43}
+}
+
+func (x *AgentRecoveredPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+type AgentTerminatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AgentId       string                 `protobuf:"bytes,1,opt,name=agent_id,json=agentId,proto3" json:"agent_id,omitempty"`
+	Reason        string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AgentTerminatedPayload) Reset() {
+	*x = AgentTerminatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[44]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AgentTerminatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AgentTerminatedPayload) ProtoMessage() {}
+
+func (x *AgentTerminatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[44]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AgentTerminatedPayload.ProtoReflect.Descriptor instead.
+func (*AgentTerminatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{44}
+}
+
+func (x *AgentTerminatedPayload) GetAgentId() string {
+	if x != nil {
+		return x.AgentId
+	}
+	return ""
+}
+
+func (x *AgentTerminatedPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+type SecurityScanCompletedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	ScanType      string                 `protobuf:"bytes,2,opt,name=scan_type,json=scanType,proto3" json:"scan_type,omitempty"` // SAST, DAST, SCA, SECRETS, IAC
+	FindingsCount uint32                 `protobuf:"varint,3,opt,name=findings_count,json=findingsCount,proto3" json:"findings_count,omitempty"`
+	CriticalCount uint32                 `protobuf:"varint,4,opt,name=critical_count,json=criticalCount,proto3" json:"critical_count,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SecurityScanCompletedPayload) Reset() {
+	*x = SecurityScanCompletedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[45]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SecurityScanCompletedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SecurityScanCompletedPayload) ProtoMessage() {}
+
+func (x *SecurityScanCompletedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[45]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SecurityScanCompletedPayload.ProtoReflect.Descriptor instead.
+func (*SecurityScanCompletedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{45}
+}
+
+func (x *SecurityScanCompletedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *SecurityScanCompletedPayload) GetScanType() string {
+	if x != nil {
+		return x.ScanType
+	}
+	return ""
+}
+
+func (x *SecurityScanCompletedPayload) GetFindingsCount() uint32 {
+	if x != nil {
+		return x.FindingsCount
+	}
+	return 0
+}
+
+func (x *SecurityScanCompletedPayload) GetCriticalCount() uint32 {
+	if x != nil {
+		return x.CriticalCount
+	}
+	return 0
+}
+
+type VulnerabilityFoundPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	BuildId       string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	CveId         string                 `protobuf:"bytes,2,opt,name=cve_id,json=cveId,proto3" json:"cve_id,omitempty"`
+	Severity      string                 `protobuf:"bytes,3,opt,name=severity,proto3" json:"severity,omitempty"`
+	PackageName   string                 `protobuf:"bytes,4,opt,name=package_name,json=packageName,proto3" json:"package_name,omitempty"`
+	Version       string                 `protobuf:"bytes,5,opt,name=version,proto3" json:"version,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *VulnerabilityFoundPayload) Reset() {
+	*x = VulnerabilityFoundPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[46]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *VulnerabilityFoundPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*VulnerabilityFoundPayload) ProtoMessage() {}
+
+func (x *VulnerabilityFoundPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[46]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use VulnerabilityFoundPayload.ProtoReflect.Descriptor instead.
+func (*VulnerabilityFoundPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{46}
+}
+
+func (x *VulnerabilityFoundPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *VulnerabilityFoundPayload) GetCveId() string {
+	if x != nil {
+		return x.CveId
+	}
+	return ""
+}
+
+func (x *VulnerabilityFoundPayload) GetSeverity() string {
+	if x != nil {
+		return x.Severity
+	}
+	return ""
+}
+
+func (x *VulnerabilityFoundPayload) GetPackageName() string {
+	if x != nil {
+		return x.PackageName
+	}
+	return ""
+}
+
+func (x *VulnerabilityFoundPayload) GetVersion() string {
+	if x != nil {
+		return x.Version
+	}
+	return ""
+}
+
+type SBOMGeneratedPayload struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	BuildId        string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	ArtifactId     string                 `protobuf:"bytes,2,opt,name=artifact_id,json=artifactId,proto3" json:"artifact_id,omitempty"`
+	SbomFormat     string                 `protobuf:"bytes,3,opt,name=sbom_format,json=sbomFormat,proto3" json:"sbom_format,omitempty"`
+	ComponentCount uint32                 `protobuf:"varint,4,opt,name=component_count,json=componentCount,proto3" json:"component_count,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *SBOMGeneratedPayload) Reset() {
+	*x = SBOMGeneratedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[47]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SBOMGeneratedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SBOMGeneratedPayload) ProtoMessage() {}
+
+func (x *SBOMGeneratedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[47]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SBOMGeneratedPayload.ProtoReflect.Descriptor instead.
+func (*SBOMGeneratedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{47}
+}
+
+func (x *SBOMGeneratedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *SBOMGeneratedPayload) GetArtifactId() string {
+	if x != nil {
+		return x.ArtifactId
+	}
+	return ""
+}
+
+func (x *SBOMGeneratedPayload) GetSbomFormat() string {
+	if x != nil {
+		return x.SbomFormat
+	}
+	return ""
+}
+
+func (x *SBOMGeneratedPayload) GetComponentCount() uint32 {
+	if x != nil {
+		return x.ComponentCount
+	}
+	return 0
+}
+
+type SecurityClearedPayload struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	BuildId         string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	ScanTypesPassed []string               `protobuf:"bytes,2,rep,name=scan_types_passed,json=scanTypesPassed,proto3" json:"scan_types_passed,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *SecurityClearedPayload) Reset() {
+	*x = SecurityClearedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[48]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SecurityClearedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SecurityClearedPayload) ProtoMessage() {}
+
+func (x *SecurityClearedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[48]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SecurityClearedPayload.ProtoReflect.Descriptor instead.
+func (*SecurityClearedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{48}
+}
+
+func (x *SecurityClearedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *SecurityClearedPayload) GetScanTypesPassed() []string {
+	if x != nil {
+		return x.ScanTypesPassed
+	}
+	return nil
+}
+
+type ComplianceMappingCompletedPayload struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	BuildId        string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	Framework      string                 `protobuf:"bytes,2,opt,name=framework,proto3" json:"framework,omitempty"`
+	ControlsMapped uint32                 `protobuf:"varint,3,opt,name=controls_mapped,json=controlsMapped,proto3" json:"controls_mapped,omitempty"`
+	ControlsTotal  uint32                 `protobuf:"varint,4,opt,name=controls_total,json=controlsTotal,proto3" json:"controls_total,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ComplianceMappingCompletedPayload) Reset() {
+	*x = ComplianceMappingCompletedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[49]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ComplianceMappingCompletedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComplianceMappingCompletedPayload) ProtoMessage() {}
+
+func (x *ComplianceMappingCompletedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[49]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComplianceMappingCompletedPayload.ProtoReflect.Descriptor instead.
+func (*ComplianceMappingCompletedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{49}
+}
+
+func (x *ComplianceMappingCompletedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *ComplianceMappingCompletedPayload) GetFramework() string {
+	if x != nil {
+		return x.Framework
+	}
+	return ""
+}
+
+func (x *ComplianceMappingCompletedPayload) GetControlsMapped() uint32 {
+	if x != nil {
+		return x.ControlsMapped
+	}
+	return 0
+}
+
+func (x *ComplianceMappingCompletedPayload) GetControlsTotal() uint32 {
+	if x != nil {
+		return x.ControlsTotal
+	}
+	return 0
+}
+
+type ComplianceEvidenceGeneratedPayload struct {
+	state              protoimpl.MessageState `protogen:"open.v1"`
+	BuildId            string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	Framework          string                 `protobuf:"bytes,2,opt,name=framework,proto3" json:"framework,omitempty"`
+	EvidencePackageRef string                 `protobuf:"bytes,3,opt,name=evidence_package_ref,json=evidencePackageRef,proto3" json:"evidence_package_ref,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *ComplianceEvidenceGeneratedPayload) Reset() {
+	*x = ComplianceEvidenceGeneratedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[50]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ComplianceEvidenceGeneratedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComplianceEvidenceGeneratedPayload) ProtoMessage() {}
+
+func (x *ComplianceEvidenceGeneratedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[50]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComplianceEvidenceGeneratedPayload.ProtoReflect.Descriptor instead.
+func (*ComplianceEvidenceGeneratedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{50}
+}
+
+func (x *ComplianceEvidenceGeneratedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *ComplianceEvidenceGeneratedPayload) GetFramework() string {
+	if x != nil {
+		return x.Framework
+	}
+	return ""
+}
+
+func (x *ComplianceEvidenceGeneratedPayload) GetEvidencePackageRef() string {
+	if x != nil {
+		return x.EvidencePackageRef
+	}
+	return ""
+}
+
+type ComplianceGapDetectedPayload struct {
+	state          protoimpl.MessageState `protogen:"open.v1"`
+	BuildId        string                 `protobuf:"bytes,1,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	Framework      string                 `protobuf:"bytes,2,opt,name=framework,proto3" json:"framework,omitempty"`
+	ControlId      string                 `protobuf:"bytes,3,opt,name=control_id,json=controlId,proto3" json:"control_id,omitempty"`
+	GapDescription string                 `protobuf:"bytes,4,opt,name=gap_description,json=gapDescription,proto3" json:"gap_description,omitempty"`
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *ComplianceGapDetectedPayload) Reset() {
+	*x = ComplianceGapDetectedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[51]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ComplianceGapDetectedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ComplianceGapDetectedPayload) ProtoMessage() {}
+
+func (x *ComplianceGapDetectedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[51]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ComplianceGapDetectedPayload.ProtoReflect.Descriptor instead.
+func (*ComplianceGapDetectedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{51}
+}
+
+func (x *ComplianceGapDetectedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *ComplianceGapDetectedPayload) GetFramework() string {
+	if x != nil {
+		return x.Framework
+	}
+	return ""
+}
+
+func (x *ComplianceGapDetectedPayload) GetControlId() string {
+	if x != nil {
+		return x.ControlId
+	}
+	return ""
+}
+
+func (x *ComplianceGapDetectedPayload) GetGapDescription() string {
+	if x != nil {
+		return x.GapDescription
+	}
+	return ""
+}
+
+type DeploymentStartedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	BuildId       string                 `protobuf:"bytes,2,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	TargetEnv     string                 `protobuf:"bytes,3,opt,name=target_env,json=targetEnv,proto3" json:"target_env,omitempty"`
+	TargetRegion  string                 `protobuf:"bytes,4,opt,name=target_region,json=targetRegion,proto3" json:"target_region,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeploymentStartedPayload) Reset() {
+	*x = DeploymentStartedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[52]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeploymentStartedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeploymentStartedPayload) ProtoMessage() {}
+
+func (x *DeploymentStartedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[52]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeploymentStartedPayload.ProtoReflect.Descriptor instead.
+func (*DeploymentStartedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{52}
+}
+
+func (x *DeploymentStartedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *DeploymentStartedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *DeploymentStartedPayload) GetTargetEnv() string {
+	if x != nil {
+		return x.TargetEnv
+	}
+	return ""
+}
+
+func (x *DeploymentStartedPayload) GetTargetRegion() string {
+	if x != nil {
+		return x.TargetRegion
+	}
+	return ""
+}
+
+type SmokeTestPassedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	TestCount     uint32                 `protobuf:"varint,2,opt,name=test_count,json=testCount,proto3" json:"test_count,omitempty"`
+	DurationMs    uint64                 `protobuf:"varint,3,opt,name=duration_ms,json=durationMs,proto3" json:"duration_ms,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SmokeTestPassedPayload) Reset() {
+	*x = SmokeTestPassedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[53]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SmokeTestPassedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SmokeTestPassedPayload) ProtoMessage() {}
+
+func (x *SmokeTestPassedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[53]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SmokeTestPassedPayload.ProtoReflect.Descriptor instead.
+func (*SmokeTestPassedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{53}
+}
+
+func (x *SmokeTestPassedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *SmokeTestPassedPayload) GetTestCount() uint32 {
+	if x != nil {
+		return x.TestCount
+	}
+	return 0
+}
+
+func (x *SmokeTestPassedPayload) GetDurationMs() uint64 {
+	if x != nil {
+		return x.DurationMs
+	}
+	return 0
+}
+
+type SmokeTestFailedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	FailedTests   []string               `protobuf:"bytes,2,rep,name=failed_tests,json=failedTests,proto3" json:"failed_tests,omitempty"`
+	Error         string                 `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SmokeTestFailedPayload) Reset() {
+	*x = SmokeTestFailedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[54]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SmokeTestFailedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SmokeTestFailedPayload) ProtoMessage() {}
+
+func (x *SmokeTestFailedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[54]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SmokeTestFailedPayload.ProtoReflect.Descriptor instead.
+func (*SmokeTestFailedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{54}
+}
+
+func (x *SmokeTestFailedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *SmokeTestFailedPayload) GetFailedTests() []string {
+	if x != nil {
+		return x.FailedTests
+	}
+	return nil
+}
+
+func (x *SmokeTestFailedPayload) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
+type SLOValidatedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	SloResults    []string               `protobuf:"bytes,2,rep,name=slo_results,json=sloResults,proto3" json:"slo_results,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *SLOValidatedPayload) Reset() {
+	*x = SLOValidatedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[55]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *SLOValidatedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SLOValidatedPayload) ProtoMessage() {}
+
+func (x *SLOValidatedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[55]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SLOValidatedPayload.ProtoReflect.Descriptor instead.
+func (*SLOValidatedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{55}
+}
+
+func (x *SLOValidatedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *SLOValidatedPayload) GetSloResults() []string {
+	if x != nil {
+		return x.SloResults
+	}
+	return nil
+}
+
+type DeploymentCompletedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	BuildId       string                 `protobuf:"bytes,2,opt,name=build_id,json=buildId,proto3" json:"build_id,omitempty"`
+	DeployedAt    *timestamppb.Timestamp `protobuf:"bytes,3,opt,name=deployed_at,json=deployedAt,proto3" json:"deployed_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeploymentCompletedPayload) Reset() {
+	*x = DeploymentCompletedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[56]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeploymentCompletedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeploymentCompletedPayload) ProtoMessage() {}
+
+func (x *DeploymentCompletedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[56]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeploymentCompletedPayload.ProtoReflect.Descriptor instead.
+func (*DeploymentCompletedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{56}
+}
+
+func (x *DeploymentCompletedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *DeploymentCompletedPayload) GetBuildId() string {
+	if x != nil {
+		return x.BuildId
+	}
+	return ""
+}
+
+func (x *DeploymentCompletedPayload) GetDeployedAt() *timestamppb.Timestamp {
+	if x != nil {
+		return x.DeployedAt
+	}
+	return nil
+}
+
+type RollbackTriggeredPayload struct {
+	state                  protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId           string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	Reason                 string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	RollbackToDeploymentId string                 `protobuf:"bytes,3,opt,name=rollback_to_deployment_id,json=rollbackToDeploymentId,proto3" json:"rollback_to_deployment_id,omitempty"`
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *RollbackTriggeredPayload) Reset() {
+	*x = RollbackTriggeredPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[57]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollbackTriggeredPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollbackTriggeredPayload) ProtoMessage() {}
+
+func (x *RollbackTriggeredPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[57]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollbackTriggeredPayload.ProtoReflect.Descriptor instead.
+func (*RollbackTriggeredPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{57}
+}
+
+func (x *RollbackTriggeredPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *RollbackTriggeredPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *RollbackTriggeredPayload) GetRollbackToDeploymentId() string {
+	if x != nil {
+		return x.RollbackToDeploymentId
+	}
+	return ""
+}
+
+type RollbackCompletedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DeploymentId  string                 `protobuf:"bytes,1,opt,name=deployment_id,json=deploymentId,proto3" json:"deployment_id,omitempty"`
+	RolledBackTo  string                 `protobuf:"bytes,2,opt,name=rolled_back_to,json=rolledBackTo,proto3" json:"rolled_back_to,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RollbackCompletedPayload) Reset() {
+	*x = RollbackCompletedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[58]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RollbackCompletedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RollbackCompletedPayload) ProtoMessage() {}
+
+func (x *RollbackCompletedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[58]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RollbackCompletedPayload.ProtoReflect.Descriptor instead.
+func (*RollbackCompletedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{58}
+}
+
+func (x *RollbackCompletedPayload) GetDeploymentId() string {
+	if x != nil {
+		return x.DeploymentId
+	}
+	return ""
+}
+
+func (x *RollbackCompletedPayload) GetRolledBackTo() string {
+	if x != nil {
+		return x.RolledBackTo
+	}
+	return ""
+}
+
+type LLMRequestCompletedPayload struct {
+	state            protoimpl.MessageState `protogen:"open.v1"`
+	RequestId        string                 `protobuf:"bytes,1,opt,name=request_id,json=requestId,proto3" json:"request_id,omitempty"`
+	Model            string                 `protobuf:"bytes,2,opt,name=model,proto3" json:"model,omitempty"`
+	InputTokens      uint64                 `protobuf:"varint,3,opt,name=input_tokens,json=inputTokens,proto3" json:"input_tokens,omitempty"`
+	OutputTokens     uint64                 `protobuf:"varint,4,opt,name=output_tokens,json=outputTokens,proto3" json:"output_tokens,omitempty"`
+	LatencyMs        uint64                 `protobuf:"varint,5,opt,name=latency_ms,json=latencyMs,proto3" json:"latency_ms,omitempty"`
+	CostMicrodollars uint64                 `protobuf:"varint,6,opt,name=cost_microdollars,json=costMicrodollars,proto3" json:"cost_microdollars,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *LLMRequestCompletedPayload) Reset() {
+	*x = LLMRequestCompletedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[59]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LLMRequestCompletedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LLMRequestCompletedPayload) ProtoMessage() {}
+
+func (x *LLMRequestCompletedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[59]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LLMRequestCompletedPayload.ProtoReflect.Descriptor instead.
+func (*LLMRequestCompletedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{59}
+}
+
+func (x *LLMRequestCompletedPayload) GetRequestId() string {
+	if x != nil {
+		return x.RequestId
+	}
+	return ""
+}
+
+func (x *LLMRequestCompletedPayload) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *LLMRequestCompletedPayload) GetInputTokens() uint64 {
+	if x != nil {
+		return x.InputTokens
+	}
+	return 0
+}
+
+func (x *LLMRequestCompletedPayload) GetOutputTokens() uint64 {
+	if x != nil {
+		return x.OutputTokens
+	}
+	return 0
+}
+
+func (x *LLMRequestCompletedPayload) GetLatencyMs() uint64 {
+	if x != nil {
+		return x.LatencyMs
+	}
+	return 0
+}
+
+func (x *LLMRequestCompletedPayload) GetCostMicrodollars() uint64 {
+	if x != nil {
+		return x.CostMicrodollars
+	}
+	return 0
+}
+
+type CircuitOpenedPayload struct {
+	state           protoimpl.MessageState `protogen:"open.v1"`
+	Model           string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
+	Reason          string                 `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	CooldownSeconds uint32                 `protobuf:"varint,3,opt,name=cooldown_seconds,json=cooldownSeconds,proto3" json:"cooldown_seconds,omitempty"`
+	unknownFields   protoimpl.UnknownFields
+	sizeCache       protoimpl.SizeCache
+}
+
+func (x *CircuitOpenedPayload) Reset() {
+	*x = CircuitOpenedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[60]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CircuitOpenedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CircuitOpenedPayload) ProtoMessage() {}
+
+func (x *CircuitOpenedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[60]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CircuitOpenedPayload.ProtoReflect.Descriptor instead.
+func (*CircuitOpenedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{60}
+}
+
+func (x *CircuitOpenedPayload) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+func (x *CircuitOpenedPayload) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *CircuitOpenedPayload) GetCooldownSeconds() uint32 {
+	if x != nil {
+		return x.CooldownSeconds
+	}
+	return 0
+}
+
+type CircuitClosedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Model         string                 `protobuf:"bytes,1,opt,name=model,proto3" json:"model,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CircuitClosedPayload) Reset() {
+	*x = CircuitClosedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[61]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CircuitClosedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CircuitClosedPayload) ProtoMessage() {}
+
+func (x *CircuitClosedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[61]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CircuitClosedPayload.ProtoReflect.Descriptor instead.
+func (*CircuitClosedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{61}
+}
+
+func (x *CircuitClosedPayload) GetModel() string {
+	if x != nil {
+		return x.Model
+	}
+	return ""
+}
+
+type WebhookDispatchedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WebhookId     string                 `protobuf:"bytes,1,opt,name=webhook_id,json=webhookId,proto3" json:"webhook_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	EventType     string                 `protobuf:"bytes,3,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
+	TargetUrl     string                 `protobuf:"bytes,4,opt,name=target_url,json=targetUrl,proto3" json:"target_url,omitempty"`
+	Attempt       uint32                 `protobuf:"varint,5,opt,name=attempt,proto3" json:"attempt,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WebhookDispatchedPayload) Reset() {
+	*x = WebhookDispatchedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[62]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WebhookDispatchedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WebhookDispatchedPayload) ProtoMessage() {}
+
+func (x *WebhookDispatchedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[62]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WebhookDispatchedPayload.ProtoReflect.Descriptor instead.
+func (*WebhookDispatchedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{62}
+}
+
+func (x *WebhookDispatchedPayload) GetWebhookId() string {
+	if x != nil {
+		return x.WebhookId
+	}
+	return ""
+}
+
+func (x *WebhookDispatchedPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *WebhookDispatchedPayload) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *WebhookDispatchedPayload) GetTargetUrl() string {
+	if x != nil {
+		return x.TargetUrl
+	}
+	return ""
+}
+
+func (x *WebhookDispatchedPayload) GetAttempt() uint32 {
+	if x != nil {
+		return x.Attempt
+	}
+	return 0
+}
+
+type WebhookDeliveredPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WebhookId     string                 `protobuf:"bytes,1,opt,name=webhook_id,json=webhookId,proto3" json:"webhook_id,omitempty"`
+	StatusCode    uint32                 `protobuf:"varint,2,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	DurationMs    uint64                 `protobuf:"varint,3,opt,name=duration_ms,json=durationMs,proto3" json:"duration_ms,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WebhookDeliveredPayload) Reset() {
+	*x = WebhookDeliveredPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[63]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WebhookDeliveredPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WebhookDeliveredPayload) ProtoMessage() {}
+
+func (x *WebhookDeliveredPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[63]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WebhookDeliveredPayload.ProtoReflect.Descriptor instead.
+func (*WebhookDeliveredPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{63}
+}
+
+func (x *WebhookDeliveredPayload) GetWebhookId() string {
+	if x != nil {
+		return x.WebhookId
+	}
+	return ""
+}
+
+func (x *WebhookDeliveredPayload) GetStatusCode() uint32 {
+	if x != nil {
+		return x.StatusCode
+	}
+	return 0
+}
+
+func (x *WebhookDeliveredPayload) GetDurationMs() uint64 {
+	if x != nil {
+		return x.DurationMs
+	}
+	return 0
+}
+
+type WebhookDeliveryFailedPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WebhookId     string                 `protobuf:"bytes,1,opt,name=webhook_id,json=webhookId,proto3" json:"webhook_id,omitempty"`
+	StatusCode    uint32                 `protobuf:"varint,2,opt,name=status_code,json=statusCode,proto3" json:"status_code,omitempty"`
+	Error         string                 `protobuf:"bytes,3,opt,name=error,proto3" json:"error,omitempty"`
+	WillRetry     bool                   `protobuf:"varint,4,opt,name=will_retry,json=willRetry,proto3" json:"will_retry,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WebhookDeliveryFailedPayload) Reset() {
+	*x = WebhookDeliveryFailedPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[64]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WebhookDeliveryFailedPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WebhookDeliveryFailedPayload) ProtoMessage() {}
+
+func (x *WebhookDeliveryFailedPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[64]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WebhookDeliveryFailedPayload.ProtoReflect.Descriptor instead.
+func (*WebhookDeliveryFailedPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{64}
+}
+
+func (x *WebhookDeliveryFailedPayload) GetWebhookId() string {
+	if x != nil {
+		return x.WebhookId
+	}
+	return ""
+}
+
+func (x *WebhookDeliveryFailedPayload) GetStatusCode() uint32 {
+	if x != nil {
+		return x.StatusCode
+	}
+	return 0
+}
+
+func (x *WebhookDeliveryFailedPayload) GetError() string {
+	if x != nil {
+		return x.Error
+	}
+	return ""
+}
+
+func (x *WebhookDeliveryFailedPayload) GetWillRetry() bool {
+	if x != nil {
+		return x.WillRetry
+	}
+	return false
+}
+
+type WebhookDeadLetterPayload struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	WebhookId     string                 `protobuf:"bytes,1,opt,name=webhook_id,json=webhookId,proto3" json:"webhook_id,omitempty"`
+	TenantId      string                 `protobuf:"bytes,2,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	EventType     string                 `protobuf:"bytes,3,opt,name=event_type,json=eventType,proto3" json:"event_type,omitempty"`
+	TotalAttempts uint32                 `protobuf:"varint,4,opt,name=total_attempts,json=totalAttempts,proto3" json:"total_attempts,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *WebhookDeadLetterPayload) Reset() {
+	*x = WebhookDeadLetterPayload{}
+	mi := &file_sdx_v1_events_proto_msgTypes[65]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *WebhookDeadLetterPayload) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*WebhookDeadLetterPayload) ProtoMessage() {}
+
+func (x *WebhookDeadLetterPayload) ProtoReflect() protoreflect.Message {
+	mi := &file_sdx_v1_events_proto_msgTypes[65]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use WebhookDeadLetterPayload.ProtoReflect.Descriptor instead.
+func (*WebhookDeadLetterPayload) Descriptor() ([]byte, []int) {
+	return file_sdx_v1_events_proto_rawDescGZIP(), []int{65}
+}
+
+func (x *WebhookDeadLetterPayload) GetWebhookId() string {
+	if x != nil {
+		return x.WebhookId
+	}
+	return ""
+}
+
+func (x *WebhookDeadLetterPayload) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *WebhookDeadLetterPayload) GetEventType() string {
+	if x != nil {
+		return x.EventType
+	}
+	return ""
+}
+
+func (x *WebhookDeadLetterPayload) GetTotalAttempts() uint32 {
+	if x != nil {
+		return x.TotalAttempts
+	}
+	return 0
+}
+
 var File_sdx_v1_events_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_events_proto_rawDesc = "" +
@@ -1065,7 +4473,292 @@ const file_sdx_v1_events_proto_rawDesc = "" +
 	"\n" +
 	"meter_type\x18\x02 \x01(\tR\tmeterType\x12#\n" +
 	"\rcurrent_value\x18\x03 \x01(\x04R\fcurrentValue\x12\x14\n" +
-	"\x05limit\x18\x04 \x01(\x04R\x05limitB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x05limit\x18\x04 \x01(\x04R\x05limit\"\x99\x01\n" +
+	"\x16WorkItemCreatedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1f\n" +
+	"\vsource_type\x18\x03 \x01(\tR\n" +
+	"sourceType\x12\x1f\n" +
+	"\vsource_hash\x18\x04 \x01(\tR\n" +
+	"sourceHash\"\x8f\x01\n" +
+	"\x15WorkItemParsedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12+\n" +
+	"\x11requirement_count\x18\x02 \x01(\rR\x10requirementCount\x12'\n" +
+	"\x0fambiguity_count\x18\x03 \x01(\rR\x0eambiguityCount\"{\n" +
+	"\x18AmbiguityDetectedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12!\n" +
+	"\fambiguity_id\x18\x02 \x01(\tR\vambiguityId\x12\x1a\n" +
+	"\bquestion\x18\x03 \x01(\tR\bquestion\"\xa0\x01\n" +
+	"\x18AmbiguityResolvedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12!\n" +
+	"\fambiguity_id\x18\x02 \x01(\tR\vambiguityId\x12\x1e\n" +
+	"\n" +
+	"resolution\x18\x03 \x01(\tR\n" +
+	"resolution\x12\x1f\n" +
+	"\vresolved_by\x18\x04 \x01(\tR\n" +
+	"resolvedBy\"\xbd\x01\n" +
+	"\x17ManifestApprovedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12\x1c\n" +
+	"\tlanguages\x18\x02 \x03(\tR\tlanguages\x123\n" +
+	"\x15compliance_frameworks\x18\x03 \x03(\tR\x14complianceFrameworks\x12-\n" +
+	"\x12target_environment\x18\x04 \x01(\tR\x11targetEnvironment\"Q\n" +
+	"\x15WorkItemFailedPayload\x12 \n" +
+	"\fwork_item_id\x18\x01 \x01(\tR\n" +
+	"workItemId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"q\n" +
+	"\x15BuildInitiatedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12 \n" +
+	"\fwork_item_id\x18\x02 \x01(\tR\n" +
+	"workItemId\x12\x1b\n" +
+	"\ttenant_id\x18\x03 \x01(\tR\btenantId\"\x8d\x01\n" +
+	"\x13StageStartedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12!\n" +
+	"\fstage_number\x18\x02 \x01(\rR\vstageNumber\x12\x1d\n" +
+	"\n" +
+	"stage_name\x18\x03 \x01(\tR\tstageName\x12\x19\n" +
+	"\bagent_id\x18\x04 \x01(\tR\aagentId\"\xc6\x01\n" +
+	"\x18BuildCheckpointedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12'\n" +
+	"\x0fcheckpoint_hash\x18\x02 \x01(\tR\x0echeckpointHash\x12!\n" +
+	"\fstage_number\x18\x03 \x01(\rR\vstageNumber\x12C\n" +
+	"\x0fcheckpointed_at\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\x0echeckpointedAt\"\xb6\x01\n" +
+	"\x1bBuildRecoveryStartedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12'\n" +
+	"\x0fcheckpoint_hash\x18\x02 \x01(\tR\x0echeckpointHash\x12(\n" +
+	"\x10last_valid_stage\x18\x03 \x01(\rR\x0elastValidStage\x12)\n" +
+	"\x10recovery_attempt\x18\x04 \x01(\rR\x0frecoveryAttempt\"d\n" +
+	"\x1dBuildRecoverySucceededPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12(\n" +
+	"\x10resumed_at_stage\x18\x02 \x01(\rR\x0eresumedAtStage\"\xa4\x01\n" +
+	"\x1aEscalationTriggeredPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\x12\x1f\n" +
+	"\vcontext_url\x18\x03 \x01(\tR\n" +
+	"contextUrl\x122\n" +
+	"\x15pagerduty_incident_id\x18\x04 \x01(\tR\x13pagerdutyIncidentId\"\xb7\x01\n" +
+	"\x14GateEvaluatedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x17\n" +
+	"\agate_id\x18\x02 \x01(\tR\x06gateId\x12\x1f\n" +
+	"\vmetric_name\x18\x03 \x01(\tR\n" +
+	"metricName\x12\x14\n" +
+	"\x05value\x18\x04 \x01(\x01R\x05value\x12\x1c\n" +
+	"\tthreshold\x18\x05 \x01(\x01R\tthreshold\x12\x16\n" +
+	"\x06passed\x18\x06 \x01(\bR\x06passed\"~\n" +
+	"\x11GatePassedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x17\n" +
+	"\agate_id\x18\x02 \x01(\tR\x06gateId\x12\x1f\n" +
+	"\vmetric_name\x18\x03 \x01(\tR\n" +
+	"metricName\x12\x14\n" +
+	"\x05value\x18\x04 \x01(\x01R\x05value\"\x9c\x01\n" +
+	"\x19RemediationStartedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x17\n" +
+	"\agate_id\x18\x02 \x01(\tR\x06gateId\x12\x18\n" +
+	"\aattempt\x18\x03 \x01(\rR\aattempt\x12\x19\n" +
+	"\bagent_id\x18\x04 \x01(\tR\aagentId\x12\x16\n" +
+	"\x06action\x18\x05 \x01(\tR\x06action\"\x88\x01\n" +
+	"\x1bRemediationSucceededPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x17\n" +
+	"\agate_id\x18\x02 \x01(\tR\x06gateId\x12\x18\n" +
+	"\aattempt\x18\x03 \x01(\rR\aattempt\x12\x1b\n" +
+	"\tnew_value\x18\x04 \x01(\x01R\bnewValue\"\x8c\x01\n" +
+	"\x1bRemediationExhaustedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x17\n" +
+	"\agate_id\x18\x02 \x01(\tR\x06gateId\x12\x1a\n" +
+	"\battempts\x18\x03 \x01(\rR\battempts\x12\x1d\n" +
+	"\n" +
+	"last_value\x18\x04 \x01(\x01R\tlastValue\"\xbb\x01\n" +
+	"\x16ArtifactCreatedPayload\x12\x1f\n" +
+	"\vartifact_id\x18\x01 \x01(\tR\n" +
+	"artifactId\x12\x19\n" +
+	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12#\n" +
+	"\rartifact_type\x18\x03 \x01(\tR\fartifactType\x12!\n" +
+	"\fcontent_hash\x18\x04 \x01(\tR\vcontentHash\x12\x1d\n" +
+	"\n" +
+	"size_bytes\x18\x05 \x01(\x04R\tsizeBytes\"^\n" +
+	"\x18ArtifactPublishedPayload\x12\x1f\n" +
+	"\vartifact_id\x18\x01 \x01(\tR\n" +
+	"artifactId\x12!\n" +
+	"\fregistry_uri\x18\x02 \x01(\tR\vregistryUri\"\x99\x01\n" +
+	"\x17ArtifactDeployedPayload\x12\x1f\n" +
+	"\vartifact_id\x18\x01 \x01(\tR\n" +
+	"artifactId\x12#\n" +
+	"\rdeployment_id\x18\x02 \x01(\tR\fdeploymentId\x12 \n" +
+	"\venvironment\x18\x03 \x01(\tR\venvironment\x12\x16\n" +
+	"\x06region\x18\x04 \x01(\tR\x06region\"p\n" +
+	"\x16ArtifactRevokedPayload\x12\x1f\n" +
+	"\vartifact_id\x18\x01 \x01(\tR\n" +
+	"artifactId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\x12\x1d\n" +
+	"\n" +
+	"revoked_by\x18\x03 \x01(\tR\trevokedBy\"|\n" +
+	"\x14TenantCreatedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x12\n" +
+	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
+	"\x04plan\x18\x03 \x01(\tR\x04plan\x12\x1f\n" +
+	"\vnexo_region\x18\x04 \x01(\tR\n" +
+	"nexoRegion\"m\n" +
+	"\x18TenantPlanChangedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x19\n" +
+	"\bold_plan\x18\x02 \x01(\tR\aoldPlan\x12\x19\n" +
+	"\bnew_plan\x18\x03 \x01(\tR\anewPlan\"M\n" +
+	"\x16TenantSuspendedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"7\n" +
+	"\x18TenantReactivatedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\"\x8e\x01\n" +
+	"\x11QuotaResetPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12\x1d\n" +
+	"\n" +
+	"meter_type\x18\x02 \x01(\tR\tmeterType\x12=\n" +
+	"\fperiod_start\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\vperiodStart\"m\n" +
+	"\x17WorkspaceCreatedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
+	"\fworkspace_id\x18\x02 \x01(\tR\vworkspaceId\x12\x12\n" +
+	"\x04name\x18\x03 \x01(\tR\x04name\"\x8a\x01\n" +
+	"\x1bWorkspaceMemberAddedPayload\x12\x1b\n" +
+	"\ttenant_id\x18\x01 \x01(\tR\btenantId\x12!\n" +
+	"\fworkspace_id\x18\x02 \x01(\tR\vworkspaceId\x12\x17\n" +
+	"\auser_id\x18\x03 \x01(\tR\x06userId\x12\x12\n" +
+	"\x04role\x18\x04 \x01(\tR\x04role\"\xab\x01\n" +
+	"\x16AgentRegisteredPayload\x12\x19\n" +
+	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x1d\n" +
+	"\n" +
+	"agent_type\x18\x02 \x01(\tR\tagentType\x12\x1b\n" +
+	"\tspiffe_id\x18\x03 \x01(\tR\bspiffeId\x12\x19\n" +
+	"\bpod_name\x18\x04 \x01(\tR\apodName\x12\x1f\n" +
+	"\vnexo_region\x18\x05 \x01(\tR\n" +
+	"nexoRegion\"o\n" +
+	"\x14AgentAssignedPayload\x12\x19\n" +
+	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x19\n" +
+	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12!\n" +
+	"\fstage_number\x18\x03 \x01(\rR\vstageNumber\"L\n" +
+	"\x14AgentReleasedPayload\x12\x19\n" +
+	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x19\n" +
+	"\bbuild_id\x18\x02 \x01(\tR\abuildId\"2\n" +
+	"\x15AgentRecoveredPayload\x12\x19\n" +
+	"\bagent_id\x18\x01 \x01(\tR\aagentId\"K\n" +
+	"\x16AgentTerminatedPayload\x12\x19\n" +
+	"\bagent_id\x18\x01 \x01(\tR\aagentId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\"\xa4\x01\n" +
+	"\x1cSecurityScanCompletedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x1b\n" +
+	"\tscan_type\x18\x02 \x01(\tR\bscanType\x12%\n" +
+	"\x0efindings_count\x18\x03 \x01(\rR\rfindingsCount\x12%\n" +
+	"\x0ecritical_count\x18\x04 \x01(\rR\rcriticalCount\"\xa6\x01\n" +
+	"\x19VulnerabilityFoundPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x15\n" +
+	"\x06cve_id\x18\x02 \x01(\tR\x05cveId\x12\x1a\n" +
+	"\bseverity\x18\x03 \x01(\tR\bseverity\x12!\n" +
+	"\fpackage_name\x18\x04 \x01(\tR\vpackageName\x12\x18\n" +
+	"\aversion\x18\x05 \x01(\tR\aversion\"\x9c\x01\n" +
+	"\x14SBOMGeneratedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x1f\n" +
+	"\vartifact_id\x18\x02 \x01(\tR\n" +
+	"artifactId\x12\x1f\n" +
+	"\vsbom_format\x18\x03 \x01(\tR\n" +
+	"sbomFormat\x12'\n" +
+	"\x0fcomponent_count\x18\x04 \x01(\rR\x0ecomponentCount\"_\n" +
+	"\x16SecurityClearedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12*\n" +
+	"\x11scan_types_passed\x18\x02 \x03(\tR\x0fscanTypesPassed\"\xac\x01\n" +
+	"!ComplianceMappingCompletedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x1c\n" +
+	"\tframework\x18\x02 \x01(\tR\tframework\x12'\n" +
+	"\x0fcontrols_mapped\x18\x03 \x01(\rR\x0econtrolsMapped\x12%\n" +
+	"\x0econtrols_total\x18\x04 \x01(\rR\rcontrolsTotal\"\x8f\x01\n" +
+	"\"ComplianceEvidenceGeneratedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x1c\n" +
+	"\tframework\x18\x02 \x01(\tR\tframework\x120\n" +
+	"\x14evidence_package_ref\x18\x03 \x01(\tR\x12evidencePackageRef\"\x9f\x01\n" +
+	"\x1cComplianceGapDetectedPayload\x12\x19\n" +
+	"\bbuild_id\x18\x01 \x01(\tR\abuildId\x12\x1c\n" +
+	"\tframework\x18\x02 \x01(\tR\tframework\x12\x1d\n" +
+	"\n" +
+	"control_id\x18\x03 \x01(\tR\tcontrolId\x12'\n" +
+	"\x0fgap_description\x18\x04 \x01(\tR\x0egapDescription\"\x9e\x01\n" +
+	"\x18DeploymentStartedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12\x19\n" +
+	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12\x1d\n" +
+	"\n" +
+	"target_env\x18\x03 \x01(\tR\ttargetEnv\x12#\n" +
+	"\rtarget_region\x18\x04 \x01(\tR\ftargetRegion\"}\n" +
+	"\x16SmokeTestPassedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12\x1d\n" +
+	"\n" +
+	"test_count\x18\x02 \x01(\rR\ttestCount\x12\x1f\n" +
+	"\vduration_ms\x18\x03 \x01(\x04R\n" +
+	"durationMs\"v\n" +
+	"\x16SmokeTestFailedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12!\n" +
+	"\ffailed_tests\x18\x02 \x03(\tR\vfailedTests\x12\x14\n" +
+	"\x05error\x18\x03 \x01(\tR\x05error\"[\n" +
+	"\x13SLOValidatedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12\x1f\n" +
+	"\vslo_results\x18\x02 \x03(\tR\n" +
+	"sloResults\"\x99\x01\n" +
+	"\x1aDeploymentCompletedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12\x19\n" +
+	"\bbuild_id\x18\x02 \x01(\tR\abuildId\x12;\n" +
+	"\vdeployed_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampR\n" +
+	"deployedAt\"\x92\x01\n" +
+	"\x18RollbackTriggeredPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\x129\n" +
+	"\x19rollback_to_deployment_id\x18\x03 \x01(\tR\x16rollbackToDeploymentId\"e\n" +
+	"\x18RollbackCompletedPayload\x12#\n" +
+	"\rdeployment_id\x18\x01 \x01(\tR\fdeploymentId\x12$\n" +
+	"\x0erolled_back_to\x18\x02 \x01(\tR\frolledBackTo\"\xe5\x01\n" +
+	"\x1aLLMRequestCompletedPayload\x12\x1d\n" +
+	"\n" +
+	"request_id\x18\x01 \x01(\tR\trequestId\x12\x14\n" +
+	"\x05model\x18\x02 \x01(\tR\x05model\x12!\n" +
+	"\finput_tokens\x18\x03 \x01(\x04R\vinputTokens\x12#\n" +
+	"\routput_tokens\x18\x04 \x01(\x04R\foutputTokens\x12\x1d\n" +
+	"\n" +
+	"latency_ms\x18\x05 \x01(\x04R\tlatencyMs\x12+\n" +
+	"\x11cost_microdollars\x18\x06 \x01(\x04R\x10costMicrodollars\"o\n" +
+	"\x14CircuitOpenedPayload\x12\x14\n" +
+	"\x05model\x18\x01 \x01(\tR\x05model\x12\x16\n" +
+	"\x06reason\x18\x02 \x01(\tR\x06reason\x12)\n" +
+	"\x10cooldown_seconds\x18\x03 \x01(\rR\x0fcooldownSeconds\",\n" +
+	"\x14CircuitClosedPayload\x12\x14\n" +
+	"\x05model\x18\x01 \x01(\tR\x05model\"\xae\x01\n" +
+	"\x18WebhookDispatchedPayload\x12\x1d\n" +
+	"\n" +
+	"webhook_id\x18\x01 \x01(\tR\twebhookId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1d\n" +
+	"\n" +
+	"event_type\x18\x03 \x01(\tR\teventType\x12\x1d\n" +
+	"\n" +
+	"target_url\x18\x04 \x01(\tR\ttargetUrl\x12\x18\n" +
+	"\aattempt\x18\x05 \x01(\rR\aattempt\"z\n" +
+	"\x17WebhookDeliveredPayload\x12\x1d\n" +
+	"\n" +
+	"webhook_id\x18\x01 \x01(\tR\twebhookId\x12\x1f\n" +
+	"\vstatus_code\x18\x02 \x01(\rR\n" +
+	"statusCode\x12\x1f\n" +
+	"\vduration_ms\x18\x03 \x01(\x04R\n" +
+	"durationMs\"\x93\x01\n" +
+	"\x1cWebhookDeliveryFailedPayload\x12\x1d\n" +
+	"\n" +
+	"webhook_id\x18\x01 \x01(\tR\twebhookId\x12\x1f\n" +
+	"\vstatus_code\x18\x02 \x01(\rR\n" +
+	"statusCode\x12\x14\n" +
+	"\x05error\x18\x03 \x01(\tR\x05error\x12\x1d\n" +
+	"\n" +
+	"will_retry\x18\x04 \x01(\bR\twillRetry\"\x9c\x01\n" +
+	"\x18WebhookDeadLetterPayload\x12\x1d\n" +
+	"\n" +
+	"webhook_id\x18\x01 \x01(\tR\twebhookId\x12\x1b\n" +
+	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1d\n" +
+	"\n" +
+	"event_type\x18\x03 \x01(\tR\teventType\x12%\n" +
+	"\x0etotal_attempts\x18\x04 \x01(\rR\rtotalAttemptsB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_events_proto_rawDescOnce sync.Once
@@ -1079,37 +4772,94 @@ func file_sdx_v1_events_proto_rawDescGZIP() []byte {
 	return file_sdx_v1_events_proto_rawDescData
 }
 
-var file_sdx_v1_events_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
+var file_sdx_v1_events_proto_msgTypes = make([]protoimpl.MessageInfo, 68)
 var file_sdx_v1_events_proto_goTypes = []any{
-	(*DomainEvent)(nil),                // 0: sdx.v1.DomainEvent
-	(*WebhookPayload)(nil),             // 1: sdx.v1.WebhookPayload
-	(*BuildCompletedPayload)(nil),      // 2: sdx.v1.BuildCompletedPayload
-	(*BuildFailedPayload)(nil),         // 3: sdx.v1.BuildFailedPayload
-	(*GateFailedPayload)(nil),          // 4: sdx.v1.GateFailedPayload
-	(*ArtifactSignedPayload)(nil),      // 5: sdx.v1.ArtifactSignedPayload
-	(*ComplianceCertifiedPayload)(nil), // 6: sdx.v1.ComplianceCertifiedPayload
-	(*StageCompletedPayload)(nil),      // 7: sdx.v1.StageCompletedPayload
-	(*StageFailedPayload)(nil),         // 8: sdx.v1.StageFailedPayload
-	(*AgentUnhealthyPayload)(nil),      // 9: sdx.v1.AgentUnhealthyPayload
-	(*ModelFallbackPayload)(nil),       // 10: sdx.v1.ModelFallbackPayload
-	(*QuotaExhaustedPayload)(nil),      // 11: sdx.v1.QuotaExhaustedPayload
-	nil,                                // 12: sdx.v1.DomainEvent.MetadataEntry
-	nil,                                // 13: sdx.v1.BuildCompletedPayload.ComplianceBadgesEntry
-	(*timestamppb.Timestamp)(nil),      // 14: google.protobuf.Timestamp
-	(*anypb.Any)(nil),                  // 15: google.protobuf.Any
+	(*DomainEvent)(nil),                        // 0: sdx.v1.DomainEvent
+	(*WebhookPayload)(nil),                     // 1: sdx.v1.WebhookPayload
+	(*BuildCompletedPayload)(nil),              // 2: sdx.v1.BuildCompletedPayload
+	(*BuildFailedPayload)(nil),                 // 3: sdx.v1.BuildFailedPayload
+	(*GateFailedPayload)(nil),                  // 4: sdx.v1.GateFailedPayload
+	(*ArtifactSignedPayload)(nil),              // 5: sdx.v1.ArtifactSignedPayload
+	(*ComplianceCertifiedPayload)(nil),         // 6: sdx.v1.ComplianceCertifiedPayload
+	(*StageCompletedPayload)(nil),              // 7: sdx.v1.StageCompletedPayload
+	(*StageFailedPayload)(nil),                 // 8: sdx.v1.StageFailedPayload
+	(*AgentUnhealthyPayload)(nil),              // 9: sdx.v1.AgentUnhealthyPayload
+	(*ModelFallbackPayload)(nil),               // 10: sdx.v1.ModelFallbackPayload
+	(*QuotaExhaustedPayload)(nil),              // 11: sdx.v1.QuotaExhaustedPayload
+	(*WorkItemCreatedPayload)(nil),             // 12: sdx.v1.WorkItemCreatedPayload
+	(*WorkItemParsedPayload)(nil),              // 13: sdx.v1.WorkItemParsedPayload
+	(*AmbiguityDetectedPayload)(nil),           // 14: sdx.v1.AmbiguityDetectedPayload
+	(*AmbiguityResolvedPayload)(nil),           // 15: sdx.v1.AmbiguityResolvedPayload
+	(*ManifestApprovedPayload)(nil),            // 16: sdx.v1.ManifestApprovedPayload
+	(*WorkItemFailedPayload)(nil),              // 17: sdx.v1.WorkItemFailedPayload
+	(*BuildInitiatedPayload)(nil),              // 18: sdx.v1.BuildInitiatedPayload
+	(*StageStartedPayload)(nil),                // 19: sdx.v1.StageStartedPayload
+	(*BuildCheckpointedPayload)(nil),           // 20: sdx.v1.BuildCheckpointedPayload
+	(*BuildRecoveryStartedPayload)(nil),        // 21: sdx.v1.BuildRecoveryStartedPayload
+	(*BuildRecoverySucceededPayload)(nil),      // 22: sdx.v1.BuildRecoverySucceededPayload
+	(*EscalationTriggeredPayload)(nil),         // 23: sdx.v1.EscalationTriggeredPayload
+	(*GateEvaluatedPayload)(nil),               // 24: sdx.v1.GateEvaluatedPayload
+	(*GatePassedPayload)(nil),                  // 25: sdx.v1.GatePassedPayload
+	(*RemediationStartedPayload)(nil),          // 26: sdx.v1.RemediationStartedPayload
+	(*RemediationSucceededPayload)(nil),        // 27: sdx.v1.RemediationSucceededPayload
+	(*RemediationExhaustedPayload)(nil),        // 28: sdx.v1.RemediationExhaustedPayload
+	(*ArtifactCreatedPayload)(nil),             // 29: sdx.v1.ArtifactCreatedPayload
+	(*ArtifactPublishedPayload)(nil),           // 30: sdx.v1.ArtifactPublishedPayload
+	(*ArtifactDeployedPayload)(nil),            // 31: sdx.v1.ArtifactDeployedPayload
+	(*ArtifactRevokedPayload)(nil),             // 32: sdx.v1.ArtifactRevokedPayload
+	(*TenantCreatedPayload)(nil),               // 33: sdx.v1.TenantCreatedPayload
+	(*TenantPlanChangedPayload)(nil),           // 34: sdx.v1.TenantPlanChangedPayload
+	(*TenantSuspendedPayload)(nil),             // 35: sdx.v1.TenantSuspendedPayload
+	(*TenantReactivatedPayload)(nil),           // 36: sdx.v1.TenantReactivatedPayload
+	(*QuotaResetPayload)(nil),                  // 37: sdx.v1.QuotaResetPayload
+	(*WorkspaceCreatedPayload)(nil),            // 38: sdx.v1.WorkspaceCreatedPayload
+	(*WorkspaceMemberAddedPayload)(nil),        // 39: sdx.v1.WorkspaceMemberAddedPayload
+	(*AgentRegisteredPayload)(nil),             // 40: sdx.v1.AgentRegisteredPayload
+	(*AgentAssignedPayload)(nil),               // 41: sdx.v1.AgentAssignedPayload
+	(*AgentReleasedPayload)(nil),               // 42: sdx.v1.AgentReleasedPayload
+	(*AgentRecoveredPayload)(nil),              // 43: sdx.v1.AgentRecoveredPayload
+	(*AgentTerminatedPayload)(nil),             // 44: sdx.v1.AgentTerminatedPayload
+	(*SecurityScanCompletedPayload)(nil),       // 45: sdx.v1.SecurityScanCompletedPayload
+	(*VulnerabilityFoundPayload)(nil),          // 46: sdx.v1.VulnerabilityFoundPayload
+	(*SBOMGeneratedPayload)(nil),               // 47: sdx.v1.SBOMGeneratedPayload
+	(*SecurityClearedPayload)(nil),             // 48: sdx.v1.SecurityClearedPayload
+	(*ComplianceMappingCompletedPayload)(nil),  // 49: sdx.v1.ComplianceMappingCompletedPayload
+	(*ComplianceEvidenceGeneratedPayload)(nil), // 50: sdx.v1.ComplianceEvidenceGeneratedPayload
+	(*ComplianceGapDetectedPayload)(nil),       // 51: sdx.v1.ComplianceGapDetectedPayload
+	(*DeploymentStartedPayload)(nil),           // 52: sdx.v1.DeploymentStartedPayload
+	(*SmokeTestPassedPayload)(nil),             // 53: sdx.v1.SmokeTestPassedPayload
+	(*SmokeTestFailedPayload)(nil),             // 54: sdx.v1.SmokeTestFailedPayload
+	(*SLOValidatedPayload)(nil),                // 55: sdx.v1.SLOValidatedPayload
+	(*DeploymentCompletedPayload)(nil),         // 56: sdx.v1.DeploymentCompletedPayload
+	(*RollbackTriggeredPayload)(nil),           // 57: sdx.v1.RollbackTriggeredPayload
+	(*RollbackCompletedPayload)(nil),           // 58: sdx.v1.RollbackCompletedPayload
+	(*LLMRequestCompletedPayload)(nil),         // 59: sdx.v1.LLMRequestCompletedPayload
+	(*CircuitOpenedPayload)(nil),               // 60: sdx.v1.CircuitOpenedPayload
+	(*CircuitClosedPayload)(nil),               // 61: sdx.v1.CircuitClosedPayload
+	(*WebhookDispatchedPayload)(nil),           // 62: sdx.v1.WebhookDispatchedPayload
+	(*WebhookDeliveredPayload)(nil),            // 63: sdx.v1.WebhookDeliveredPayload
+	(*WebhookDeliveryFailedPayload)(nil),       // 64: sdx.v1.WebhookDeliveryFailedPayload
+	(*WebhookDeadLetterPayload)(nil),           // 65: sdx.v1.WebhookDeadLetterPayload
+	nil,                                        // 66: sdx.v1.DomainEvent.MetadataEntry
+	nil,                                        // 67: sdx.v1.BuildCompletedPayload.ComplianceBadgesEntry
+	(*timestamppb.Timestamp)(nil),              // 68: google.protobuf.Timestamp
+	(*anypb.Any)(nil),                          // 69: google.protobuf.Any
 }
 var file_sdx_v1_events_proto_depIdxs = []int32{
-	14, // 0: sdx.v1.DomainEvent.timestamp:type_name -> google.protobuf.Timestamp
-	15, // 1: sdx.v1.DomainEvent.payload:type_name -> google.protobuf.Any
-	12, // 2: sdx.v1.DomainEvent.metadata:type_name -> sdx.v1.DomainEvent.MetadataEntry
-	14, // 3: sdx.v1.WebhookPayload.timestamp:type_name -> google.protobuf.Timestamp
-	15, // 4: sdx.v1.WebhookPayload.data:type_name -> google.protobuf.Any
-	13, // 5: sdx.v1.BuildCompletedPayload.compliance_badges:type_name -> sdx.v1.BuildCompletedPayload.ComplianceBadgesEntry
-	6,  // [6:6] is the sub-list for method output_type
-	6,  // [6:6] is the sub-list for method input_type
-	6,  // [6:6] is the sub-list for extension type_name
-	6,  // [6:6] is the sub-list for extension extendee
-	0,  // [0:6] is the sub-list for field type_name
+	68, // 0: sdx.v1.DomainEvent.timestamp:type_name -> google.protobuf.Timestamp
+	69, // 1: sdx.v1.DomainEvent.payload:type_name -> google.protobuf.Any
+	66, // 2: sdx.v1.DomainEvent.metadata:type_name -> sdx.v1.DomainEvent.MetadataEntry
+	68, // 3: sdx.v1.WebhookPayload.timestamp:type_name -> google.protobuf.Timestamp
+	69, // 4: sdx.v1.WebhookPayload.data:type_name -> google.protobuf.Any
+	67, // 5: sdx.v1.BuildCompletedPayload.compliance_badges:type_name -> sdx.v1.BuildCompletedPayload.ComplianceBadgesEntry
+	68, // 6: sdx.v1.BuildCheckpointedPayload.checkpointed_at:type_name -> google.protobuf.Timestamp
+	68, // 7: sdx.v1.QuotaResetPayload.period_start:type_name -> google.protobuf.Timestamp
+	68, // 8: sdx.v1.DeploymentCompletedPayload.deployed_at:type_name -> google.protobuf.Timestamp
+	9,  // [9:9] is the sub-list for method output_type
+	9,  // [9:9] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_sdx_v1_events_proto_init() }
@@ -1123,7 +4873,7 @@ func file_sdx_v1_events_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_sdx_v1_events_proto_rawDesc), len(file_sdx_v1_events_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   14,
+			NumMessages:   68,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -1,17 +1,31 @@
 {
-  "timestamp": "2026-03-22T06:45:00Z",
+  "timestamp": "2026-03-22T06:14:22Z",
   "spec_file": "../../api/openapi/sdx-gateway-v1.swagger.json",
-  "status": "PENDING_REGENERATION",
-  "total_endpoints": 0,
-  "valid_endpoints": 0,
+  "status": "PASS",
+  "total_endpoints": 83,
+  "valid_endpoints": 83,
   "invalid_endpoints": 0,
   "checks": [
     {
       "name": "info-block",
-      "status": "PENDING",
-      "details": "Run 'buf generate' to regenerate the OpenAPI spec with HTTP annotations, then re-run compliance checker"
+      "status": "PASS",
+      "details": "title=\"NeuroForge SDX Gateway API\" version=\"0.1.0\""
+    },
+    {
+      "name": "security-definitions",
+      "status": "PASS",
+      "details": "Found 2 definitions: ApiKeyAuth, BearerAuth"
+    },
+    {
+      "name": "endpoint-compliance",
+      "status": "PASS",
+      "details": "83/83 endpoints compliant"
+    },
+    {
+      "name": "path-conventions",
+      "status": "PASS",
+      "details": "75 paths conform to /api/v1/ convention"
     }
   ],
-  "violations": [],
-  "note": "Proto files now have google.api.http annotations. Run 'cd api/proto && buf generate' to populate the OpenAPI spec, then 'cd tools/swagger && go run ./compliance-checker/' to generate a real compliance report."
+  "violations": null
 }

@@ -23,44 +23,82 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
+from protoc_gen_openapiv2.options import annotations_pb2 as protoc__gen__openapiv2_dot_options_dot_annotations__pb2
 from sdx.v1 import common_pb2 as sdx_dot_v1_dot_common__pb2
 from sdx.v1 import workitem_pb2 as sdx_dot_v1_dot_workitem__pb2
 from sdx.v1 import build_pb2 as sdx_dot_v1_dot_build__pb2
 from sdx.v1 import artifact_pb2 as sdx_dot_v1_dot_artifact__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14sdx/v1/gateway.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\x1a\x15sdx/v1/workitem.proto\x1a\x12sdx/v1/build.proto\x1a\x15sdx/v1/artifact.proto\"\xcb\x02\n\rWebhookConfig\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12\x1d\n\ntarget_url\x18\x03 \x01(\tR\ttargetUrl\x12\x16\n\x06\x65vents\x18\x04 \x03(\tR\x06\x65vents\x12\x16\n\x06secret\x18\x05 \x01(\tR\x06secret\x12\x16\n\x06\x61\x63tive\x18\x06 \x01(\x08R\x06\x61\x63tive\x12\x39\n\ncreated_at\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x46\n\x11last_triggered_at\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0flastTriggeredAt\x12#\n\rfailure_count\x18\t \x01(\rR\x0c\x66\x61ilureCount\"e\n\x14\x43reateWebhookRequest\x12\x1d\n\ntarget_url\x18\x01 \x01(\tR\ttargetUrl\x12\x16\n\x06\x65vents\x18\x02 \x03(\tR\x06\x65vents\x12\x16\n\x06secret\x18\x03 \x01(\tR\x06secret\"P\n\x13ListWebhooksRequest\x12\x39\n\npagination\x18\x01 \x01(\x0b\x32\x19.sdx.v1.PaginationRequestR\npagination\"\x85\x01\n\x14ListWebhooksResponse\x12\x31\n\x08webhooks\x18\x01 \x03(\x0b\x32\x15.sdx.v1.WebhookConfigR\x08webhooks\x12:\n\npagination\x18\x02 \x01(\x0b\x32\x1a.sdx.v1.PaginationResponseR\npagination\"5\n\x14\x44\x65leteWebhookRequest\x12\x1d\n\nwebhook_id\x18\x01 \x01(\tR\twebhookId\"1\n\x15\x44\x65leteWebhookResponse\x12\x18\n\x07\x64\x65leted\x18\x01 \x01(\x08R\x07\x64\x65leted\"3\n\x12TestWebhookRequest\x12\x1d\n\nwebhook_id\x18\x01 \x01(\tR\twebhookId\"\x85\x01\n\x13TestWebhookResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x1f\n\x0bstatus_code\x18\x02 \x01(\rR\nstatusCode\x12\x1d\n\nlatency_ms\x18\x03 \x01(\x04R\tlatencyMs\x12\x14\n\x05\x65rror\x18\x04 \x01(\tR\x05\x65rror\"\x14\n\x12HealthCheckRequest\"\x8d\x02\n\x13HealthCheckResponse\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n\x07version\x18\x02 \x01(\tR\x07version\x12K\n\ncomponents\x18\x03 \x03(\x0b\x32+.sdx.v1.HealthCheckResponse.ComponentsEntryR\ncomponents\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x1a=\n\x0f\x43omponentsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x32\xef\n\n\x11SDXGatewayService\x12O\n\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\x12;\n\x0bGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\x12L\n\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\x12U\n\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\x12R\n\x0f\x41pproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\x12\x32\n\x08GetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\x12\x43\n\nListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\x12^\n\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\x12\x46\n\x0b\x43\x61ncelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\x12;\n\x0bGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\x12L\n\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\x12g\n\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\x12O\n\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\x12\x44\n\rCreateWebhook\x12\x1c.sdx.v1.CreateWebhookRequest\x1a\x15.sdx.v1.WebhookConfig\x12I\n\x0cListWebhooks\x12\x1b.sdx.v1.ListWebhooksRequest\x1a\x1c.sdx.v1.ListWebhooksResponse\x12L\n\rDeleteWebhook\x12\x1c.sdx.v1.DeleteWebhookRequest\x1a\x1d.sdx.v1.DeleteWebhookResponse\x12\x46\n\x0bTestWebhook\x12\x1a.sdx.v1.TestWebhookRequest\x1a\x1b.sdx.v1.TestWebhookResponse\x12\x46\n\x0bHealthCheck\x12\x1a.sdx.v1.HealthCheckRequest\x1a\x1b.sdx.v1.HealthCheckResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x14sdx/v1/gateway.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x13sdx/v1/common.proto\x1a\x15sdx/v1/workitem.proto\x1a\x12sdx/v1/build.proto\x1a\x15sdx/v1/artifact.proto\"\xcb\x02\n\rWebhookConfig\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n\ttenant_id\x18\x02 \x01(\tR\x08tenantId\x12\x1d\n\ntarget_url\x18\x03 \x01(\tR\ttargetUrl\x12\x16\n\x06\x65vents\x18\x04 \x03(\tR\x06\x65vents\x12\x16\n\x06secret\x18\x05 \x01(\tR\x06secret\x12\x16\n\x06\x61\x63tive\x18\x06 \x01(\x08R\x06\x61\x63tive\x12\x39\n\ncreated_at\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x46\n\x11last_triggered_at\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0flastTriggeredAt\x12#\n\rfailure_count\x18\t \x01(\rR\x0c\x66\x61ilureCount\"e\n\x14\x43reateWebhookRequest\x12\x1d\n\ntarget_url\x18\x01 \x01(\tR\ttargetUrl\x12\x16\n\x06\x65vents\x18\x02 \x03(\tR\x06\x65vents\x12\x16\n\x06secret\x18\x03 \x01(\tR\x06secret\"P\n\x13ListWebhooksRequest\x12\x39\n\npagination\x18\x01 \x01(\x0b\x32\x19.sdx.v1.PaginationRequestR\npagination\"\x85\x01\n\x14ListWebhooksResponse\x12\x31\n\x08webhooks\x18\x01 \x03(\x0b\x32\x15.sdx.v1.WebhookConfigR\x08webhooks\x12:\n\npagination\x18\x02 \x01(\x0b\x32\x1a.sdx.v1.PaginationResponseR\npagination\"5\n\x14\x44\x65leteWebhookRequest\x12\x1d\n\nwebhook_id\x18\x01 \x01(\tR\twebhookId\"1\n\x15\x44\x65leteWebhookResponse\x12\x18\n\x07\x64\x65leted\x18\x01 \x01(\x08R\x07\x64\x65leted\"3\n\x12TestWebhookRequest\x12\x1d\n\nwebhook_id\x18\x01 \x01(\tR\twebhookId\"\x85\x01\n\x13TestWebhookResponse\x12\x18\n\x07success\x18\x01 \x01(\x08R\x07success\x12\x1f\n\x0bstatus_code\x18\x02 \x01(\rR\nstatusCode\x12\x1d\n\nlatency_ms\x18\x03 \x01(\x04R\tlatencyMs\x12\x14\n\x05\x65rror\x18\x04 \x01(\tR\x05\x65rror\"\x14\n\x12HealthCheckRequest\"\x8d\x02\n\x13HealthCheckResponse\x12\x16\n\x06status\x18\x01 \x01(\tR\x06status\x12\x18\n\x07version\x18\x02 \x01(\tR\x07version\x12K\n\ncomponents\x18\x03 \x03(\x0b\x32+.sdx.v1.HealthCheckResponse.ComponentsEntryR\ncomponents\x12\x38\n\ttimestamp\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\ttimestamp\x1a=\n\x0f\x43omponentsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n\x05value\x18\x02 \x01(\tR\x05value:\x02\x38\x01\x32\xb1\x10\n\x11SDXGatewayService\x12n\n\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\"\x12/api/v1/work-items:\x01*\x12\x66\n\x0bGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/work-items/{work_item_id}\x12h\n\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/work-items\x12\x9e\x01\n\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\"G\x82\xd3\xe4\x93\x02\x41\x32</api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}:\x01*\x12\x88\x01\n\x0f\x41pproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\"4\x82\xd3\xe4\x93\x02.\")/api/v1/work-items/{work_item_id}/approve:\x01*\x12U\n\x08GetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/api/v1/builds/{build_id}\x12[\n\nListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/builds\x12\x87\x01\n\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\"\'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/builds/{build_id}/gates\x12s\n\x0b\x43\x61ncelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\"+\x82\xd3\xe4\x93\x02%\" /api/v1/builds/{build_id}/cancel:\x01*\x12\x64\n\x0bGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\"\'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/artifacts/{artifact_id}\x12g\n\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/artifacts\x12\x99\x01\n\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/artifacts/{artifact_id}/download\x12\x7f\n\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\".\x82\xd3\xe4\x93\x02(\"&/api/v1/artifacts/{artifact_id}/verify\x12\x61\n\rCreateWebhook\x12\x1c.sdx.v1.CreateWebhookRequest\x1a\x15.sdx.v1.WebhookConfig\"\x1b\x82\xd3\xe4\x93\x02\x15\"\x10/api/v1/webhooks:\x01*\x12\x63\n\x0cListWebhooks\x12\x1b.sdx.v1.ListWebhooksRequest\x1a\x1c.sdx.v1.ListWebhooksResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/webhooks\x12s\n\rDeleteWebhook\x12\x1c.sdx.v1.DeleteWebhookRequest\x1a\x1d.sdx.v1.DeleteWebhookResponse\"%\x82\xd3\xe4\x93\x02\x1f*\x1d/api/v1/webhooks/{webhook_id}\x12r\n\x0bTestWebhook\x12\x1a.sdx.v1.TestWebhookRequest\x1a\x1b.sdx.v1.TestWebhookResponse\"*\x82\xd3\xe4\x93\x02$\"\"/api/v1/webhooks/{webhook_id}/test\x12^\n\x0bHealthCheck\x12\x1a.sdx.v1.HealthCheckRequest\x1a\x1b.sdx.v1.HealthCheckResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/healthB\x9e\x05Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1\x92\x41\xf9\x04\x12\xfa\x02\n\x1aNeuroForge SDX Gateway API\x12\xcd\x01Unified REST/gRPC API for the NeuroForge AI Software Factory. Provides endpoints for work item submission, build orchestration, artifact management, quality gates, compliance certification, and deployment.\"V\n\x17StratoGroup Engineering\x12\x1fhttps://docs.sdx.stratogroup.io\x1a\x1a\x65ngineering@stratogroup.io*-\n\x0bProprietary\x12\x1ehttps://stratogroup.io/license2\x05\x30.1.0\x1a\x16\x61pi.sdx.stratogroup.io\"\x07/api/v1*\x01\x02\x32\x10\x61pplication/json:\x10\x61pplication/jsonZ\x9f\x01\n:\n\nApiKeyAuth\x12,\x08\x02\x12\x1b\x41PI key mapped to a tenant.\x1a\tX-API-Key \x02\na\n\nBearerAuth\x12S\x08\x02\x12>Bearer JWT token from Authentik OIDC. Format: \'Bearer {token}\'\x1a\rAuthorization \x02\x62\x10\n\x0e\n\nBearerAuth\x12\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sdx.v1.gateway_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
-  _globals['DESCRIPTOR']._serialized_options = b'Z\037neuroforge-sdx/api/sdx/v1;sdxv1'
+  _globals['DESCRIPTOR']._serialized_options = b'Z\037neuroforge-sdx/api/sdx/v1;sdxv1\222A\371\004\022\372\002\n\032NeuroForge SDX Gateway API\022\315\001Unified REST/gRPC API for the NeuroForge AI Software Factory. Provides endpoints for work item submission, build orchestration, artifact management, quality gates, compliance certification, and deployment.\"V\n\027StratoGroup Engineering\022\037https://docs.sdx.stratogroup.io\032\032engineering@stratogroup.io*-\n\013Proprietary\022\036https://stratogroup.io/license2\0050.1.0\032\026api.sdx.stratogroup.io\"\007/api/v1*\001\0022\020application/json:\020application/jsonZ\237\001\n:\n\nApiKeyAuth\022,\010\002\022\033API key mapped to a tenant.\032\tX-API-Key \002\na\n\nBearerAuth\022S\010\002\022>Bearer JWT token from Authentik OIDC. Format: \'Bearer {token}\'\032\rAuthorization \002b\020\n\016\n\nBearerAuth\022\000'
   _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._loaded_options = None
   _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._serialized_options = b'8\001'
-  _globals['_WEBHOOKCONFIG']._serialized_start=153
-  _globals['_WEBHOOKCONFIG']._serialized_end=484
-  _globals['_CREATEWEBHOOKREQUEST']._serialized_start=486
-  _globals['_CREATEWEBHOOKREQUEST']._serialized_end=587
-  _globals['_LISTWEBHOOKSREQUEST']._serialized_start=589
-  _globals['_LISTWEBHOOKSREQUEST']._serialized_end=669
-  _globals['_LISTWEBHOOKSRESPONSE']._serialized_start=672
-  _globals['_LISTWEBHOOKSRESPONSE']._serialized_end=805
-  _globals['_DELETEWEBHOOKREQUEST']._serialized_start=807
-  _globals['_DELETEWEBHOOKREQUEST']._serialized_end=860
-  _globals['_DELETEWEBHOOKRESPONSE']._serialized_start=862
-  _globals['_DELETEWEBHOOKRESPONSE']._serialized_end=911
-  _globals['_TESTWEBHOOKREQUEST']._serialized_start=913
-  _globals['_TESTWEBHOOKREQUEST']._serialized_end=964
-  _globals['_TESTWEBHOOKRESPONSE']._serialized_start=967
-  _globals['_TESTWEBHOOKRESPONSE']._serialized_end=1100
-  _globals['_HEALTHCHECKREQUEST']._serialized_start=1102
-  _globals['_HEALTHCHECKREQUEST']._serialized_end=1122
-  _globals['_HEALTHCHECKRESPONSE']._serialized_start=1125
-  _globals['_HEALTHCHECKRESPONSE']._serialized_end=1394
-  _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._serialized_start=1333
-  _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._serialized_end=1394
-  _globals['_SDXGATEWAYSERVICE']._serialized_start=1397
-  _globals['_SDXGATEWAYSERVICE']._serialized_end=2788
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['SubmitWorkItem']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['SubmitWorkItem']._serialized_options = b'\202\323\344\223\002\027\"\022/api/v1/work-items:\001*'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetWorkItem']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetWorkItem']._serialized_options = b'\202\323\344\223\002#\022!/api/v1/work-items/{work_item_id}'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListWorkItems']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListWorkItems']._serialized_options = b'\202\323\344\223\002\024\022\022/api/v1/work-items'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ResolveAmbiguity']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ResolveAmbiguity']._serialized_options = b'\202\323\344\223\002A2</api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}:\001*'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ApproveManifest']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ApproveManifest']._serialized_options = b'\202\323\344\223\002.\")/api/v1/work-items/{work_item_id}/approve:\001*'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetBuild']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetBuild']._serialized_options = b'\202\323\344\223\002\033\022\031/api/v1/builds/{build_id}'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListBuilds']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListBuilds']._serialized_options = b'\202\323\344\223\002\020\022\016/api/v1/builds'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetBuildGateResults']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetBuildGateResults']._serialized_options = b'\202\323\344\223\002!\022\037/api/v1/builds/{build_id}/gates'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['CancelBuild']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['CancelBuild']._serialized_options = b'\202\323\344\223\002%\" /api/v1/builds/{build_id}/cancel:\001*'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetArtifact']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetArtifact']._serialized_options = b'\202\323\344\223\002!\022\037/api/v1/artifacts/{artifact_id}'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListArtifacts']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListArtifacts']._serialized_options = b'\202\323\344\223\002\023\022\021/api/v1/artifacts'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetArtifactDownloadURL']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['GetArtifactDownloadURL']._serialized_options = b'\202\323\344\223\002*\022(/api/v1/artifacts/{artifact_id}/download'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['VerifyArtifact']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['VerifyArtifact']._serialized_options = b'\202\323\344\223\002(\"&/api/v1/artifacts/{artifact_id}/verify'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['CreateWebhook']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['CreateWebhook']._serialized_options = b'\202\323\344\223\002\025\"\020/api/v1/webhooks:\001*'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListWebhooks']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['ListWebhooks']._serialized_options = b'\202\323\344\223\002\022\022\020/api/v1/webhooks'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['DeleteWebhook']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['DeleteWebhook']._serialized_options = b'\202\323\344\223\002\037*\035/api/v1/webhooks/{webhook_id}'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['TestWebhook']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['TestWebhook']._serialized_options = b'\202\323\344\223\002$\"\"/api/v1/webhooks/{webhook_id}/test'
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['HealthCheck']._loaded_options = None
+  _globals['_SDXGATEWAYSERVICE'].methods_by_name['HealthCheck']._serialized_options = b'\202\323\344\223\002\020\022\016/api/v1/health'
+  _globals['_WEBHOOKCONFIG']._serialized_start=231
+  _globals['_WEBHOOKCONFIG']._serialized_end=562
+  _globals['_CREATEWEBHOOKREQUEST']._serialized_start=564
+  _globals['_CREATEWEBHOOKREQUEST']._serialized_end=665
+  _globals['_LISTWEBHOOKSREQUEST']._serialized_start=667
+  _globals['_LISTWEBHOOKSREQUEST']._serialized_end=747
+  _globals['_LISTWEBHOOKSRESPONSE']._serialized_start=750
+  _globals['_LISTWEBHOOKSRESPONSE']._serialized_end=883
+  _globals['_DELETEWEBHOOKREQUEST']._serialized_start=885
+  _globals['_DELETEWEBHOOKREQUEST']._serialized_end=938
+  _globals['_DELETEWEBHOOKRESPONSE']._serialized_start=940
+  _globals['_DELETEWEBHOOKRESPONSE']._serialized_end=989
+  _globals['_TESTWEBHOOKREQUEST']._serialized_start=991
+  _globals['_TESTWEBHOOKREQUEST']._serialized_end=1042
+  _globals['_TESTWEBHOOKRESPONSE']._serialized_start=1045
+  _globals['_TESTWEBHOOKRESPONSE']._serialized_end=1178
+  _globals['_HEALTHCHECKREQUEST']._serialized_start=1180
+  _globals['_HEALTHCHECKREQUEST']._serialized_end=1200
+  _globals['_HEALTHCHECKRESPONSE']._serialized_start=1203
+  _globals['_HEALTHCHECKRESPONSE']._serialized_end=1472
+  _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._serialized_start=1411
+  _globals['_HEALTHCHECKRESPONSE_COMPONENTSENTRY']._serialized_end=1472
+  _globals['_SDXGATEWAYSERVICE']._serialized_start=1475
+  _globals['_SDXGATEWAYSERVICE']._serialized_end=3572
 # @@protoc_insertion_point(module_scope)

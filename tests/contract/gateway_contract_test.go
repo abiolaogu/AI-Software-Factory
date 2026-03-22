@@ -102,9 +102,9 @@ func TestGatewayWorkItemCRUD(t *testing.T) {
 	}{
 		{"/api/v1/work-items", "post"},
 		{"/api/v1/work-items", "get"},
-		{"/api/v1/work-items/{work_item_id}", "get"},
-		{"/api/v1/work-items/{work_item_id}", "delete"},
-		{"/api/v1/work-items/{work_item_id}/approve", "post"},
+		{"/api/v1/work-items/{workItemId}", "get"},
+		{"/api/v1/work-items/{workItemId}", "delete"},
+		{"/api/v1/work-items/{workItemId}/approve", "post"},
 	}
 
 	for _, check := range checks {

@@ -7,6 +7,8 @@
 package sdxv1
 
 import (
+	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -594,7 +596,7 @@ var File_sdx_v1_gateway_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_gateway_proto_rawDesc = "" +
 	"\n" +
-	"\x14sdx/v1/gateway.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\x1a\x15sdx/v1/workitem.proto\x1a\x12sdx/v1/build.proto\x1a\x15sdx/v1/artifact.proto\"\xcb\x02\n" +
+	"\x14sdx/v1/gateway.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a\x13sdx/v1/common.proto\x1a\x15sdx/v1/workitem.proto\x1a\x12sdx/v1/build.proto\x1a\x15sdx/v1/artifact.proto\"\xcb\x02\n" +
 	"\rWebhookConfig\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12\x1d\n" +
@@ -646,28 +648,39 @@ const file_sdx_v1_gateway_proto_rawDesc = "" +
 	"\ttimestamp\x18\x04 \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x1a=\n" +
 	"\x0fComponentsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012\xef\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x012\xb1\x10\n" +
+	"\x11SDXGatewayService\x12n\n" +
+	"\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/v1/work-items\x12f\n" +
+	"\vGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/work-items/{work_item_id}\x12h\n" +
+	"\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/work-items\x12\x9e\x01\n" +
+	"\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\"G\x82\xd3\xe4\x93\x02A:\x01*2</api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}\x12\x88\x01\n" +
+	"\x0fApproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/api/v1/work-items/{work_item_id}/approve\x12U\n" +
+	"\bGetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/api/v1/builds/{build_id}\x12[\n" +
 	"\n" +
-	"\x11SDXGatewayService\x12O\n" +
-	"\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\x12;\n" +
-	"\vGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\x12L\n" +
-	"\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\x12U\n" +
-	"\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\x12R\n" +
-	"\x0fApproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\x122\n" +
-	"\bGetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\x12C\n" +
+	"ListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/builds\x12\x87\x01\n" +
+	"\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/builds/{build_id}/gates\x12s\n" +
+	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/builds/{build_id}/cancel\x12d\n" +
+	"\vGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/artifacts/{artifact_id}\x12g\n" +
+	"\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/artifacts\x12\x99\x01\n" +
+	"\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/artifacts/{artifact_id}/download\x12\x7f\n" +
+	"\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\".\x82\xd3\xe4\x93\x02(\"&/api/v1/artifacts/{artifact_id}/verify\x12a\n" +
+	"\rCreateWebhook\x12\x1c.sdx.v1.CreateWebhookRequest\x1a\x15.sdx.v1.WebhookConfig\"\x1b\x82\xd3\xe4\x93\x02\x15:\x01*\"\x10/api/v1/webhooks\x12c\n" +
+	"\fListWebhooks\x12\x1b.sdx.v1.ListWebhooksRequest\x1a\x1c.sdx.v1.ListWebhooksResponse\"\x18\x82\xd3\xe4\x93\x02\x12\x12\x10/api/v1/webhooks\x12s\n" +
+	"\rDeleteWebhook\x12\x1c.sdx.v1.DeleteWebhookRequest\x1a\x1d.sdx.v1.DeleteWebhookResponse\"%\x82\xd3\xe4\x93\x02\x1f*\x1d/api/v1/webhooks/{webhook_id}\x12r\n" +
+	"\vTestWebhook\x12\x1a.sdx.v1.TestWebhookRequest\x1a\x1b.sdx.v1.TestWebhookResponse\"*\x82\xd3\xe4\x93\x02$\"\"/api/v1/webhooks/{webhook_id}/test\x12^\n" +
+	"\vHealthCheck\x12\x1a.sdx.v1.HealthCheckRequest\x1a\x1b.sdx.v1.HealthCheckResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/healthB\x9e\x05\x92A\xf9\x04\x12\xfa\x02\n" +
+	"\x1aNeuroForge SDX Gateway API\x12\xcd\x01Unified REST/gRPC API for the NeuroForge AI Software Factory. Provides endpoints for work item submission, build orchestration, artifact management, quality gates, compliance certification, and deployment.\"V\n" +
+	"\x17StratoGroup Engineering\x12\x1fhttps://docs.sdx.stratogroup.io\x1a\x1aengineering@stratogroup.io*-\n" +
+	"\vProprietary\x12\x1ehttps://stratogroup.io/license2\x050.1.0\x1a\x16api.sdx.stratogroup.io\"\a/api/v1*\x01\x022\x10application/json:\x10application/jsonZ\x9f\x01\n" +
+	":\n" +
 	"\n" +
-	"ListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\x12^\n" +
-	"\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\x12F\n" +
-	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\x12;\n" +
-	"\vGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\x12L\n" +
-	"\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\x12g\n" +
-	"\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\x12O\n" +
-	"\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\x12D\n" +
-	"\rCreateWebhook\x12\x1c.sdx.v1.CreateWebhookRequest\x1a\x15.sdx.v1.WebhookConfig\x12I\n" +
-	"\fListWebhooks\x12\x1b.sdx.v1.ListWebhooksRequest\x1a\x1c.sdx.v1.ListWebhooksResponse\x12L\n" +
-	"\rDeleteWebhook\x12\x1c.sdx.v1.DeleteWebhookRequest\x1a\x1d.sdx.v1.DeleteWebhookResponse\x12F\n" +
-	"\vTestWebhook\x12\x1a.sdx.v1.TestWebhookRequest\x1a\x1b.sdx.v1.TestWebhookResponse\x12F\n" +
-	"\vHealthCheck\x12\x1a.sdx.v1.HealthCheckRequest\x1a\x1b.sdx.v1.HealthCheckResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"ApiKeyAuth\x12,\b\x02\x12\x1bAPI key mapped to a tenant.\x1a\tX-API-Key \x02\n" +
+	"a\n" +
+	"\n" +
+	"BearerAuth\x12S\b\x02\x12>Bearer JWT token from Authentik OIDC. Format: 'Bearer {token}'\x1a\rAuthorization \x02b\x10\n" +
+	"\x0e\n" +
+	"\n" +
+	"BearerAuth\x12\x00Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_gateway_proto_rawDescOnce sync.Once

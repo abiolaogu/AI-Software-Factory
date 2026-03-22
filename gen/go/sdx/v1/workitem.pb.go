@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1396,7 +1397,7 @@ var File_sdx_v1_workitem_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_workitem_proto_rawDesc = "" +
 	"\n" +
-	"\x15sdx/v1/workitem.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\xf0\x03\n" +
+	"\x15sdx/v1/workitem.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xf0\x03\n" +
 	"\bWorkItem\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12\x1b\n" +
 	"\ttenant_id\x18\x02 \x01(\tR\btenantId\x12.\n" +
@@ -1526,15 +1527,15 @@ const file_sdx_v1_workitem_proto_rawDesc = "" +
 	"\x14PRIORITY_UNSPECIFIED\x10\x00\x12\x0f\n" +
 	"\vPRIORITY_P0\x10\x01\x12\x0f\n" +
 	"\vPRIORITY_P1\x10\x02\x12\x0f\n" +
-	"\vPRIORITY_P2\x10\x032\xaf\x04\n" +
-	"\x10IngestionService\x12O\n" +
-	"\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\x12;\n" +
-	"\vGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\x12L\n" +
-	"\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\x12U\n" +
-	"\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\x12R\n" +
-	"\x0fApproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\x12C\n" +
-	"\x0fRestartWorkItem\x12\x1e.sdx.v1.RestartWorkItemRequest\x1a\x10.sdx.v1.WorkItem\x12O\n" +
-	"\x0eDeleteWorkItem\x12\x1d.sdx.v1.DeleteWorkItemRequest\x1a\x1e.sdx.v1.DeleteWorkItemResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\vPRIORITY_P2\x10\x032\xf4\x06\n" +
+	"\x10IngestionService\x12n\n" +
+	"\x0eSubmitWorkItem\x12\x1d.sdx.v1.SubmitWorkItemRequest\x1a\x1e.sdx.v1.SubmitWorkItemResponse\"\x1d\x82\xd3\xe4\x93\x02\x17:\x01*\"\x12/api/v1/work-items\x12f\n" +
+	"\vGetWorkItem\x12\x1a.sdx.v1.GetWorkItemRequest\x1a\x10.sdx.v1.WorkItem\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/work-items/{work_item_id}\x12h\n" +
+	"\rListWorkItems\x12\x1c.sdx.v1.ListWorkItemsRequest\x1a\x1d.sdx.v1.ListWorkItemsResponse\"\x1a\x82\xd3\xe4\x93\x02\x14\x12\x12/api/v1/work-items\x12\x9e\x01\n" +
+	"\x10ResolveAmbiguity\x12\x1f.sdx.v1.ResolveAmbiguityRequest\x1a .sdx.v1.ResolveAmbiguityResponse\"G\x82\xd3\xe4\x93\x02A:\x01*2</api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}\x12\x88\x01\n" +
+	"\x0fApproveManifest\x12\x1e.sdx.v1.ApproveManifestRequest\x1a\x1f.sdx.v1.ApproveManifestResponse\"4\x82\xd3\xe4\x93\x02.:\x01*\")/api/v1/work-items/{work_item_id}/approve\x12v\n" +
+	"\x0fRestartWorkItem\x12\x1e.sdx.v1.RestartWorkItemRequest\x1a\x10.sdx.v1.WorkItem\"1\x82\xd3\xe4\x93\x02+\")/api/v1/work-items/{work_item_id}/restart\x12z\n" +
+	"\x0eDeleteWorkItem\x12\x1d.sdx.v1.DeleteWorkItemRequest\x1a\x1e.sdx.v1.DeleteWorkItemResponse\")\x82\xd3\xe4\x93\x02#*!/api/v1/work-items/{work_item_id}B!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_workitem_proto_rawDescOnce sync.Once

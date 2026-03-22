@@ -23,10 +23,11 @@ _sym_db = _symbol_database.Default()
 
 
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
+from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from sdx.v1 import common_pb2 as sdx_dot_v1_dot_common__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15sdx/v1/artifact.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\x8b\x05\n\x08\x41rtifact\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12(\n\x04type\x18\x04 \x01(\x0e\x32\x14.sdx.v1.ArtifactTypeR\x04type\x12.\n\x06status\x18\x05 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\x06status\x12\x36\n\x0c\x63ontent_hash\x18\x06 \x01(\x0b\x32\x13.sdx.v1.ContentHashR\x0b\x63ontentHash\x12.\n\x0bstorage_uri\x18\x07 \x01(\x0b\x32\r.sdx.v1.S3URIR\nstorageUri\x12\x39\n\rsignature_ref\x18\x08 \x01(\x0b\x32\x14.sdx.v1.SignatureRefR\x0csignatureRef\x12<\n\x0eprovenance_ref\x18\t \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\rprovenanceRef\x12*\n\x08sbom_ref\x18\n \x01(\x0b\x32\x0f.sdx.v1.SBOMRefR\x07sbomRef\x12\x1d\n\nsize_bytes\x18\x0b \x01(\x04R\tsizeBytes\x12\x39\n\ncreated_at\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x37\n\tsigned_at\x18\r \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08signedAt\x12=\n\x0cpublished_at\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bpublishedAt\"5\n\x12GetArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\x92\x02\n\x14ListArtifactsRequest\x12\x19\n\x08\x62uild_id\x18\x01 \x01(\tR\x07\x62uildId\x12\x35\n\x0btype_filter\x18\x02 \x01(\x0e\x32\x14.sdx.v1.ArtifactTypeR\ntypeFilter\x12;\n\rstatus_filter\x18\x03 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\x0cstatusFilter\x12\x30\n\ndate_range\x18\x04 \x01(\x0b\x32\x11.sdx.v1.DateRangeR\tdateRange\x12\x39\n\npagination\x18\x05 \x01(\x0b\x32\x19.sdx.v1.PaginationRequestR\npagination\"\x83\x01\n\x15ListArtifactsResponse\x12.\n\tartifacts\x18\x01 \x03(\x0b\x32\x10.sdx.v1.ArtifactR\tartifacts\x12:\n\npagination\x18\x02 \x01(\x0b\x32\x1a.sdx.v1.PaginationResponseR\npagination\"@\n\x1dGetArtifactDownloadURLRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\xa9\x01\n\x1eGetArtifactDownloadURLResponse\x12!\n\x0c\x64ownload_url\x18\x01 \x01(\tR\x0b\x64ownloadUrl\x12,\n\x12\x65xpires_in_seconds\x18\x02 \x01(\rR\x10\x65xpiresInSeconds\x12\x36\n\x0c\x63ontent_hash\x18\x03 \x01(\x0b\x32\x13.sdx.v1.ContentHashR\x0b\x63ontentHash\"6\n\x13SignArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\x8f\x01\n\x14SignArtifactResponse\x12\x39\n\rsignature_ref\x18\x01 \x01(\x0b\x32\x14.sdx.v1.SignatureRefR\x0csignatureRef\x12<\n\x0eprovenance_ref\x18\x02 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\rprovenanceRef\"\\\n\x16PublishArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12!\n\x0cregistry_uri\x18\x02 \x01(\tR\x0bregistryUri\"}\n\x17PublishArtifactResponse\x12#\n\rpublished_uri\x18\x01 \x01(\tR\x0cpublishedUri\x12=\n\x0cpublished_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bpublishedAt\"8\n\x15VerifyArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\xee\x01\n\x16VerifyArtifactResponse\x12,\n\x12\x63ontent_hash_valid\x18\x01 \x01(\x08R\x10\x63ontentHashValid\x12\'\n\x0fsignature_valid\x18\x02 \x01(\x08R\x0esignatureValid\x12)\n\x10provenance_valid\x18\x03 \x01(\x08R\x0fprovenanceValid\x12!\n\x0csbom_present\x18\x04 \x01(\x08R\x0bsbomPresent\x12/\n\x13verification_errors\x18\x05 \x03(\tR\x12verificationErrors\"P\n\x15RevokeArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x16\n\x06reason\x18\x02 \x01(\tR\x06reason\"\x8a\x01\n\x16RevokeArtifactResponse\x12\x35\n\nnew_status\x18\x01 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\tnewStatus\x12\x39\n\nrevoked_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\trevokedAt\"q\n\x17\x41ttachProvenanceRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x35\n\nprovenance\x18\x02 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\nprovenance\"6\n\x18\x41ttachProvenanceResponse\x12\x1a\n\x08\x61ttached\x18\x01 \x01(\x08R\x08\x61ttached\"W\n\x19GenerateProvenanceRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\"S\n\x1aGenerateProvenanceResponse\x12\x35\n\nprovenance\x18\x01 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\nprovenance*\xc4\x01\n\x0e\x41rtifactStatus\x12\x1f\n\x1b\x41RTIFACT_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x41RTIFACT_STATUS_CREATED\x10\x01\x12\x1a\n\x16\x41RTIFACT_STATUS_SIGNED\x10\x02\x12\x1d\n\x19\x41RTIFACT_STATUS_PUBLISHED\x10\x03\x12\x1c\n\x18\x41RTIFACT_STATUS_DEPLOYED\x10\x04\x12\x1b\n\x17\x41RTIFACT_STATUS_REVOKED\x10\x05\x32\xfa\x05\n\x0f\x41rtifactService\x12;\n\x0bGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\x12L\n\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\x12g\n\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\x12I\n\x0cSignArtifact\x12\x1b.sdx.v1.SignArtifactRequest\x1a\x1c.sdx.v1.SignArtifactResponse\x12R\n\x0fPublishArtifact\x12\x1e.sdx.v1.PublishArtifactRequest\x1a\x1f.sdx.v1.PublishArtifactResponse\x12O\n\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\x12O\n\x0eRevokeArtifact\x12\x1d.sdx.v1.RevokeArtifactRequest\x1a\x1e.sdx.v1.RevokeArtifactResponse\x12U\n\x10\x41ttachProvenance\x12\x1f.sdx.v1.AttachProvenanceRequest\x1a .sdx.v1.AttachProvenanceResponse\x12[\n\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15sdx/v1/artifact.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\x8b\x05\n\x08\x41rtifact\x12\x0e\n\x02id\x18\x01 \x01(\tR\x02id\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\x12\x1b\n\ttenant_id\x18\x03 \x01(\tR\x08tenantId\x12(\n\x04type\x18\x04 \x01(\x0e\x32\x14.sdx.v1.ArtifactTypeR\x04type\x12.\n\x06status\x18\x05 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\x06status\x12\x36\n\x0c\x63ontent_hash\x18\x06 \x01(\x0b\x32\x13.sdx.v1.ContentHashR\x0b\x63ontentHash\x12.\n\x0bstorage_uri\x18\x07 \x01(\x0b\x32\r.sdx.v1.S3URIR\nstorageUri\x12\x39\n\rsignature_ref\x18\x08 \x01(\x0b\x32\x14.sdx.v1.SignatureRefR\x0csignatureRef\x12<\n\x0eprovenance_ref\x18\t \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\rprovenanceRef\x12*\n\x08sbom_ref\x18\n \x01(\x0b\x32\x0f.sdx.v1.SBOMRefR\x07sbomRef\x12\x1d\n\nsize_bytes\x18\x0b \x01(\x04R\tsizeBytes\x12\x39\n\ncreated_at\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.TimestampR\tcreatedAt\x12\x37\n\tsigned_at\x18\r \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x08signedAt\x12=\n\x0cpublished_at\x18\x0e \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bpublishedAt\"5\n\x12GetArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\x92\x02\n\x14ListArtifactsRequest\x12\x19\n\x08\x62uild_id\x18\x01 \x01(\tR\x07\x62uildId\x12\x35\n\x0btype_filter\x18\x02 \x01(\x0e\x32\x14.sdx.v1.ArtifactTypeR\ntypeFilter\x12;\n\rstatus_filter\x18\x03 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\x0cstatusFilter\x12\x30\n\ndate_range\x18\x04 \x01(\x0b\x32\x11.sdx.v1.DateRangeR\tdateRange\x12\x39\n\npagination\x18\x05 \x01(\x0b\x32\x19.sdx.v1.PaginationRequestR\npagination\"\x83\x01\n\x15ListArtifactsResponse\x12.\n\tartifacts\x18\x01 \x03(\x0b\x32\x10.sdx.v1.ArtifactR\tartifacts\x12:\n\npagination\x18\x02 \x01(\x0b\x32\x1a.sdx.v1.PaginationResponseR\npagination\"@\n\x1dGetArtifactDownloadURLRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\xa9\x01\n\x1eGetArtifactDownloadURLResponse\x12!\n\x0c\x64ownload_url\x18\x01 \x01(\tR\x0b\x64ownloadUrl\x12,\n\x12\x65xpires_in_seconds\x18\x02 \x01(\rR\x10\x65xpiresInSeconds\x12\x36\n\x0c\x63ontent_hash\x18\x03 \x01(\x0b\x32\x13.sdx.v1.ContentHashR\x0b\x63ontentHash\"6\n\x13SignArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\x8f\x01\n\x14SignArtifactResponse\x12\x39\n\rsignature_ref\x18\x01 \x01(\x0b\x32\x14.sdx.v1.SignatureRefR\x0csignatureRef\x12<\n\x0eprovenance_ref\x18\x02 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\rprovenanceRef\"\\\n\x16PublishArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12!\n\x0cregistry_uri\x18\x02 \x01(\tR\x0bregistryUri\"}\n\x17PublishArtifactResponse\x12#\n\rpublished_uri\x18\x01 \x01(\tR\x0cpublishedUri\x12=\n\x0cpublished_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\x0bpublishedAt\"8\n\x15VerifyArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\"\xee\x01\n\x16VerifyArtifactResponse\x12,\n\x12\x63ontent_hash_valid\x18\x01 \x01(\x08R\x10\x63ontentHashValid\x12\'\n\x0fsignature_valid\x18\x02 \x01(\x08R\x0esignatureValid\x12)\n\x10provenance_valid\x18\x03 \x01(\x08R\x0fprovenanceValid\x12!\n\x0csbom_present\x18\x04 \x01(\x08R\x0bsbomPresent\x12/\n\x13verification_errors\x18\x05 \x03(\tR\x12verificationErrors\"P\n\x15RevokeArtifactRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x16\n\x06reason\x18\x02 \x01(\tR\x06reason\"\x8a\x01\n\x16RevokeArtifactResponse\x12\x35\n\nnew_status\x18\x01 \x01(\x0e\x32\x16.sdx.v1.ArtifactStatusR\tnewStatus\x12\x39\n\nrevoked_at\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.TimestampR\trevokedAt\"q\n\x17\x41ttachProvenanceRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x35\n\nprovenance\x18\x02 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\nprovenance\"6\n\x18\x41ttachProvenanceResponse\x12\x1a\n\x08\x61ttached\x18\x01 \x01(\x08R\x08\x61ttached\"W\n\x19GenerateProvenanceRequest\x12\x1f\n\x0b\x61rtifact_id\x18\x01 \x01(\tR\nartifactId\x12\x19\n\x08\x62uild_id\x18\x02 \x01(\tR\x07\x62uildId\"S\n\x1aGenerateProvenanceResponse\x12\x35\n\nprovenance\x18\x01 \x01(\x0b\x32\x15.sdx.v1.ProvenanceRefR\nprovenance*\xc4\x01\n\x0e\x41rtifactStatus\x12\x1f\n\x1b\x41RTIFACT_STATUS_UNSPECIFIED\x10\x00\x12\x1b\n\x17\x41RTIFACT_STATUS_CREATED\x10\x01\x12\x1a\n\x16\x41RTIFACT_STATUS_SIGNED\x10\x02\x12\x1d\n\x19\x41RTIFACT_STATUS_PUBLISHED\x10\x03\x12\x1c\n\x18\x41RTIFACT_STATUS_DEPLOYED\x10\x04\x12\x1b\n\x17\x41RTIFACT_STATUS_REVOKED\x10\x05\x32\xb4\t\n\x0f\x41rtifactService\x12\x64\n\x0bGetArtifact\x12\x1a.sdx.v1.GetArtifactRequest\x1a\x10.sdx.v1.Artifact\"\'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/artifacts/{artifact_id}\x12g\n\rListArtifacts\x12\x1c.sdx.v1.ListArtifactsRequest\x1a\x1d.sdx.v1.ListArtifactsResponse\"\x19\x82\xd3\xe4\x93\x02\x13\x12\x11/api/v1/artifacts\x12\x99\x01\n\x16GetArtifactDownloadURL\x12%.sdx.v1.GetArtifactDownloadURLRequest\x1a&.sdx.v1.GetArtifactDownloadURLResponse\"0\x82\xd3\xe4\x93\x02*\x12(/api/v1/artifacts/{artifact_id}/download\x12z\n\x0cSignArtifact\x12\x1b.sdx.v1.SignArtifactRequest\x1a\x1c.sdx.v1.SignArtifactResponse\"/\x82\xd3\xe4\x93\x02)\"$/api/v1/artifacts/{artifact_id}/sign:\x01*\x12\x86\x01\n\x0fPublishArtifact\x12\x1e.sdx.v1.PublishArtifactRequest\x1a\x1f.sdx.v1.PublishArtifactResponse\"2\x82\xd3\xe4\x93\x02,\"\'/api/v1/artifacts/{artifact_id}/publish:\x01*\x12\x7f\n\x0eVerifyArtifact\x12\x1d.sdx.v1.VerifyArtifactRequest\x1a\x1e.sdx.v1.VerifyArtifactResponse\".\x82\xd3\xe4\x93\x02(\"&/api/v1/artifacts/{artifact_id}/verify\x12\x82\x01\n\x0eRevokeArtifact\x12\x1d.sdx.v1.RevokeArtifactRequest\x1a\x1e.sdx.v1.RevokeArtifactResponse\"1\x82\xd3\xe4\x93\x02+\"&/api/v1/artifacts/{artifact_id}/revoke:\x01*\x12\x8c\x01\n\x10\x41ttachProvenance\x12\x1f.sdx.v1.AttachProvenanceRequest\x1a .sdx.v1.AttachProvenanceResponse\"5\x82\xd3\xe4\x93\x02/\"*/api/v1/artifacts/{artifact_id}/provenance:\x01*\x12\x9b\x01\n\x12GenerateProvenance\x12!.sdx.v1.GenerateProvenanceRequest\x1a\".sdx.v1.GenerateProvenanceResponse\">\x82\xd3\xe4\x93\x02\x38\"3/api/v1/artifacts/{artifact_id}/provenance/generate:\x01*B!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -34,44 +35,62 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'sdx.v1.artifact_pb2', _glob
 if not _descriptor._USE_C_DESCRIPTORS:
   _globals['DESCRIPTOR']._loaded_options = None
   _globals['DESCRIPTOR']._serialized_options = b'Z\037neuroforge-sdx/api/sdx/v1;sdxv1'
-  _globals['_ARTIFACTSTATUS']._serialized_start=2736
-  _globals['_ARTIFACTSTATUS']._serialized_end=2932
-  _globals['_ARTIFACT']._serialized_start=88
-  _globals['_ARTIFACT']._serialized_end=739
-  _globals['_GETARTIFACTREQUEST']._serialized_start=741
-  _globals['_GETARTIFACTREQUEST']._serialized_end=794
-  _globals['_LISTARTIFACTSREQUEST']._serialized_start=797
-  _globals['_LISTARTIFACTSREQUEST']._serialized_end=1071
-  _globals['_LISTARTIFACTSRESPONSE']._serialized_start=1074
-  _globals['_LISTARTIFACTSRESPONSE']._serialized_end=1205
-  _globals['_GETARTIFACTDOWNLOADURLREQUEST']._serialized_start=1207
-  _globals['_GETARTIFACTDOWNLOADURLREQUEST']._serialized_end=1271
-  _globals['_GETARTIFACTDOWNLOADURLRESPONSE']._serialized_start=1274
-  _globals['_GETARTIFACTDOWNLOADURLRESPONSE']._serialized_end=1443
-  _globals['_SIGNARTIFACTREQUEST']._serialized_start=1445
-  _globals['_SIGNARTIFACTREQUEST']._serialized_end=1499
-  _globals['_SIGNARTIFACTRESPONSE']._serialized_start=1502
-  _globals['_SIGNARTIFACTRESPONSE']._serialized_end=1645
-  _globals['_PUBLISHARTIFACTREQUEST']._serialized_start=1647
-  _globals['_PUBLISHARTIFACTREQUEST']._serialized_end=1739
-  _globals['_PUBLISHARTIFACTRESPONSE']._serialized_start=1741
-  _globals['_PUBLISHARTIFACTRESPONSE']._serialized_end=1866
-  _globals['_VERIFYARTIFACTREQUEST']._serialized_start=1868
-  _globals['_VERIFYARTIFACTREQUEST']._serialized_end=1924
-  _globals['_VERIFYARTIFACTRESPONSE']._serialized_start=1927
-  _globals['_VERIFYARTIFACTRESPONSE']._serialized_end=2165
-  _globals['_REVOKEARTIFACTREQUEST']._serialized_start=2167
-  _globals['_REVOKEARTIFACTREQUEST']._serialized_end=2247
-  _globals['_REVOKEARTIFACTRESPONSE']._serialized_start=2250
-  _globals['_REVOKEARTIFACTRESPONSE']._serialized_end=2388
-  _globals['_ATTACHPROVENANCEREQUEST']._serialized_start=2390
-  _globals['_ATTACHPROVENANCEREQUEST']._serialized_end=2503
-  _globals['_ATTACHPROVENANCERESPONSE']._serialized_start=2505
-  _globals['_ATTACHPROVENANCERESPONSE']._serialized_end=2559
-  _globals['_GENERATEPROVENANCEREQUEST']._serialized_start=2561
-  _globals['_GENERATEPROVENANCEREQUEST']._serialized_end=2648
-  _globals['_GENERATEPROVENANCERESPONSE']._serialized_start=2650
-  _globals['_GENERATEPROVENANCERESPONSE']._serialized_end=2733
-  _globals['_ARTIFACTSERVICE']._serialized_start=2935
-  _globals['_ARTIFACTSERVICE']._serialized_end=3697
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GetArtifact']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GetArtifact']._serialized_options = b'\202\323\344\223\002!\022\037/api/v1/artifacts/{artifact_id}'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['ListArtifacts']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['ListArtifacts']._serialized_options = b'\202\323\344\223\002\023\022\021/api/v1/artifacts'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GetArtifactDownloadURL']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GetArtifactDownloadURL']._serialized_options = b'\202\323\344\223\002*\022(/api/v1/artifacts/{artifact_id}/download'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['SignArtifact']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['SignArtifact']._serialized_options = b'\202\323\344\223\002)\"$/api/v1/artifacts/{artifact_id}/sign:\001*'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['PublishArtifact']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['PublishArtifact']._serialized_options = b'\202\323\344\223\002,\"\'/api/v1/artifacts/{artifact_id}/publish:\001*'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['VerifyArtifact']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['VerifyArtifact']._serialized_options = b'\202\323\344\223\002(\"&/api/v1/artifacts/{artifact_id}/verify'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['RevokeArtifact']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['RevokeArtifact']._serialized_options = b'\202\323\344\223\002+\"&/api/v1/artifacts/{artifact_id}/revoke:\001*'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['AttachProvenance']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['AttachProvenance']._serialized_options = b'\202\323\344\223\002/\"*/api/v1/artifacts/{artifact_id}/provenance:\001*'
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GenerateProvenance']._loaded_options = None
+  _globals['_ARTIFACTSERVICE'].methods_by_name['GenerateProvenance']._serialized_options = b'\202\323\344\223\0028\"3/api/v1/artifacts/{artifact_id}/provenance/generate:\001*'
+  _globals['_ARTIFACTSTATUS']._serialized_start=2766
+  _globals['_ARTIFACTSTATUS']._serialized_end=2962
+  _globals['_ARTIFACT']._serialized_start=118
+  _globals['_ARTIFACT']._serialized_end=769
+  _globals['_GETARTIFACTREQUEST']._serialized_start=771
+  _globals['_GETARTIFACTREQUEST']._serialized_end=824
+  _globals['_LISTARTIFACTSREQUEST']._serialized_start=827
+  _globals['_LISTARTIFACTSREQUEST']._serialized_end=1101
+  _globals['_LISTARTIFACTSRESPONSE']._serialized_start=1104
+  _globals['_LISTARTIFACTSRESPONSE']._serialized_end=1235
+  _globals['_GETARTIFACTDOWNLOADURLREQUEST']._serialized_start=1237
+  _globals['_GETARTIFACTDOWNLOADURLREQUEST']._serialized_end=1301
+  _globals['_GETARTIFACTDOWNLOADURLRESPONSE']._serialized_start=1304
+  _globals['_GETARTIFACTDOWNLOADURLRESPONSE']._serialized_end=1473
+  _globals['_SIGNARTIFACTREQUEST']._serialized_start=1475
+  _globals['_SIGNARTIFACTREQUEST']._serialized_end=1529
+  _globals['_SIGNARTIFACTRESPONSE']._serialized_start=1532
+  _globals['_SIGNARTIFACTRESPONSE']._serialized_end=1675
+  _globals['_PUBLISHARTIFACTREQUEST']._serialized_start=1677
+  _globals['_PUBLISHARTIFACTREQUEST']._serialized_end=1769
+  _globals['_PUBLISHARTIFACTRESPONSE']._serialized_start=1771
+  _globals['_PUBLISHARTIFACTRESPONSE']._serialized_end=1896
+  _globals['_VERIFYARTIFACTREQUEST']._serialized_start=1898
+  _globals['_VERIFYARTIFACTREQUEST']._serialized_end=1954
+  _globals['_VERIFYARTIFACTRESPONSE']._serialized_start=1957
+  _globals['_VERIFYARTIFACTRESPONSE']._serialized_end=2195
+  _globals['_REVOKEARTIFACTREQUEST']._serialized_start=2197
+  _globals['_REVOKEARTIFACTREQUEST']._serialized_end=2277
+  _globals['_REVOKEARTIFACTRESPONSE']._serialized_start=2280
+  _globals['_REVOKEARTIFACTRESPONSE']._serialized_end=2418
+  _globals['_ATTACHPROVENANCEREQUEST']._serialized_start=2420
+  _globals['_ATTACHPROVENANCEREQUEST']._serialized_end=2533
+  _globals['_ATTACHPROVENANCERESPONSE']._serialized_start=2535
+  _globals['_ATTACHPROVENANCERESPONSE']._serialized_end=2589
+  _globals['_GENERATEPROVENANCEREQUEST']._serialized_start=2591
+  _globals['_GENERATEPROVENANCEREQUEST']._serialized_end=2678
+  _globals['_GENERATEPROVENANCERESPONSE']._serialized_start=2680
+  _globals['_GENERATEPROVENANCERESPONSE']._serialized_end=2763
+  _globals['_ARTIFACTSERVICE']._serialized_start=2965
+  _globals['_ARTIFACTSERVICE']._serialized_end=4169
 # @@protoc_insertion_point(module_scope)

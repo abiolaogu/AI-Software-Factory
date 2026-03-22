@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1182,7 +1183,7 @@ var File_sdx_v1_build_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_build_proto_rawDesc = "" +
 	"\n" +
-	"\x12sdx/v1/build.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\xe4\x06\n" +
+	"\x12sdx/v1/build.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xe4\x06\n" +
 	"\x05Build\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\tR\x02id\x12 \n" +
 	"\fwork_item_id\x18\x02 \x01(\tR\n" +
@@ -1298,14 +1299,14 @@ const file_sdx_v1_build_proto_rawDesc = "" +
 	"\x14STAGE_STATUS_RUNNING\x10\x02\x12\x1a\n" +
 	"\x16STAGE_STATUS_COMPLETED\x10\x03\x12\x17\n" +
 	"\x13STAGE_STATUS_FAILED\x10\x04\x12\x18\n" +
-	"\x14STAGE_STATUS_SKIPPED\x10\x052\x80\x03\n" +
-	"\fBuildService\x122\n" +
-	"\bGetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\x12C\n" +
+	"\x14STAGE_STATUS_SKIPPED\x10\x052\xbc\x04\n" +
+	"\fBuildService\x12U\n" +
+	"\bGetBuild\x12\x17.sdx.v1.GetBuildRequest\x1a\r.sdx.v1.Build\"!\x82\xd3\xe4\x93\x02\x1b\x12\x19/api/v1/builds/{build_id}\x12[\n" +
 	"\n" +
-	"ListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\x12^\n" +
-	"\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\x12O\n" +
-	"\x0eGetBuildStages\x12\x1d.sdx.v1.GetBuildStagesRequest\x1a\x1e.sdx.v1.GetBuildStagesResponse\x12F\n" +
-	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"ListBuilds\x12\x19.sdx.v1.ListBuildsRequest\x1a\x1a.sdx.v1.ListBuildsResponse\"\x16\x82\xd3\xe4\x93\x02\x10\x12\x0e/api/v1/builds\x12\x87\x01\n" +
+	"\x13GetBuildGateResults\x12\".sdx.v1.GetBuildGateResultsRequest\x1a#.sdx.v1.GetBuildGateResultsResponse\"'\x82\xd3\xe4\x93\x02!\x12\x1f/api/v1/builds/{build_id}/gates\x12y\n" +
+	"\x0eGetBuildStages\x12\x1d.sdx.v1.GetBuildStagesRequest\x1a\x1e.sdx.v1.GetBuildStagesResponse\"(\x82\xd3\xe4\x93\x02\"\x12 /api/v1/builds/{build_id}/stages\x12s\n" +
+	"\vCancelBuild\x12\x1a.sdx.v1.CancelBuildRequest\x1a\x1b.sdx.v1.CancelBuildResponse\"+\x82\xd3\xe4\x93\x02%:\x01*\" /api/v1/builds/{build_id}/cancelB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_build_proto_rawDescOnce sync.Once

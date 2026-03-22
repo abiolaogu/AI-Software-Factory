@@ -7,6 +7,7 @@
 package sdxv1
 
 import (
+	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -1303,7 +1304,7 @@ var File_sdx_v1_quality_proto protoreflect.FileDescriptor
 
 const file_sdx_v1_quality_proto_rawDesc = "" +
 	"\n" +
-	"\x14sdx/v1/quality.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x13sdx/v1/common.proto\"\xb6\x02\n" +
+	"\x14sdx/v1/quality.proto\x12\x06sdx.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x13sdx/v1/common.proto\"\xb6\x02\n" +
 	"\x0eGateDefinition\x12\x17\n" +
 	"\agate_id\x18\x01 \x01(\tR\x06gateId\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x1f\n" +
@@ -1414,14 +1415,14 @@ const file_sdx_v1_quality_proto_rawDesc = "" +
 	"\tavg_value\x18\x03 \x01(\x01R\bavgValue\x12\x1b\n" +
 	"\tmin_value\x18\x04 \x01(\x01R\bminValue\x12\x1b\n" +
 	"\tmax_value\x18\x05 \x01(\x01R\bmaxValue\x12)\n" +
-	"\x10evaluation_count\x18\x06 \x01(\x04R\x0fevaluationCount2\x8f\x04\n" +
-	"\x0eQualityService\x12I\n" +
-	"\fEvaluateGate\x12\x1b.sdx.v1.EvaluateGateRequest\x1a\x1c.sdx.v1.EvaluateGateResponse\x12[\n" +
-	"\x12GetGateDefinitions\x12!.sdx.v1.GetGateDefinitionsRequest\x1a\".sdx.v1.GetGateDefinitionsResponse\x12J\n" +
-	"\x10GetQualityReport\x12\x1f.sdx.v1.GetQualityReportRequest\x1a\x15.sdx.v1.QualityReport\x12[\n" +
-	"\x12ListQualityReports\x12!.sdx.v1.ListQualityReportsRequest\x1a\".sdx.v1.ListQualityReportsResponse\x12[\n" +
-	"\x12TriggerRemediation\x12!.sdx.v1.TriggerRemediationRequest\x1a\".sdx.v1.TriggerRemediationResponse\x12O\n" +
-	"\x0eGetGateMetrics\x12\x1d.sdx.v1.GetGateMetricsRequest\x1a\x1e.sdx.v1.GetGateMetricsResponseB!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
+	"\x10evaluation_count\x18\x06 \x01(\x04R\x0fevaluationCount2\xfa\x05\n" +
+	"\x0eQualityService\x12t\n" +
+	"\fEvaluateGate\x12\x1b.sdx.v1.EvaluateGateRequest\x1a\x1c.sdx.v1.EvaluateGateResponse\")\x82\xd3\xe4\x93\x02#:\x01*\"\x1e/api/v1/quality/gates/evaluate\x12z\n" +
+	"\x12GetGateDefinitions\x12!.sdx.v1.GetGateDefinitionsRequest\x1a\".sdx.v1.GetGateDefinitionsResponse\"\x1d\x82\xd3\xe4\x93\x02\x17\x12\x15/api/v1/quality/gates\x12v\n" +
+	"\x10GetQualityReport\x12\x1f.sdx.v1.GetQualityReportRequest\x1a\x15.sdx.v1.QualityReport\"*\x82\xd3\xe4\x93\x02$\x12\"/api/v1/quality/reports/{build_id}\x12|\n" +
+	"\x12ListQualityReports\x12!.sdx.v1.ListQualityReportsRequest\x1a\".sdx.v1.ListQualityReportsResponse\"\x1f\x82\xd3\xe4\x93\x02\x19\x12\x17/api/v1/quality/reports\x12\x83\x01\n" +
+	"\x12TriggerRemediation\x12!.sdx.v1.TriggerRemediationRequest\x1a\".sdx.v1.TriggerRemediationResponse\"&\x82\xd3\xe4\x93\x02 :\x01*\"\x1b/api/v1/quality/remediation\x12z\n" +
+	"\x0eGetGateMetrics\x12\x1d.sdx.v1.GetGateMetricsRequest\x1a\x1e.sdx.v1.GetGateMetricsResponse\")\x82\xd3\xe4\x93\x02#\x12!/api/v1/quality/metrics/{gate_id}B!Z\x1fneuroforge-sdx/api/sdx/v1;sdxv1b\x06proto3"
 
 var (
 	file_sdx_v1_quality_proto_rawDescOnce sync.Once
