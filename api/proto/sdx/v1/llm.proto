@@ -6,23 +6,46 @@ option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service LLMService {
   // Execute an LLM completion with automatic routing and fallback.
-  rpc Complete(CompleteRequest) returns (CompleteResponse);
+  rpc Complete(CompleteRequest) returns (CompleteResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/llm/completions"
+      body: "*"
+    };
+  }
 
   // Generate embeddings.
-  rpc Embed(EmbedRequest) returns (EmbedResponse);
+  rpc Embed(EmbedRequest) returns (EmbedResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/llm/embeddings"
+      body: "*"
+    };
+  }
 
   // Get model availability and circuit breaker status.
-  rpc GetModelStatus(GetModelStatusRequest) returns (GetModelStatusResponse);
+  rpc GetModelStatus(GetModelStatusRequest) returns (GetModelStatusResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/llm/status"
+    };
+  }
 
   // Get cost report per tenant/build/model.
-  rpc GetCostReport(GetCostReportRequest) returns (CostReport);
+  rpc GetCostReport(GetCostReportRequest) returns (CostReport) {
+    option (google.api.http) = {
+      get: "/api/v1/llm/costs"
+    };
+  }
 
   // List available models and their routing config.
-  rpc ListModels(ListModelsRequest) returns (ListModelsResponse);
+  rpc ListModels(ListModelsRequest) returns (ListModelsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/llm/models"
+    };
+  }
 }
 
 enum TaskClass {

@@ -5,10 +5,60 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
 import "sdx/v1/common.proto";
 import "sdx/v1/workitem.proto";
 import "sdx/v1/build.proto";
 import "sdx/v1/artifact.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "NeuroForge SDX Gateway API";
+    version: "0.1.0";
+    description: "Unified REST/gRPC API for the NeuroForge AI Software Factory. Provides endpoints for work item submission, build orchestration, artifact management, quality gates, compliance certification, and deployment.";
+    contact: {
+      name: "StratoGroup Engineering";
+      url: "https://docs.sdx.stratogroup.io";
+      email: "engineering@stratogroup.io";
+    };
+    license: {
+      name: "Proprietary";
+      url: "https://stratogroup.io/license";
+    };
+  };
+  host: "api.sdx.stratogroup.io";
+  base_path: "/api/v1";
+  schemes: HTTPS;
+  consumes: "application/json";
+  produces: "application/json";
+  security_definitions: {
+    security: {
+      key: "BearerAuth";
+      value: {
+        type: TYPE_API_KEY;
+        in: IN_HEADER;
+        name: "Authorization";
+        description: "Bearer JWT token from Authentik OIDC. Format: 'Bearer {token}'";
+      };
+    };
+    security: {
+      key: "ApiKeyAuth";
+      value: {
+        type: TYPE_API_KEY;
+        in: IN_HEADER;
+        name: "X-API-Key";
+        description: "API key mapped to a tenant.";
+      };
+    };
+  };
+  security: {
+    security_requirement: {
+      key: "BearerAuth";
+      value: {};
+    };
+  };
+};
 
 // ─────────────────────────────────────────────
 // SDX Gateway Service — Public-facing unified API
@@ -17,32 +67,109 @@ import "sdx/v1/artifact.proto";
 
 service SDXGatewayService {
   // ── WorkItems ──
-  rpc SubmitWorkItem(SubmitWorkItemRequest) returns (SubmitWorkItemResponse);
-  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem);
-  rpc ListWorkItems(ListWorkItemsRequest) returns (ListWorkItemsResponse);
-  rpc ResolveAmbiguity(ResolveAmbiguityRequest) returns (ResolveAmbiguityResponse);
-  rpc ApproveManifest(ApproveManifestRequest) returns (ApproveManifestResponse);
+  rpc SubmitWorkItem(SubmitWorkItemRequest) returns (SubmitWorkItemResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/work-items"
+      body: "*"
+    };
+  }
+  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem) {
+    option (google.api.http) = {
+      get: "/api/v1/work-items/{work_item_id}"
+    };
+  }
+  rpc ListWorkItems(ListWorkItemsRequest) returns (ListWorkItemsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/work-items"
+    };
+  }
+  rpc ResolveAmbiguity(ResolveAmbiguityRequest) returns (ResolveAmbiguityResponse) {
+    option (google.api.http) = {
+      patch: "/api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}"
+      body: "*"
+    };
+  }
+  rpc ApproveManifest(ApproveManifestRequest) returns (ApproveManifestResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/work-items/{work_item_id}/approve"
+      body: "*"
+    };
+  }
 
   // ── Builds ──
-  rpc GetBuild(GetBuildRequest) returns (Build);
-  rpc ListBuilds(ListBuildsRequest) returns (ListBuildsResponse);
-  rpc GetBuildGateResults(GetBuildGateResultsRequest) returns (GetBuildGateResultsResponse);
-  rpc CancelBuild(CancelBuildRequest) returns (CancelBuildResponse);
+  rpc GetBuild(GetBuildRequest) returns (Build) {
+    option (google.api.http) = {
+      get: "/api/v1/builds/{build_id}"
+    };
+  }
+  rpc ListBuilds(ListBuildsRequest) returns (ListBuildsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/builds"
+    };
+  }
+  rpc GetBuildGateResults(GetBuildGateResultsRequest) returns (GetBuildGateResultsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/builds/{build_id}/gates"
+    };
+  }
+  rpc CancelBuild(CancelBuildRequest) returns (CancelBuildResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/builds/{build_id}/cancel"
+      body: "*"
+    };
+  }
 
   // ── Artifacts ──
-  rpc GetArtifact(GetArtifactRequest) returns (Artifact);
-  rpc ListArtifacts(ListArtifactsRequest) returns (ListArtifactsResponse);
-  rpc GetArtifactDownloadURL(GetArtifactDownloadURLRequest) returns (GetArtifactDownloadURLResponse);
-  rpc VerifyArtifact(VerifyArtifactRequest) returns (VerifyArtifactResponse);
+  rpc GetArtifact(GetArtifactRequest) returns (Artifact) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts/{artifact_id}"
+    };
+  }
+  rpc ListArtifacts(ListArtifactsRequest) returns (ListArtifactsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts"
+    };
+  }
+  rpc GetArtifactDownloadURL(GetArtifactDownloadURLRequest) returns (GetArtifactDownloadURLResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts/{artifact_id}/download"
+    };
+  }
+  rpc VerifyArtifact(VerifyArtifactRequest) returns (VerifyArtifactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/verify"
+    };
+  }
 
   // ── Webhooks ──
-  rpc CreateWebhook(CreateWebhookRequest) returns (WebhookConfig);
-  rpc ListWebhooks(ListWebhooksRequest) returns (ListWebhooksResponse);
-  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
-  rpc TestWebhook(TestWebhookRequest) returns (TestWebhookResponse);
+  rpc CreateWebhook(CreateWebhookRequest) returns (WebhookConfig) {
+    option (google.api.http) = {
+      post: "/api/v1/webhooks"
+      body: "*"
+    };
+  }
+  rpc ListWebhooks(ListWebhooksRequest) returns (ListWebhooksResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/webhooks"
+    };
+  }
+  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/webhooks/{webhook_id}"
+    };
+  }
+  rpc TestWebhook(TestWebhookRequest) returns (TestWebhookResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/webhooks/{webhook_id}/test"
+    };
+  }
 
   // ── Health ──
-  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse);
+  rpc HealthCheck(HealthCheckRequest) returns (HealthCheckResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/health"
+    };
+  }
 }
 
 // ─────────────────────────────────────────────

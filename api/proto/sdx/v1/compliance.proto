@@ -5,15 +5,42 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service ComplianceService {
-  rpc MapControls(MapControlsRequest) returns (MapControlsResponse);
-  rpc GenerateEvidence(GenerateEvidenceRequest) returns (GenerateEvidenceResponse);
-  rpc GetComplianceBadge(GetComplianceBadgeRequest) returns (ComplianceBadge);
-  rpc GetComplianceReport(GetComplianceReportRequest) returns (ComplianceReport);
-  rpc ListComplianceReports(ListComplianceReportsRequest) returns (ListComplianceReportsResponse);
-  rpc GetControlCatalog(GetControlCatalogRequest) returns (GetControlCatalogResponse);
+  rpc MapControls(MapControlsRequest) returns (MapControlsResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/compliance/map"
+      body: "*"
+    };
+  }
+  rpc GenerateEvidence(GenerateEvidenceRequest) returns (GenerateEvidenceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/compliance/evidence"
+      body: "*"
+    };
+  }
+  rpc GetComplianceBadge(GetComplianceBadgeRequest) returns (ComplianceBadge) {
+    option (google.api.http) = {
+      get: "/api/v1/compliance/badges/{build_id}"
+    };
+  }
+  rpc GetComplianceReport(GetComplianceReportRequest) returns (ComplianceReport) {
+    option (google.api.http) = {
+      get: "/api/v1/compliance/reports/{build_id}"
+    };
+  }
+  rpc ListComplianceReports(ListComplianceReportsRequest) returns (ListComplianceReportsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/compliance/reports"
+    };
+  }
+  rpc GetControlCatalog(GetControlCatalogRequest) returns (GetControlCatalogResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/compliance/controls"
+    };
+  }
 }
 
 message ComplianceReport {

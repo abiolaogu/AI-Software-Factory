@@ -5,6 +5,7 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 // ─────────────────────────────────────────────
@@ -13,31 +14,72 @@ import "sdx/v1/common.proto";
 
 service ArtifactService {
   // Get artifact metadata and download URL.
-  rpc GetArtifact(GetArtifactRequest) returns (Artifact);
+  rpc GetArtifact(GetArtifactRequest) returns (Artifact) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts/{artifact_id}"
+    };
+  }
 
   // List artifacts for a build or tenant.
-  rpc ListArtifacts(ListArtifactsRequest) returns (ListArtifactsResponse);
+  rpc ListArtifacts(ListArtifactsRequest) returns (ListArtifactsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts"
+    };
+  }
 
   // Get a pre-signed download URL for an artifact.
-  rpc GetArtifactDownloadURL(GetArtifactDownloadURLRequest) returns (GetArtifactDownloadURLResponse);
+  rpc GetArtifactDownloadURL(GetArtifactDownloadURLRequest) returns (GetArtifactDownloadURLResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/artifacts/{artifact_id}/download"
+    };
+  }
 
   // Sign an artifact (internal; called by sdx-workflow-engine).
-  rpc SignArtifact(SignArtifactRequest) returns (SignArtifactResponse);
+  rpc SignArtifact(SignArtifactRequest) returns (SignArtifactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/sign"
+      body: "*"
+    };
+  }
 
   // Publish a signed artifact to the registry.
-  rpc PublishArtifact(PublishArtifactRequest) returns (PublishArtifactResponse);
+  rpc PublishArtifact(PublishArtifactRequest) returns (PublishArtifactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/publish"
+      body: "*"
+    };
+  }
 
   // Verify artifact integrity and provenance.
-  rpc VerifyArtifact(VerifyArtifactRequest) returns (VerifyArtifactResponse);
+  rpc VerifyArtifact(VerifyArtifactRequest) returns (VerifyArtifactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/verify"
+    };
+  }
 
   // Revoke an artifact (security finding or policy violation).
-  rpc RevokeArtifact(RevokeArtifactRequest) returns (RevokeArtifactResponse);
+  rpc RevokeArtifact(RevokeArtifactRequest) returns (RevokeArtifactResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/revoke"
+      body: "*"
+    };
+  }
 
   // Attach provenance attestation to an artifact.
-  rpc AttachProvenance(AttachProvenanceRequest) returns (AttachProvenanceResponse);
+  rpc AttachProvenance(AttachProvenanceRequest) returns (AttachProvenanceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/provenance"
+      body: "*"
+    };
+  }
 
   // Generate SLSA provenance for an artifact.
-  rpc GenerateProvenance(GenerateProvenanceRequest) returns (GenerateProvenanceResponse);
+  rpc GenerateProvenance(GenerateProvenanceRequest) returns (GenerateProvenanceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/artifacts/{artifact_id}/provenance/generate"
+      body: "*"
+    };
+  }
 }
 
 // ─────────────────────────────────────────────

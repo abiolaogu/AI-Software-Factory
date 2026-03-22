@@ -2,9 +2,21 @@ extends:
   - spectral:oas
 
 rules:
+  # ── Generated proto specs: relax certain rules ──
   no-$ref-siblings: off
   oas2-api-host: off
   oas2-api-schemes: off
-  info-contact: off
-  info-description: off
   oas2-unused-definition: off
+
+  # ── Enforce API quality ──
+  info-contact: warn
+  info-description: error
+  info-license: warn
+  operation-operationId: error
+  operation-description: warn
+  operation-tags: error
+  operation-tag-defined: error
+  operation-success-response: error
+  path-params: error
+  path-keys-no-trailing-slash: error
+  no-eval-in-markdown: error

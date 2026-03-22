@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Go
+/bin/
+/vendor/
+*.exe
+*.test
+*.out
+
+# Node
+node_modules/
+
+# Build artifacts (rebuild with `make proto`)
+# Note: gen/ is committed for Codex reproducibility.
+# After M1 CI is stable, move gen/ into .gitignore and regenerate in CI.
+
+# Temporary
+*.tmp
+*.log

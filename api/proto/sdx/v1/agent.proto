@@ -6,18 +6,60 @@ option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service AgentService {
-  rpc RegisterAgent(RegisterAgentRequest) returns (Agent);
-  rpc GetAgent(GetAgentRequest) returns (Agent);
-  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse);
-  rpc AssignAgent(AssignAgentRequest) returns (AssignAgentResponse);
-  rpc ReleaseAgent(ReleaseAgentRequest) returns (Agent);
-  rpc RecordHeartbeat(RecordHeartbeatRequest) returns (RecordHeartbeatResponse);
-  rpc GetAgentHealth(GetAgentHealthRequest) returns (AgentHealthReport);
-  rpc TerminateAgent(TerminateAgentRequest) returns (Agent);
-  rpc GetAgentMetrics(GetAgentMetricsRequest) returns (AgentMetrics);
+  rpc RegisterAgent(RegisterAgentRequest) returns (Agent) {
+    option (google.api.http) = {
+      post: "/api/v1/agents"
+      body: "*"
+    };
+  }
+  rpc GetAgent(GetAgentRequest) returns (Agent) {
+    option (google.api.http) = {
+      get: "/api/v1/agents/{agent_id}"
+    };
+  }
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/agents"
+    };
+  }
+  rpc AssignAgent(AssignAgentRequest) returns (AssignAgentResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/agents/{agent_id}/assign"
+      body: "*"
+    };
+  }
+  rpc ReleaseAgent(ReleaseAgentRequest) returns (Agent) {
+    option (google.api.http) = {
+      post: "/api/v1/agents/{agent_id}/release"
+      body: "*"
+    };
+  }
+  rpc RecordHeartbeat(RecordHeartbeatRequest) returns (RecordHeartbeatResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/agents/{agent_id}/heartbeat"
+      body: "*"
+    };
+  }
+  rpc GetAgentHealth(GetAgentHealthRequest) returns (AgentHealthReport) {
+    option (google.api.http) = {
+      get: "/api/v1/agents/{agent_id}/health"
+    };
+  }
+  rpc TerminateAgent(TerminateAgentRequest) returns (Agent) {
+    option (google.api.http) = {
+      post: "/api/v1/agents/{agent_id}/terminate"
+      body: "*"
+    };
+  }
+  rpc GetAgentMetrics(GetAgentMetricsRequest) returns (AgentMetrics) {
+    option (google.api.http) = {
+      get: "/api/v1/agents/{agent_id}/metrics"
+    };
+  }
 }
 
 enum AgentStatus {

@@ -1,0 +1,20 @@
+apiVersion: v2
+name: neuroforge-sdx
+description: NeuroForge SDX — AI Software Factory Platform
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+
+maintainers:
+  - name: StratoGroup Engineering
+    email: engineering@stratogroup.io
+
+dependencies:
+  - name: yugabytedb
+    version: "2.x"
+    repository: "https://charts.yugabyte.com"
+    condition: yugabytedb.enabled
+  - name: clickhouse
+    version: "0.x"
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: clickhouse.enabled

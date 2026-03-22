@@ -5,15 +5,42 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service QualityService {
-  rpc EvaluateGate(EvaluateGateRequest) returns (EvaluateGateResponse);
-  rpc GetGateDefinitions(GetGateDefinitionsRequest) returns (GetGateDefinitionsResponse);
-  rpc GetQualityReport(GetQualityReportRequest) returns (QualityReport);
-  rpc ListQualityReports(ListQualityReportsRequest) returns (ListQualityReportsResponse);
-  rpc TriggerRemediation(TriggerRemediationRequest) returns (TriggerRemediationResponse);
-  rpc GetGateMetrics(GetGateMetricsRequest) returns (GetGateMetricsResponse);
+  rpc EvaluateGate(EvaluateGateRequest) returns (EvaluateGateResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/quality/gates/evaluate"
+      body: "*"
+    };
+  }
+  rpc GetGateDefinitions(GetGateDefinitionsRequest) returns (GetGateDefinitionsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/quality/gates"
+    };
+  }
+  rpc GetQualityReport(GetQualityReportRequest) returns (QualityReport) {
+    option (google.api.http) = {
+      get: "/api/v1/quality/reports/{build_id}"
+    };
+  }
+  rpc ListQualityReports(ListQualityReportsRequest) returns (ListQualityReportsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/quality/reports"
+    };
+  }
+  rpc TriggerRemediation(TriggerRemediationRequest) returns (TriggerRemediationResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/quality/remediation"
+      body: "*"
+    };
+  }
+  rpc GetGateMetrics(GetGateMetricsRequest) returns (GetGateMetricsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/quality/metrics/{gate_id}"
+    };
+  }
 }
 
 message GateDefinition {

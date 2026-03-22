@@ -5,13 +5,32 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service AuditService {
-  rpc QueryAuditLog(QueryAuditLogRequest) returns (QueryAuditLogResponse);
-  rpc VerifyIntegrity(VerifyIntegrityRequest) returns (VerifyIntegrityResponse);
-  rpc ExportEvidence(ExportEvidenceRequest) returns (ExportEvidenceResponse);
-  rpc GetAuditStats(GetAuditStatsRequest) returns (AuditStats);
+  rpc QueryAuditLog(QueryAuditLogRequest) returns (QueryAuditLogResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/audit-log"
+    };
+  }
+  rpc VerifyIntegrity(VerifyIntegrityRequest) returns (VerifyIntegrityResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/audit-log/verify"
+      body: "*"
+    };
+  }
+  rpc ExportEvidence(ExportEvidenceRequest) returns (ExportEvidenceResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/audit-log/export"
+      body: "*"
+    };
+  }
+  rpc GetAuditStats(GetAuditStatsRequest) returns (AuditStats) {
+    option (google.api.http) = {
+      get: "/api/v1/audit-log/stats"
+    };
+  }
 }
 
 enum ActorType {

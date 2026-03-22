@@ -5,6 +5,7 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 // ─────────────────────────────────────────────
@@ -13,19 +14,40 @@ import "sdx/v1/common.proto";
 
 service BuildService {
   // Get a Build by ID.
-  rpc GetBuild(GetBuildRequest) returns (Build);
+  rpc GetBuild(GetBuildRequest) returns (Build) {
+    option (google.api.http) = {
+      get: "/api/v1/builds/{build_id}"
+    };
+  }
 
   // List Builds for the tenant with filters.
-  rpc ListBuilds(ListBuildsRequest) returns (ListBuildsResponse);
+  rpc ListBuilds(ListBuildsRequest) returns (ListBuildsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/builds"
+    };
+  }
 
   // Get detailed gate results for a build.
-  rpc GetBuildGateResults(GetBuildGateResultsRequest) returns (GetBuildGateResultsResponse);
+  rpc GetBuildGateResults(GetBuildGateResultsRequest) returns (GetBuildGateResultsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/builds/{build_id}/gates"
+    };
+  }
 
   // Get stage history for a build.
-  rpc GetBuildStages(GetBuildStagesRequest) returns (GetBuildStagesResponse);
+  rpc GetBuildStages(GetBuildStagesRequest) returns (GetBuildStagesResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/builds/{build_id}/stages"
+    };
+  }
 
   // Cancel a running build (triggers graceful shutdown).
-  rpc CancelBuild(CancelBuildRequest) returns (CancelBuildResponse);
+  rpc CancelBuild(CancelBuildRequest) returns (CancelBuildResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/builds/{build_id}/cancel"
+      body: "*"
+    };
+  }
 }
 
 // ─────────────────────────────────────────────

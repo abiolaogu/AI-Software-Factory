@@ -5,6 +5,7 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 // ─────────────────────────────────────────────
@@ -13,25 +14,56 @@ import "sdx/v1/common.proto";
 
 service IngestionService {
   // Submit a new WorkItem for parsing and processing.
-  rpc SubmitWorkItem(SubmitWorkItemRequest) returns (SubmitWorkItemResponse);
+  rpc SubmitWorkItem(SubmitWorkItemRequest) returns (SubmitWorkItemResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/work-items"
+      body: "*"
+    };
+  }
 
   // Get a WorkItem by ID.
-  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem);
+  rpc GetWorkItem(GetWorkItemRequest) returns (WorkItem) {
+    option (google.api.http) = {
+      get: "/api/v1/work-items/{work_item_id}"
+    };
+  }
 
   // List WorkItems for the tenant with filters.
-  rpc ListWorkItems(ListWorkItemsRequest) returns (ListWorkItemsResponse);
+  rpc ListWorkItems(ListWorkItemsRequest) returns (ListWorkItemsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/work-items"
+    };
+  }
 
   // Resolve an ambiguity detected during parsing.
-  rpc ResolveAmbiguity(ResolveAmbiguityRequest) returns (ResolveAmbiguityResponse);
+  rpc ResolveAmbiguity(ResolveAmbiguityRequest) returns (ResolveAmbiguityResponse) {
+    option (google.api.http) = {
+      patch: "/api/v1/work-items/{work_item_id}/ambiguities/{ambiguity_id}"
+      body: "*"
+    };
+  }
 
   // Approve the manifest after parsing and ambiguity resolution.
-  rpc ApproveManifest(ApproveManifestRequest) returns (ApproveManifestResponse);
+  rpc ApproveManifest(ApproveManifestRequest) returns (ApproveManifestResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/work-items/{work_item_id}/approve"
+      body: "*"
+    };
+  }
 
   // Restart a FAILED WorkItem back to DRAFT.
-  rpc RestartWorkItem(RestartWorkItemRequest) returns (WorkItem);
+  rpc RestartWorkItem(RestartWorkItemRequest) returns (WorkItem) {
+    option (google.api.http) = {
+      post: "/api/v1/work-items/{work_item_id}/restart"
+    };
+  }
 
   // Delete a WorkItem (soft delete; only DRAFT or FAILED).
-  rpc DeleteWorkItem(DeleteWorkItemRequest) returns (DeleteWorkItemResponse);
+  rpc DeleteWorkItem(DeleteWorkItemRequest) returns (DeleteWorkItemResponse) {
+    option (google.api.http) = {
+      delete: "/api/v1/work-items/{work_item_id}"
+    };
+  }
 }
 
 // ─────────────────────────────────────────────

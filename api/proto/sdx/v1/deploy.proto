@@ -5,14 +5,37 @@ package sdx.v1;
 option go_package = "neuroforge-sdx/api/sdx/v1;sdxv1";
 
 import "google/protobuf/timestamp.proto";
+import "google/api/annotations.proto";
 import "sdx/v1/common.proto";
 
 service DeploymentService {
-  rpc Deploy(DeployRequest) returns (DeployResponse);
-  rpc GetDeployment(GetDeploymentRequest) returns (Deployment);
-  rpc ListDeployments(ListDeploymentsRequest) returns (ListDeploymentsResponse);
-  rpc RollbackDeployment(RollbackDeploymentRequest) returns (Deployment);
-  rpc GetDeploymentLogs(GetDeploymentLogsRequest) returns (GetDeploymentLogsResponse);
+  rpc Deploy(DeployRequest) returns (DeployResponse) {
+    option (google.api.http) = {
+      post: "/api/v1/deployments"
+      body: "*"
+    };
+  }
+  rpc GetDeployment(GetDeploymentRequest) returns (Deployment) {
+    option (google.api.http) = {
+      get: "/api/v1/deployments/{deployment_id}"
+    };
+  }
+  rpc ListDeployments(ListDeploymentsRequest) returns (ListDeploymentsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/deployments"
+    };
+  }
+  rpc RollbackDeployment(RollbackDeploymentRequest) returns (Deployment) {
+    option (google.api.http) = {
+      post: "/api/v1/deployments/{deployment_id}/rollback"
+      body: "*"
+    };
+  }
+  rpc GetDeploymentLogs(GetDeploymentLogsRequest) returns (GetDeploymentLogsResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/deployments/{deployment_id}/logs"
+    };
+  }
 }
 
 enum DeploymentStatus {
