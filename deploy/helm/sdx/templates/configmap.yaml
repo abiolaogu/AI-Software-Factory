@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "sdx.fullname" . }}-config
+  labels:
+    {{- include "sdx.labels" . | nindent 4 }}
+data:
+  LOG_LEVEL: {{ .Values.gateway.env.LOG_LEVEL | default "info" | quote }}
+  LOG_FORMAT: {{ .Values.gateway.env.LOG_FORMAT | default "json" | quote }}
+  OTEL_EXPORTER_OTLP_ENDPOINT: {{ .Values.gateway.env.OTEL_EXPORTER_OTLP_ENDPOINT | default "" | quote }}
+  NATS_URL: {{ .Values.gateway.env.NATS_URL | default "" | quote }}
+  DRAGONFLY_URL: {{ .Values.gateway.env.DRAGONFLY_URL | default "" | quote }}
+  AUTH_ISSUER_URL: {{ .Values.auth.issuerUrl | quote }}
+  AUTH_AUDIENCE: {{ .Values.auth.audience | quote }}
+  DB_HOST: {{ .Values.database.host | quote }}
+  DB_PORT: {{ .Values.database.port | quote }}
+  DB_NAME: {{ .Values.database.name | quote }}
+  DB_SSL_MODE: {{ .Values.database.sslMode | quote }}

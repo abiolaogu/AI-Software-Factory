@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-03-22T06:14:22Z",
+  "spec_file": "../../api/openapi/sdx-gateway-v1.swagger.json",
+  "status": "PASS",
+  "total_endpoints": 83,
+  "valid_endpoints": 83,
+  "invalid_endpoints": 0,
+  "checks": [
+    {
+      "name": "info-block",
+      "status": "PASS",
+      "details": "title=\"NeuroForge SDX Gateway API\" version=\"0.1.0\""
+    },
+    {
+      "name": "security-definitions",
+      "status": "PASS",
+      "details": "Found 2 definitions: ApiKeyAuth, BearerAuth"
+    },
+    {
+      "name": "endpoint-compliance",
+      "status": "PASS",
+      "details": "83/83 endpoints compliant"
+    },
+    {
+      "name": "path-conventions",
+      "status": "PASS",
+      "details": "75 paths conform to /api/v1/ convention"
+    }
+  ],
+  "violations": null
+}

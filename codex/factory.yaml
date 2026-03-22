@@ -1,0 +1,329 @@
+# ─────────────────────────────────────────────────────────────
+# NeuroForge SDX — Codex Factory Manifest
+# Version: 1.0.0
+# Architecture Baseline: v0.1.0-architecture (c9e7c17)
+# ─────────────────────────────────────────────────────────────
+
+product:
+  name: SG AI Software Factory
+  module: NeuroForge SDX
+  vertical: Software Development
+  version: 0.1.0
+  architecture_tag: v0.1.0-architecture
+
+methodology:
+  pillars: [XP, TDD, DDD, AIDD]
+  roles:
+    architect: Claude
+    builder: Codex
+    verifier: Antigravity
+
+# ─────────────────────────────────────────────────────────────
+# Technology Stack
+# ─────────────────────────────────────────────────────────────
+
+stack:
+  backend:
+    primary_language: go
+    go_version: "1.22"
+    module_path: github.com/stratogroup/neuroforge-sdx
+  frontend:
+    language: typescript
+    framework: react
+    transport: connect-es
+  persistence:
+    primary: yugabytedb
+    analytics: clickhouse
+    cache: dragonflydb
+    object_store: rustfs
+    vector: qdrant
+  messaging:
+    regional: nats-jetstream
+    inter_regional: redpanda
+  workflow_engine: temporal
+  auth:
+    provider: authentik
+    protocol: oidc
+    token: jwt
+    service_identity: spiffe
+    authz: spicedb
+  secrets: vault
+  observability:
+    traces: tempo
+    metrics: mimir
+    logs: loki
+    collector: opentelemetry
+  deployment:
+    orchestrator: kubernetes
+    packaging: helm
+    gitops: fleet
+    app_platform: kubevela
+
+# ─────────────────────────────────────────────────────────────
+# Repository Layout
+# ─────────────────────────────────────────────────────────────
+
+repo:
+  type: monorepo
+  structure:
+    api/proto/sdx/v1/:       "Protobuf definitions (13 service protos + common + events)"
+    api/openapi/:             "Generated OpenAPI 3.1 specs"
+    api/asyncapi/:            "AsyncAPI specs for NATS/Redpanda events"
+    cmd/:                     "Service entrypoints (one dir per service)"
+    domain/:                  "DDD domain layer (aggregates, VOs, events, repos)"
+    domain/shared/:           "Shared kernel (types, errors, pagination, tenant context)"
+    domain/workitem/:         "WorkItem aggregate"
+    domain/build/:            "Build aggregate"
+    domain/artifact/:         "Artifact aggregate"
+    domain/tenant/:           "Tenant aggregate"
+    domain/agent/:            "Agent aggregate"
+    domain/quality/:          "Quality gate evaluation"
+    domain/compliance/:       "Compliance certification"
+    domain/deployment/:       "Deployment aggregate"
+    internal/adapter/:        "Infrastructure adapters (DB, cache, messaging, LLM)"
+    internal/workflow/:       "Temporal workflows and activities"
+    internal/gateway/:        "gRPC gateway, middleware, interceptors"
+    gen/:                     "Generated code (proto stubs — do not edit)"
+    deploy/:                  "Helm charts, Dockerfiles, Fleet configs"
+    tools/:                   "Swagger compliance, linters, scripts"
+    tests/:                   "Contract, integration, e2e, performance, chaos tests"
+    docs/:                    "Architecture docs, ADRs, domain docs, API docs"
+    codex/:                   "Codex handoff artifacts (this directory)"
+
+# ─────────────────────────────────────────────────────────────
+# Services (21 total)
+# ─────────────────────────────────────────────────────────────
+
+services:
+  # ── Public-facing (gRPC + REST) ──
+  - name: sdx-gateway
+    type: api_gateway
+    language: go
+    proto: gateway.proto
+    port: 8080
+    dependencies: [authentik, dragonfly, all-internal-services]
+    entrypoint: cmd/sdx-gateway/main.go
+
+  - name: sdx-ingestion-svc
+    type: domain_service
+    language: go
+    proto: workitem.proto
+    bounded_context: BC-01
+    aggregate: WorkItem
+    storage: yugabytedb
+    entrypoint: cmd/sdx-ingestion-svc/main.go
+
+  - name: sdx-tenant-svc
+    type: domain_service
+    language: go
+    proto: tenant.proto
+    bounded_context: BC-16
+    aggregate: Tenant
+    storage: yugabytedb
+    entrypoint: cmd/sdx-tenant-svc/main.go
+
+  - name: sdx-artifact-svc
+    type: domain_service
+    language: go
+    proto: artifact.proto
+    bounded_context: BC-13
+    aggregate: Artifact
+    storage: [yugabytedb, rustfs]
+    entrypoint: cmd/sdx-artifact-svc/main.go
+
+  - name: sdx-quality-svc
+    type: domain_service
+    language: go
+    proto: quality.proto
+    bounded_context: BC-07
+    aggregate: QualityReport
+    storage: clickhouse
+    entrypoint: cmd/sdx-quality-svc/main.go
+
+  - name: sdx-compliance-svc
+    type: domain_service
+    language: go
+    proto: compliance.proto
+    bounded_context: BC-09
+    aggregate: CompliancePackage
+    storage: [yugabytedb, rustfs]
+    entrypoint: cmd/sdx-compliance-svc/main.go
+
+  - name: sdx-agent-orchestrator
+    type: domain_service
+    language: go
+    proto: agent.proto
+    bounded_context: BC-17
+    aggregate: Agent
+    storage: [yugabytedb, dragonfly]
+    entrypoint: cmd/sdx-agent-orchestrator/main.go
+
+  - name: sdx-deploy-svc
+    type: domain_service
+    language: go
+    proto: deploy.proto
+    bounded_context: BC-14
+    aggregate: Deployment
+    storage: yugabytedb
+    entrypoint: cmd/sdx-deploy-svc/main.go
+
+  - name: sdx-audit-svc
+    type: domain_service
+    language: go
+    proto: audit.proto
+    bounded_context: BC-audit
+    aggregate: AuditEntry
+    storage: clickhouse
+    entrypoint: cmd/sdx-audit-svc/main.go
+
+  - name: sdx-llm-gateway
+    type: infrastructure_service
+    language: go
+    proto: llm.proto
+    bounded_context: BC-llm
+    storage: dragonfly
+    entrypoint: cmd/sdx-llm-gateway/main.go
+
+  # ── Internal (Temporal activities only — no gRPC in M1) ──
+  - name: sdx-domain-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-02
+    interface: docs/domain/internal-service-interfaces.md#DomainModellingActivities
+    entrypoint: cmd/sdx-workflow-worker/main.go
+
+  - name: sdx-architect-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-03
+    interface: docs/domain/internal-service-interfaces.md#ArchitectureActivities
+
+  - name: sdx-contract-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-04
+    interface: docs/domain/internal-service-interfaces.md#ContractGenerationActivities
+
+  - name: sdx-test-spec-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-05
+    interface: docs/domain/internal-service-interfaces.md#TestSpecActivities
+
+  - name: sdx-codegen-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-06
+    interface: docs/domain/internal-service-interfaces.md#CodeGenActivities
+
+  - name: sdx-security-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-08
+    interface: docs/domain/internal-service-interfaces.md#SecurityScanActivities
+
+  - name: sdx-performance-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-10
+    interface: docs/domain/internal-service-interfaces.md#PerformanceTestActivities
+
+  - name: sdx-docs-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-11
+    interface: docs/domain/internal-service-interfaces.md#DocsGenerationActivities
+
+  - name: sdx-iac-svc
+    type: temporal_activity
+    language: go
+    bounded_context: BC-12
+    interface: docs/domain/internal-service-interfaces.md#IaCActivities
+
+  - name: sdx-learning-svc
+    type: temporal_activity
+    language: python
+    bounded_context: BC-15
+    interface: docs/domain/internal-service-interfaces.md#LearningActivities
+
+  - name: sdx-workflow-engine
+    type: temporal_worker
+    language: go
+    bounded_context: Build Orchestration
+    workflows: [BuildPipelineWorkflow, RemediationSubWorkflow, RecoveryWorkflow]
+    entrypoint: cmd/sdx-workflow-worker/main.go
+
+# ─────────────────────────────────────────────────────────────
+# Conventions
+# ─────────────────────────────────────────────────────────────
+
+conventions:
+  id_type: ULID
+  id_library: github.com/oklog/ulid/v2
+  error_handling: domain errors wrap shared.ErrNotFound, shared.ErrConflict etc.
+  context_propagation: tenant_id, trace_id, build_id in context.Context via metadata
+  testing:
+    unit: table-driven tests, testify assertions
+    integration: testcontainers-go for YugabyteDB, ClickHouse, NATS, DragonflyDB
+    contract: buf breaking + oasdiff + custom Go contract tests
+    e2e: full build pipeline via Temporal test framework
+  logging: slog (structured, JSON output)
+  metrics: OpenTelemetry SDK → Mimir
+  tracing: OpenTelemetry SDK → Tempo
+  linting:
+    go: golangci-lint with StratoGroup config
+    proto: buf lint
+    api: spectral lint
+  ci_gates:
+    - "go test ./..."
+    - "golangci-lint run"
+    - "buf lint"
+    - "buf build"
+    - "buf breaking --against .git#branch=main"
+    - "make api-compliance-full"
+
+# ─────────────────────────────────────────────────────────────
+# Architecture Reference Documents
+# ─────────────────────────────────────────────────────────────
+
+reference_docs:
+  ubiquitous_language: docs/domain/ubiquitous-language.md
+  bounded_contexts: docs/domain/bounded-contexts.md
+  aggregates: docs/domain/aggregates.md
+  domain_events: docs/domain/domain-events.md
+  use_cases: docs/domain/use-cases.md
+  repository_interfaces: docs/domain/repository-interfaces.md
+  policies: docs/domain/policies-validations.md
+  value_objects: docs/domain/value-objects.md
+  state_machines: docs/domain/state-machines.md
+  edge_cases: docs/domain/edge-cases.md
+  internal_services: docs/domain/internal-service-interfaces.md
+  rest_mapping: docs/api/rest-mapping.md
+  error_catalog: docs/api/error-catalog.md
+  api_contracts: docs/api/auth-tenant-webhook-ratelimit-idempotency.md
+  architecture_review: docs/architecture-review-v1.md
+  adrs: docs/adr/
+
+# ─────────────────────────────────────────────────────────────
+# Codex Build Rules
+# ─────────────────────────────────────────────────────────────
+
+codex_rules:
+  - "TDD: Write failing tests FIRST. Then implement. Then refactor."
+  - "Every aggregate method MUST check invariants from docs/domain/aggregates.md"
+  - "Every state transition MUST enforce the state machine from docs/domain/state-machines.md"
+  - "Every repository MUST implement the interface from docs/domain/repository-interfaces.md"
+  - "Every domain event MUST use typed proto payload from api/proto/sdx/v1/events.proto"
+  - "Every error MUST use a code from docs/api/error-catalog.md"
+  - "Every edge case from docs/domain/edge-cases.md MUST have a corresponding test"
+  - "No business logic in adapters. Adapters are dumb translators."
+  - "No ORM. Use raw SQL with sqlx for YugabyteDB. Use ClickHouse Go driver."
+  - "All SQL queries MUST include WHERE tenant_id = $1 (enforced by review)"
+  - "Use google.protobuf.Any for event payloads. Register all payload types."
+  - "Use ULID for all IDs. No UUID. No auto-increment."
+  - "Log with slog. Structured JSON. Include tenant_id, build_id, trace_id."
+  - "Context propagation: tenant_id flows from gRPC metadata → context.Context → all layers"
+  - "Zero allocation in hot paths. Use sync.Pool for reusable buffers."
+  - "Prefer composition over inheritance. No embedding unless justified."
+  - "All public functions MUST have GoDoc comments."
+  - "Dependencies: Apache-2.0, MIT, MPL-2.0, BSD only. No GPL."
