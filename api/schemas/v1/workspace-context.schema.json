@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stratogroup.ai/contracts/software-factory/schemas/v1/workspace-context.schema.json",
+  "title": "SoftwareFactoryWorkspaceContext",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["tenantId", "workspaceId", "region"],
+  "properties": {
+    "tenantId": {
+      "type": "string"
+    },
+    "workspaceId": {
+      "type": "string"
+    },
+    "region": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    }
+  }
+}

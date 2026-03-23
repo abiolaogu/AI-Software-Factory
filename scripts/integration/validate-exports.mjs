@@ -5,6 +5,7 @@ const root = path.resolve(import.meta.dirname, '..', '..');
 const manifestPaths = [
   'api/openapi/manifest.json',
   'api/proto/manifest.json',
+  'api/schemas/manifest.json',
   'compatibility/manifest.json',
 ];
 
@@ -27,7 +28,7 @@ for (const manifestPath of manifestPaths) {
   assert(fs.existsSync(path.join(root, manifestPath)), `Missing required manifest: ${manifestPath}`);
 }
 
-for (const manifestPath of ['api/openapi/manifest.json', 'api/proto/manifest.json']) {
+for (const manifestPath of ['api/openapi/manifest.json', 'api/proto/manifest.json', 'api/schemas/manifest.json']) {
   const manifest = readJson(manifestPath);
   assert(Array.isArray(manifest.artifacts) && manifest.artifacts.length > 0, `${manifestPath} must define artifacts`);
   for (const artifact of manifest.artifacts) {

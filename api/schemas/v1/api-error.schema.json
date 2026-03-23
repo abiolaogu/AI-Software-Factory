@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stratogroup.ai/contracts/software-factory/schemas/v1/api-error.schema.json",
+  "title": "SoftwareFactoryApiError",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "message", "traceId"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "Stable machine-readable BAC error code."
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable summary safe for UI display."
+    },
+    "traceId": {
+      "type": "string",
+      "description": "OpenTelemetry trace identifier for correlation."
+    },
+    "details": {
+      "type": "object",
+      "description": "Backend-provided structured error metadata.",
+      "additionalProperties": true
+    }
+  }
+}

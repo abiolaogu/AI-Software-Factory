@@ -8,6 +8,7 @@ const requiredFiles = [
   '.env.integration.example',
   'api/openapi/manifest.json',
   'api/proto/manifest.json',
+  'api/schemas/manifest.json',
   'compatibility/integration-release-manifest.schema.json',
   'compatibility/manifest.json',
 ];

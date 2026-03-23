@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "1.0.0",
+  "ownerRepo": "ai-software-factory",
+  "artifactSet": "software-factory-schemas",
+  "artifacts": [
+    {
+      "artifactId": "software-factory-schemas",
+      "version": "1.0.0",
+      "format": "json-schema-bundle",
+      "path": "api/schemas",
+      "entrypoints": [
+        "api/schemas/v1/api-error.schema.json",
+        "api/schemas/v1/page-info.schema.json",
+        "api/schemas/v1/workspace-context.schema.json"
+      ],
+      "releaseTag": "contracts/software-factory-schemas/v1.0.0",
+      "consumers": [
+        "ai-frontend-experience",
+        "ai-companion-mobile"
+      ]
+    }
+  ]
+}

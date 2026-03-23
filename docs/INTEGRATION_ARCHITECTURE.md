@@ -2,6 +2,16 @@
 
 Canonical source of truth: the workspace-level `Claude-Master-Architecture-Package`, anchored by `docs/MASTER_ECOSYSTEM_ARCHITECTURE.md` and its machine-readable manifests.
 
+Authoritative baseline references:
+
+- `ECOSYSTEM_REPO_CATALOG.md`
+- `ECOSYSTEM_LAYER_MODEL.md`
+- `ECOSYSTEM_FOLDER_TREE.md`
+- `CONTRACT_OWNERSHIP.md`
+- `COMPATIBILITY_MATRIX.md`
+- `CROSS_REPO_RELEASE_FLOW.md`
+- `LOCAL_INTEGRATION_GUIDE.md`
+
 `AI-Software-Factory` is a producer repository in the StratoGroup AI ecosystem. Its integration responsibility is to publish stable, versioned Software Factory API contracts that can be consumed by:
 
 - `AI-Frontend-Experience`
@@ -11,6 +21,7 @@ Canonical source of truth: the workspace-level `Claude-Master-Architecture-Packa
 
 - OpenAPI contract bundle in [`api/openapi`](/Users/AbiolaOgunsakin1/Workflows/AI-Software-Factory/neuroforge-sdx/api/openapi)
 - Proto contract bundle in [`api/proto`](/Users/AbiolaOgunsakin1/Workflows/AI-Software-Factory/neuroforge-sdx/api/proto)
+- Schema bundle in [`api/schemas`](/Users/AbiolaOgunsakin1/Workflows/AI-Software-Factory/neuroforge-sdx/api/schemas)
 - Generated Connect-ES TypeScript artifacts in [`gen/typescript/sdx`](/Users/AbiolaOgunsakin1/Workflows/AI-Software-Factory/neuroforge-sdx/gen/typescript/sdx)
 - Compatibility metadata in [`compatibility/manifest.json`](/Users/AbiolaOgunsakin1/Workflows/AI-Software-Factory/neuroforge-sdx/compatibility/manifest.json)
 

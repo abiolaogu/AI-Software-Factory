@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stratogroup.ai/contracts/software-factory/schemas/v1/page-info.schema.json",
+  "title": "SoftwareFactoryPageInfo",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["page", "pageSize", "total"],
+  "properties": {
+    "page": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "pageSize": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "total": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nextCursor": {
+      "type": "string"
+    }
+  }
+}

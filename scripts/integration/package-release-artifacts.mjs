@@ -75,6 +75,7 @@ export function buildReleasePlan({
   const releaseVersion = extractReleaseVersion(releaseTag);
   const openapiManifest = readJson(rootDir, 'api/openapi/manifest.json');
   const protoManifest = readJson(rootDir, 'api/proto/manifest.json');
+  const schemaManifest = readJson(rootDir, 'api/schemas/manifest.json');
   const compatibilityManifest = readJson(rootDir, 'compatibility/manifest.json');
 
   return {
@@ -101,6 +102,22 @@ export function buildReleasePlan({
         version: getArtifactVersion(protoManifest, 'software-factory-proto'),
         assetName: `${repoSlug}-proto-${releaseVersion}.tgz`,
         sourcePath: 'api/proto',
+        packaging: 'tar',
+      },
+      {
+        artifactId: 'software-factory-connect-typescript',
+        kind: 'connect-typescript',
+        version: getArtifactVersion(protoManifest, 'software-factory-connect-typescript'),
+        assetName: `${repoSlug}-connect-typescript-${releaseVersion}.tgz`,
+        sourcePath: 'gen/typescript/sdx',
+        packaging: 'tar',
+      },
+      {
+        artifactId: 'software-factory-schemas',
+        kind: 'schemas',
+        version: getArtifactVersion(schemaManifest, 'software-factory-schemas'),
+        assetName: `${repoSlug}-schemas-${releaseVersion}.tgz`,
+        sourcePath: 'api/schemas',
         packaging: 'tar',
       },
       {

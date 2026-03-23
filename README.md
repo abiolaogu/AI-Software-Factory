@@ -2,6 +2,29 @@
 
 Production scaffold for the NeuroForge SDX service surface, generated from the attached NeuroForge SDX PRD and OpenAPI 3.1 artifact.
 
+## Role In The 3-Layer Ecosystem
+
+`AI-Software-Factory` is part of the backend / control layer in the StratoGroup AI ecosystem.
+
+Official repository description:
+
+> AI-first software generation system for turning PRDs into production-ready services, APIs, tests, docs, and Swagger/OpenAPI compliance workflows.
+
+This repo publishes the authoritative Software Factory backend contract surface for downstream consumers. It owns versioned OpenAPI, proto, generated Connect-ES TypeScript, and JSON schema exports. `AI-Frontend-Experience` and `AI-Companion-Mobile` consume those artifacts through compatibility manifests and release-validated sync workflows; they do not redefine them.
+
+## Authoritative Ecosystem Baseline
+
+This repo aligns to the workspace-level baseline artifacts and does not redefine them:
+
+- `ECOSYSTEM_REPO_CATALOG.md`
+- `ECOSYSTEM_LAYER_MODEL.md`
+- `ECOSYSTEM_FOLDER_TREE.md`
+- `CONTRACT_OWNERSHIP.md`
+- `COMPATIBILITY_MATRIX.md`
+- `CROSS_REPO_RELEASE_FLOW.md`
+- `LOCAL_INTEGRATION_GUIDE.md`
+- `Claude-Master-Architecture-Package`
+
 ## What is included
 
 - Go API server, worker, and mock API entry points

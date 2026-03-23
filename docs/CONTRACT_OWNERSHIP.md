@@ -5,14 +5,14 @@
 ## Owned
 
 - `software-factory-openapi`
-- `software-factory-swagger`
 - `software-factory-proto`
 - `software-factory-connect-typescript`
+- `software-factory-schemas`
 
 ## Downstream consumers
 
-- `AI-Frontend-Experience` consumes the OpenAPI bundle, Swagger artifact, and generated Connect-ES types.
-- `AI-Companion-Mobile` consumes the OpenAPI bundle and generated Connect-ES types.
+- `AI-Frontend-Experience` consumes the OpenAPI bundle, proto bundle, and generated Connect-ES types.
+- `AI-Companion-Mobile` consumes the OpenAPI bundle.
 
 ## Change policy
 

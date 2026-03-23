@@ -21,10 +21,21 @@ function seedFixtureRepo(rootDir) {
   writeJson(rootDir, 'api/openapi/openapi.json', { openapi: '3.1.0', paths: {} });
   writeJson(rootDir, 'api/proto/manifest.json', {
     schemaVersion: '1.0.0',
-    artifacts: [{ artifactId: 'software-factory-proto', version: '2.3.4', path: 'api/proto/sdx.proto' }],
+    artifacts: [
+      { artifactId: 'software-factory-proto', version: '2.3.4', path: 'api/proto/sdx.proto' },
+      { artifactId: 'software-factory-connect-typescript', version: '2.3.4', path: 'gen/typescript/sdx' }
+    ],
   });
   fs.mkdirSync(path.join(rootDir, 'api/proto'), { recursive: true });
   fs.writeFileSync(path.join(rootDir, 'api/proto/sdx.proto'), 'syntax = "proto3";\n');
+  writeJson(rootDir, 'api/schemas/manifest.json', {
+    schemaVersion: '1.0.0',
+    artifacts: [{ artifactId: 'software-factory-schemas', version: '3.4.5', path: 'api/schemas' }],
+  });
+  fs.mkdirSync(path.join(rootDir, 'api/schemas/v1'), { recursive: true });
+  fs.writeFileSync(path.join(rootDir, 'api/schemas/v1/api-error.schema.json'), '{"type":"object"}\n');
+  fs.mkdirSync(path.join(rootDir, 'gen/typescript/sdx'), { recursive: true });
+  fs.writeFileSync(path.join(rootDir, 'gen/typescript/sdx/gateway_connect.ts'), 'export {};\n');
   writeJson(rootDir, 'compatibility/manifest.json', {
     schemaVersion: '1.0.0',
     repoVersion: '0.4.0',
@@ -44,7 +55,9 @@ test('buildReleasePlan derives versioned asset names from the repo release tag',
 
   assert.equal(plan.artifacts[0].assetName, 'ai-software-factory-openapi-0.9.0.tgz');
   assert.equal(plan.artifacts[1].assetName, 'ai-software-factory-proto-0.9.0.tgz');
-  assert.equal(plan.artifacts[2].assetName, 'ai-software-factory-compatibility-0.9.0.json');
+  assert.equal(plan.artifacts[2].assetName, 'ai-software-factory-connect-typescript-0.9.0.tgz');
+  assert.equal(plan.artifacts[3].assetName, 'ai-software-factory-schemas-0.9.0.tgz');
+  assert.equal(plan.artifacts[4].assetName, 'ai-software-factory-compatibility-0.9.0.json');
 });
 
 test('packageReleaseArtifacts writes checksummed release assets and a machine-readable manifest', () => {
@@ -59,7 +72,7 @@ test('packageReleaseArtifacts writes checksummed release assets and a machine-re
   });
 
   assert.equal(manifest.releaseTag, `${repoSlug}/v1.0.0`);
-  assert.equal(manifest.artifacts.length, 3);
+  assert.equal(manifest.artifacts.length, 5);
   for (const artifact of manifest.artifacts) {
     const assetPath = path.join(outputDir, artifact.assetName);
     assert.ok(fs.existsSync(assetPath), `expected ${artifact.assetName} to exist`);
