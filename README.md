@@ -16,6 +16,8 @@ This repo publishes the authoritative Software Factory backend contract surface 
 
 This repo aligns to the workspace-level baseline artifacts and does not redefine them:
 
+- Authoritative baseline location: `/Users/AbiolaOgunsakin1/Workflows/AI Platform Automation/docs/ecosystem/`
+
 - `ECOSYSTEM_REPO_CATALOG.md`
 - `ECOSYSTEM_LAYER_MODEL.md`
 - `ECOSYSTEM_FOLDER_TREE.md`
