@@ -1,0 +1,47 @@
+{
+  "schemaVersion": "1.0.0",
+  "repo": "AI-Software-Factory",
+  "layer": "BACKEND_CONTROL",
+  "defaultMode": "HOTL",
+  "activeMode": "HOTL",
+  "allowedModes": ["HOTL", "HITL", "FULL_AUTONOMY"],
+  "switchControl": {
+    "mechanism": "pull-requested manifest change",
+    "requiresPullRequest": true,
+    "requiresDocsUpdate": true,
+    "requiresAuditTrail": true,
+    "requiresReleaseNote": true,
+    "requiresCompatibilityReview": true
+  },
+  "requiredGuardrails": {
+    "policyChecks": true,
+    "compatibilityChecks": true,
+    "releaseDocsUpdate": true,
+    "ciValidation": true,
+    "securityChecks": true
+  },
+  "repoSpecific": {
+    "affectedActions": [
+      "prd-to-service generation",
+      "contract publication",
+      "agent orchestration execution",
+      "release promotion",
+      "incident rollback execution"
+    ],
+    "unchangedActions": [
+      "software-factory contract ownership",
+      "swagger-openapi compliance",
+      "schema publication",
+      "compatibility manifest publication"
+    ],
+    "cannotBypass": [
+      "policy-checks",
+      "compatibility-validation",
+      "release-documentation",
+      "docs-validation",
+      "security-validation",
+      "swagger-openapi-compliance",
+      "contract-export-validation"
+    ]
+  }
+}

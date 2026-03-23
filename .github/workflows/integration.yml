@@ -26,6 +26,8 @@ jobs:
         run: make lint
       - name: Test
         run: make test
+      - name: Validate Auth Guardrails
+        run: make auth-test
       - name: Validate OpenAPI
         run: make openapi
       - name: Validate Proto
@@ -38,6 +40,8 @@ jobs:
         run: node scripts/integration/package-release-artifacts.mjs
       - name: Validate Docs
         run: node scripts/integration/validate-docs.mjs
+      - name: Validate Governance Mode
+        run: node scripts/integration/validate-governance-mode.mjs
       - name: Validate Release Artifacts
         run: node scripts/integration/validate-release-artifacts.mjs
       - name: Test Release Packaging
@@ -47,8 +51,10 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: ai-software-factory-compatibility-report
-          path: compatibility-report.json
+          path: |
+            neuroforge-sdx/compatibility-report.json
+            neuroforge-sdx/reports/governance-mode-report.json
       - uses: actions/upload-artifact@v4
         with:
           name: ai-software-factory-release-assets
-          path: release-artifacts/integration
+          path: neuroforge-sdx/release-artifacts/integration

@@ -11,6 +11,7 @@ Authoritative baseline references:
 - `COMPATIBILITY_MATRIX.md`
 - `CROSS_REPO_RELEASE_FLOW.md`
 - `LOCAL_INTEGRATION_GUIDE.md`
+- `GOVERNANCE_MODE.md`
 
 `AI-Software-Factory` is a producer repository in the StratoGroup AI ecosystem. Its integration responsibility is to publish stable, versioned Software Factory API contracts that can be consumed by:
 

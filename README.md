@@ -23,7 +23,17 @@ This repo aligns to the workspace-level baseline artifacts and does not redefine
 - `COMPATIBILITY_MATRIX.md`
 - `CROSS_REPO_RELEASE_FLOW.md`
 - `LOCAL_INTEGRATION_GUIDE.md`
+- `GOVERNANCE_MODE.md`
 - `Claude-Master-Architecture-Package`
+
+## Governance Mode
+
+- Default mode: `HOTL`
+- Controlled modes: `HITL`, `FULL_AUTONOMY`
+- Repo-local declaration: `governance/manifest.json`
+- Repo-local operating guide: `docs/GOVERNANCE_MODE.md`
+
+Mode changes must be reviewed and documented. Even in `FULL_AUTONOMY`, Swagger/OpenAPI compliance, contract export validation, security checks, compatibility validation, and release documentation remain mandatory.
 
 ## What is included
 

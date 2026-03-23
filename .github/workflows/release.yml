@@ -63,6 +63,7 @@ jobs:
         run: |
           node scripts/integration/validate-exports.mjs
           node scripts/integration/validate-docs.mjs
+          node scripts/integration/validate-governance-mode.mjs
           node scripts/integration/package-release-artifacts.mjs
           node scripts/integration/validate-release-artifacts.mjs
 
