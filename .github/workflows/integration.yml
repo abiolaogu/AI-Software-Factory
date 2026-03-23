@@ -1,0 +1,54 @@
+name: Integration Contracts
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+defaults:
+  run:
+    working-directory: ./neuroforge-sdx
+
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Lint
+        run: make lint
+      - name: Test
+        run: make test
+      - name: Validate OpenAPI
+        run: make openapi
+      - name: Validate Proto
+        run: make proto
+      - name: Validate Export Manifests
+        run: node scripts/integration/validate-exports.mjs
+      - name: Package Release Artifacts
+        env:
+          INTEGRATION_RELEASE_TAG: ai-software-factory/v0.0.0
+        run: node scripts/integration/package-release-artifacts.mjs
+      - name: Validate Docs
+        run: node scripts/integration/validate-docs.mjs
+      - name: Validate Release Artifacts
+        run: node scripts/integration/validate-release-artifacts.mjs
+      - name: Test Release Packaging
+        run: node --test scripts/integration/package-release-artifacts.test.mjs
+      - name: Compatibility Report
+        run: node scripts/integration/report-compatibility.mjs > compatibility-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-software-factory-compatibility-report
+          path: compatibility-report.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ai-software-factory-release-assets
+          path: release-artifacts/integration
