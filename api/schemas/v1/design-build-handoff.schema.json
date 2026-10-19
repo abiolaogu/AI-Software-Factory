@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.aico.example/v1/design-build-handoff.schema.json",
+  "title": "Design to Build Handoff",
+  "type": "object",
+  "required": ["schemaVersion", "designId", "designRevision", "tenant", "source", "tokensUri", "componentsUri", "integritySha256"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "designId": {"type": "string", "minLength": 1},
+    "designRevision": {"type": "string", "minLength": 1},
+    "tenant": {"$ref": "tenant-context.schema.json"},
+    "source": {
+      "type": "object",
+      "required": ["repository", "commitSha"],
+      "properties": {
+        "repository": {"type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$"},
+        "commitSha": {"type": "string", "pattern": "^[a-f0-9]{40}$"}
+      },
+      "additionalProperties": false
+    },
+    "tokensUri": {"type": "string", "format": "uri"},
+    "componentsUri": {"type": "string", "format": "uri"},
+    "integritySha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  },
+  "additionalProperties": false
+}

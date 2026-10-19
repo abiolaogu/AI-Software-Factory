@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.aico.example/v1/qualification-evidence-envelope.schema.json",
+  "title": "Qualification Evidence Envelope",
+  "type": "object",
+  "required": ["schemaVersion", "criterionId", "tenant", "sourceRevision", "subjectDigest", "outcome", "observedAt", "collector", "evidenceUri", "immutable"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "criterionId": {"type": "string", "minLength": 1},
+    "tenant": {"$ref": "tenant-context.schema.json"},
+    "sourceRevision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "subjectDigest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "outcome": {"enum": ["PASS", "FAIL", "BLOCKED"]},
+    "observedAt": {"type": "string", "format": "date-time"},
+    "collector": {"type": "string", "minLength": 1},
+    "evidenceUri": {"type": "string", "format": "uri"},
+    "immutable": {"const": true},
+    "reason": {"type": "string", "maxLength": 4000}
+  },
+  "additionalProperties": false
+}

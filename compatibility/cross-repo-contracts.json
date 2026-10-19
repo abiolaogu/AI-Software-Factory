@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "authority": "ai-software-factory",
+  "compatibilityPolicy": {
+    "major": "breaking changes require a new schema path and coordinated consumer release",
+    "minor": "backward-compatible optional fields only",
+    "patch": "clarifications that do not change validation"
+  },
+  "contracts": [
+    {
+      "contractId": "tenant-context",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/tenant-context.schema.json",
+      "producer": "nvuto-aico",
+      "consumers": ["designer2", "droplet", "appforge", "skyforge", "nvuto-forge"]
+    },
+    {
+      "contractId": "autonomous-mission-request",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/autonomous-mission-request.schema.json",
+      "producer": "nvuto-aico",
+      "consumers": ["appforge", "nvuto-forge"]
+    },
+    {
+      "contractId": "design-build-handoff",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/design-build-handoff.schema.json",
+      "producer": "designer2",
+      "consumers": ["appforge", "nvuto-aico"]
+    },
+    {
+      "contractId": "build-artifact-handoff",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/build-artifact-handoff.schema.json",
+      "producer": "appforge",
+      "consumers": ["skyforge", "nvuto-aico", "droplet"]
+    },
+    {
+      "contractId": "qualification-evidence-envelope",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/qualification-evidence-envelope.schema.json",
+      "producer": "droplet",
+      "consumers": ["nvuto-aico", "appforge", "skyforge"]
+    }
+  ]
+}
