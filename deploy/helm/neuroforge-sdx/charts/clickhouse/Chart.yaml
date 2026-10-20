@@ -1,0 +1,6 @@
+apiVersion: v2
+name: clickhouse
+description: ClickHouse subchart stub for NeuroForge SDX chart validation
+type: application
+version: 0.1.0
+appVersion: "24.3.0"
