@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: {{ include "sdx.fullname" . }}-config
+  name: {{ include "neuroforge-sdx.fullname" . }}-config
   labels:
-    {{- include "sdx.labels" . | nindent 4 }}
+    {{- include "neuroforge-sdx.labels" . | nindent 4 }}
 data:
   LOG_LEVEL: {{ .Values.gateway.env.LOG_LEVEL | default "info" | quote }}
   LOG_FORMAT: {{ .Values.gateway.env.LOG_FORMAT | default "json" | quote }}
