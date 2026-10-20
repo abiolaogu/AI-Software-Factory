@@ -2,6 +2,7 @@
   "schemaVersion": "1.0.0",
   "repo": "ai-software-factory",
   "repoVersion": "0.1.0",
+  "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
   "contracts": [
     {
       "artifactId": "software-factory-openapi",
@@ -45,6 +46,108 @@
       "repo": "aico-product-ecosystem",
       "supportedRange": "^1.0.0",
       "requires": [
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "nvuto-aico",
+      "githubRepo": "Atlasfsp/Nvuto-AICO",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [
+        "tenant-context",
+        "autonomous-mission-request"
+      ],
+      "consumesContracts": [
+        "design-build-handoff",
+        "build-artifact-handoff",
+        "qualification-evidence-envelope"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "appforge",
+      "githubRepo": "Atlasfsp/NexoCloud_AppForge",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [
+        "build-artifact-handoff"
+      ],
+      "consumesContracts": [
+        "tenant-context",
+        "autonomous-mission-request",
+        "design-build-handoff",
+        "qualification-evidence-envelope"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "droplet",
+      "githubRepo": "abiolaogu/Droplet",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [
+        "qualification-evidence-envelope"
+      ],
+      "consumesContracts": [
+        "tenant-context",
+        "build-artifact-handoff"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "nvuto-forge",
+      "githubRepo": "Atlasfsp/Nvuto-Forge",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [],
+      "consumesContracts": [
+        "tenant-context",
+        "autonomous-mission-request"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "skyforge",
+      "githubRepo": "Atlasfsp/NexoCloud-SkyForge",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [],
+      "consumesContracts": [
+        "tenant-context",
+        "build-artifact-handoff",
+        "qualification-evidence-envelope"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
+        "software-factory-cross-repo-contracts@^1.0.0"
+      ]
+    },
+    {
+      "repo": "designer2",
+      "githubRepo": "abiolaogu/Designer2",
+      "supportedRange": "^1.0.0",
+      "consumerLockPath": "compatibility/cross-repo-consumer-lock.json",
+      "producesContracts": [
+        "design-build-handoff"
+      ],
+      "consumesContracts": [
+        "tenant-context"
+      ],
+      "requires": [
+        "software-factory-schemas@^1.0.0",
         "software-factory-cross-repo-contracts@^1.0.0"
       ]
     }

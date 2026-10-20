@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -7,6 +8,7 @@ const manifestPaths = [
   'api/proto/manifest.json',
   'api/schemas/manifest.json',
   'compatibility/manifest.json',
+  'compatibility/cross-repo-consumer-lock.json',
 ];
 
 function readJson(relativePath) {
@@ -46,4 +48,38 @@ for (const contract of compatibility.contracts) {
   assertSemver(contract.version, `${contract.artifactId} compatibility version`);
 }
 
-console.log('Integration export validation passed.');
+const consumerLock = readJson('compatibility/cross-repo-consumer-lock.json');
+assertSemver(consumerLock.schemaVersion, 'cross-repo-consumer-lock schemaVersion');
+assert(Array.isArray(consumerLock.contracts) && consumerLock.contracts.length === 5, 'cross-repo-consumer-lock must define 5 boundary contracts');
+
+const consumerByRepo = new Map(
+  compatibility.compatibleConsumers.map((entry) => [entry.repo, entry]),
+);
+
+for (const contract of consumerLock.contracts) {
+  assertSemver(contract.version, `${contract.contractId} version`);
+  const schemaFullPath = path.join(root, contract.schemaPath);
+  assert(fs.existsSync(schemaFullPath), `Missing boundary schema: ${contract.schemaPath}`);
+  const raw = fs.readFileSync(schemaFullPath);
+  const digest = crypto.createHash('sha256').update(raw).digest('hex');
+  assert(
+    digest === contract.sha256,
+    `SHA-256 drift for ${contract.contractId}: expected ${contract.sha256}, calculated ${digest}`,
+  );
+  const producerEntry = consumerByRepo.get(contract.producer);
+  assert(producerEntry, `Producer ${contract.producer} for ${contract.contractId} not registered in compatibility/manifest.json`);
+  assert(
+    Array.isArray(producerEntry.producesContracts) && producerEntry.producesContracts.includes(contract.contractId),
+    `Producer ${contract.producer} must declare ${contract.contractId} in producesContracts`,
+  );
+  for (const consumer of contract.consumers) {
+    const consumerEntry = consumerByRepo.get(consumer);
+    assert(consumerEntry, `Consumer ${consumer} for ${contract.contractId} not registered in compatibility/manifest.json`);
+    assert(
+      Array.isArray(consumerEntry.consumesContracts) && consumerEntry.consumesContracts.includes(contract.contractId),
+      `Consumer ${consumer} must declare ${contract.contractId} in consumesContracts`,
+    );
+  }
+}
+
+console.log('Integration export and cross-repository consumer lock validation passed.');
