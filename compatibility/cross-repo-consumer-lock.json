@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorityRepository": "abiolaogu/AI-Software-Factory",
+  "authorityRevision": "f98dd01",
+  "contracts": [
+    {
+      "contractId": "tenant-context",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/tenant-context.schema.json",
+      "consumerSchemaPath": "compatibility/schemas/v1/tenant-context.schema.json",
+      "producer": "nvuto-aico",
+      "consumers": [
+        "designer2",
+        "droplet",
+        "appforge",
+        "skyforge",
+        "nvuto-forge"
+      ],
+      "sha256": "4b4486803c061468ce5acb6d71951fbaf4118c496b17a666439c45f4f831b83a"
+    },
+    {
+      "contractId": "autonomous-mission-request",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/autonomous-mission-request.schema.json",
+      "consumerSchemaPath": "compatibility/schemas/v1/autonomous-mission-request.schema.json",
+      "producer": "nvuto-aico",
+      "consumers": [
+        "appforge",
+        "nvuto-forge"
+      ],
+      "sha256": "3dac34c1cc77b4ab23f696838d6231b37b1162381e43376439fc4fa177e73fb5"
+    },
+    {
+      "contractId": "design-build-handoff",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/design-build-handoff.schema.json",
+      "consumerSchemaPath": "compatibility/schemas/v1/design-build-handoff.schema.json",
+      "producer": "designer2",
+      "consumers": [
+        "appforge",
+        "nvuto-aico"
+      ],
+      "sha256": "9847a9237a1c3d6f6116baadb061ca052d312fd33966b30980d6249dbcdaa761"
+    },
+    {
+      "contractId": "build-artifact-handoff",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/build-artifact-handoff.schema.json",
+      "consumerSchemaPath": "compatibility/schemas/v1/build-artifact-handoff.schema.json",
+      "producer": "appforge",
+      "consumers": [
+        "skyforge",
+        "nvuto-aico",
+        "droplet"
+      ],
+      "sha256": "02f2a937b4be24a0ff0571bbafbedb4e11782b65cda0bc3a7edc15687fd72ccc"
+    },
+    {
+      "contractId": "qualification-evidence-envelope",
+      "version": "1.0.0",
+      "schemaPath": "api/schemas/v1/qualification-evidence-envelope.schema.json",
+      "consumerSchemaPath": "compatibility/schemas/v1/qualification-evidence-envelope.schema.json",
+      "producer": "droplet",
+      "consumers": [
+        "nvuto-aico",
+        "appforge",
+        "skyforge"
+      ],
+      "sha256": "ef5792db5dc545e11cb5a21600597a586f149873f95d91410dd0bb0ed9b8fd7e"
+    }
+  ]
+}
