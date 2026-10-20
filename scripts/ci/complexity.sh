@@ -10,6 +10,7 @@ else
 fi
 
 output="$(printf '%s\n' "${output}" | grep -v '_test\.go' || true)"
+output="$(printf '%s\n' "${output}" | grep -vE '(^|[[:space:]]|/)gen/.*\.go:' || true)"
 output="$(printf '%s\n' "${output}" | grep -v '^exit status 1$' || true)"
 
 if [[ -n "${output}" ]]; then
