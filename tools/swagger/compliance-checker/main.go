@@ -13,14 +13,14 @@ import (
 )
 
 type ComplianceReport struct {
-	Timestamp     string           `json:"timestamp"`
-	SpecFile      string           `json:"spec_file"`
-	Status        string           `json:"status"` // PASS or FAIL
-	TotalEndpoints int             `json:"total_endpoints"`
-	ValidEndpoints int             `json:"valid_endpoints"`
+	Timestamp        string        `json:"timestamp"`
+	SpecFile         string        `json:"spec_file"`
+	Status           string        `json:"status"` // PASS or FAIL
+	TotalEndpoints   int           `json:"total_endpoints"`
+	ValidEndpoints   int           `json:"valid_endpoints"`
 	InvalidEndpoints int           `json:"invalid_endpoints"`
-	Checks        []CheckResult    `json:"checks"`
-	Violations    []Violation      `json:"violations"`
+	Checks           []CheckResult `json:"checks"`
+	Violations       []Violation   `json:"violations"`
 }
 
 type CheckResult struct {
@@ -38,81 +38,87 @@ type Violation struct {
 }
 
 func main() {
-	specFile := "../../api/openapi/sdx-gateway-v1.swagger.json"
-	if len(os.Args) > 1 {
-		specFile = os.Args[1]
+	specFile := argument(1, "../../api/openapi/sdx-gateway-v1.swagger.json")
+	reportFile := argument(2, "compliance-report.json")
+	spec := loadSpec(specFile)
+	report := buildReport(specFile, spec)
+	writeReport(reportFile, report)
+	printSummary(reportFile, report)
+	if report.Status == "FAIL" {
+		printViolations(report.Violations)
+		os.Exit(1)
 	}
+}
 
+func argument(index int, fallback string) string {
+	if len(os.Args) > index {
+		return os.Args[index]
+	}
+	return fallback
+}
+
+func loadSpec(specFile string) map[string]interface{} {
 	data, err := os.ReadFile(specFile)
 	if err != nil {
 		log.Fatalf("Failed to read spec file: %v", err)
 	}
-
 	var spec map[string]interface{}
 	if err := json.Unmarshal(data, &spec); err != nil {
 		log.Fatalf("Failed to parse spec: %v", err)
 	}
+	return spec
+}
 
-	report := &ComplianceReport{
-		Timestamp: time.Now().UTC().Format(time.RFC3339),
-		SpecFile:  specFile,
-	}
-
-	// Run all checks.
-	report.Checks = append(report.Checks, checkInfo(spec))
-	report.Checks = append(report.Checks, checkSecurityDefinitions(spec))
+func buildReport(specFile string, spec map[string]interface{}) *ComplianceReport {
+	report := &ComplianceReport{Timestamp: time.Now().UTC().Format(time.RFC3339), SpecFile: specFile}
+	report.Checks = append(report.Checks, checkInfo(spec), checkSecurityDefinitions(spec))
 	endpointChecks, violations, total, valid := checkEndpoints(spec)
 	report.Checks = append(report.Checks, endpointChecks...)
+	report.Checks = append(report.Checks, checkPaths(spec))
 	report.Violations = violations
 	report.TotalEndpoints = total
 	report.ValidEndpoints = valid
 	report.InvalidEndpoints = total - valid
-	report.Checks = append(report.Checks, checkPaths(spec))
+	report.Status = complianceStatus(report)
+	return report
+}
 
-	// Determine overall status.
-	hasError := false
-	for _, v := range report.Violations {
-		if v.Severity == "ERROR" {
-			hasError = true
-			break
+func complianceStatus(report *ComplianceReport) string {
+	for _, violation := range report.Violations {
+		if violation.Severity == "ERROR" {
+			return "FAIL"
 		}
 	}
-	for _, c := range report.Checks {
-		if c.Status == "FAIL" {
-			hasError = true
-			break
+	for _, check := range report.Checks {
+		if check.Status == "FAIL" {
+			return "FAIL"
 		}
 	}
+	return "PASS"
+}
 
-	if hasError {
-		report.Status = "FAIL"
-	} else {
-		report.Status = "PASS"
-	}
-
-	// Write report.
-	reportData, _ := json.MarshalIndent(report, "", "  ")
-
-	reportFile := "compliance-report.json"
-	if len(os.Args) > 2 {
-		reportFile = os.Args[2]
+func writeReport(reportFile string, report *ComplianceReport) {
+	reportData, err := json.MarshalIndent(report, "", "  ")
+	if err != nil {
+		log.Fatalf("Failed to encode report: %v", err)
 	}
 	if err := os.WriteFile(reportFile, reportData, 0644); err != nil {
 		log.Fatalf("Failed to write report: %v", err)
 	}
+}
 
+func printSummary(reportFile string, report *ComplianceReport) {
 	fmt.Printf("Compliance Report: %s\n", report.Status)
 	fmt.Printf("  Total endpoints: %d\n", report.TotalEndpoints)
 	fmt.Printf("  Valid:           %d\n", report.ValidEndpoints)
 	fmt.Printf("  Invalid:         %d\n", report.InvalidEndpoints)
 	fmt.Printf("  Violations:      %d\n", len(report.Violations))
 	fmt.Printf("  Report written:  %s\n", reportFile)
+}
 
-	if report.Status == "FAIL" {
-		for _, v := range report.Violations {
-			fmt.Printf("  [%s] %s %s: %s — %s\n", v.Severity, v.Method, v.Path, v.Rule, v.Message)
-		}
-		os.Exit(1)
+func printViolations(violations []Violation) {
+	for _, violation := range violations {
+		fmt.Printf("  [%s] %s %s: %s — %s\n", violation.Severity, violation.Method, violation.Path, violation.Rule, violation.Message)
 	}
 }
 
@@ -189,53 +195,8 @@ func checkEndpoints(spec map[string]interface{}) ([]CheckResult, []Violation, in
 				continue
 			}
 			total++
-			endpointValid := true
-
-			// Check operationId.
-			opId, _ := op["operationId"].(string)
-			if opId == "" {
-				violations = append(violations, Violation{
-					Path: path, Method: strings.ToUpper(method),
-					Rule: "operation-id-required", Message: "Missing operationId",
-					Severity: "ERROR",
-				})
-				endpointValid = false
-			}
-
-			// Check tags.
-			tags, _ := op["tags"].([]interface{})
-			if len(tags) == 0 {
-				violations = append(violations, Violation{
-					Path: path, Method: strings.ToUpper(method),
-					Rule: "tags-required", Message: "Missing tags for API grouping",
-					Severity: "WARNING",
-				})
-			}
-
-			// Check responses.
-			responses, _ := op["responses"].(map[string]interface{})
-			if len(responses) == 0 {
-				violations = append(violations, Violation{
-					Path: path, Method: strings.ToUpper(method),
-					Rule: "responses-required", Message: "No response definitions",
-					Severity: "ERROR",
-				})
-				endpointValid = false
-			}
-
-			// Check for success response (200 or default).
-			if len(responses) > 0 {
-				_, has200 := responses["200"]
-				_, hasDefault := responses["default"]
-				if !has200 && !hasDefault {
-					violations = append(violations, Violation{
-						Path: path, Method: strings.ToUpper(method),
-						Rule: "success-response-required", Message: "No 200 or default response defined",
-						Severity: "WARNING",
-					})
-				}
-			}
-
+			endpointViolations, endpointValid := checkEndpoint(path, method, op)
+			violations = append(violations, endpointViolations...)
 			if endpointValid {
 				valid++
 			}
@@ -250,6 +211,39 @@ func checkEndpoints(spec map[string]interface{}) ([]CheckResult, []Violation, in
 	return []CheckResult{
 		{Name: "endpoint-compliance", Status: status, Details: fmt.Sprintf("%d/%d endpoints compliant", valid, total)},
 	}, violations, total, valid
+}
+
+func checkEndpoint(path, method string, operation map[string]interface{}) ([]Violation, bool) {
+	upperMethod := strings.ToUpper(method)
+	violations := make([]Violation, 0, 3)
+	valid := true
+	operationID, _ := operation["operationId"].(string)
+	if operationID == "" {
+		violations = append(violations, Violation{Path: path, Method: upperMethod, Rule: "operation-id-required", Message: "Missing operationId", Severity: "ERROR"})
+		valid = false
+	}
+	tags, _ := operation["tags"].([]interface{})
+	if len(tags) == 0 {
+		violations = append(violations, Violation{Path: path, Method: upperMethod, Rule: "tags-required", Message: "Missing tags for API grouping", Severity: "WARNING"})
+	}
+	responses, _ := operation["responses"].(map[string]interface{})
+	if len(responses) == 0 {
+		violations = append(violations, Violation{Path: path, Method: upperMethod, Rule: "responses-required", Message: "No response definitions", Severity: "ERROR"})
+		valid = false
+	}
+	if !hasSuccessResponse(responses) {
+		violations = append(violations, Violation{Path: path, Method: upperMethod, Rule: "success-response-required", Message: "No 200 or default response defined", Severity: "WARNING"})
+	}
+	return violations, valid
+}
+
+func hasSuccessResponse(responses map[string]interface{}) bool {
+	if len(responses) == 0 {
+		return true
+	}
+	_, hasOK := responses["200"]
+	_, hasDefault := responses["default"]
+	return hasOK || hasDefault
 }
 
 // checkPaths validates path naming conventions.

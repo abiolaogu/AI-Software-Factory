@@ -11,12 +11,23 @@
       "entrypoints": [
         "api/schemas/v1/api-error.schema.json",
         "api/schemas/v1/page-info.schema.json",
-        "api/schemas/v1/workspace-context.schema.json"
+        "api/schemas/v1/workspace-context.schema.json",
+        "api/schemas/v1/tenant-context.schema.json",
+        "api/schemas/v1/autonomous-mission-request.schema.json",
+        "api/schemas/v1/design-build-handoff.schema.json",
+        "api/schemas/v1/build-artifact-handoff.schema.json",
+        "api/schemas/v1/qualification-evidence-envelope.schema.json"
       ],
       "releaseTag": "contracts/software-factory-schemas/v1.0.0",
       "consumers": [
         "ai-frontend-experience",
-        "ai-companion-mobile"
+        "ai-companion-mobile",
+        "designer2",
+        "droplet",
+        "appforge",
+        "skyforge",
+        "nvuto-aico",
+        "nvuto-forge"
       ]
     }
   ]

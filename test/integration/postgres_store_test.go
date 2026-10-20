@@ -30,7 +30,14 @@ func TestPostgresStorePersistsTenantScopedData(t *testing.T) {
 		require.NoError(t, stack.Terminate(terminateCtx))
 	})
 
-	store, err := storage.NewPostgresStore(ctx, stack.YugabyteDSN)
+	var store *storage.PostgresStore
+	for attempt := 0; attempt < 30; attempt++ {
+		store, err = storage.NewPostgresStore(ctx, stack.YugabyteDSN)
+		if err == nil {
+			break
+		}
+		time.Sleep(time.Second)
+	}
 	require.NoError(t, err)
 	t.Cleanup(func() {
 		require.NoError(t, store.Close())

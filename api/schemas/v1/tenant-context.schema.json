@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.aico.example/v1/tenant-context.schema.json",
+  "title": "Tenant Context",
+  "type": "object",
+  "required": ["tenantId", "actorId", "correlationId"],
+  "properties": {
+    "tenantId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "actorId": {"type": "string", "minLength": 1, "maxLength": 256},
+    "correlationId": {"type": "string", "minLength": 8, "maxLength": 128},
+    "authorizationDecisionRef": {"type": "string", "minLength": 1, "maxLength": 2048}
+  },
+  "additionalProperties": false
+}

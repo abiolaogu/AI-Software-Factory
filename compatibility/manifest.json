@@ -18,6 +18,10 @@
     {
       "artifactId": "software-factory-schemas",
       "version": "1.0.0"
+    },
+    {
+      "artifactId": "software-factory-cross-repo-contracts",
+      "version": "1.0.0"
     }
   ],
   "compatibleConsumers": [
@@ -35,6 +39,13 @@
       "supportedRange": "^0.1.0",
       "requires": [
         "software-factory-openapi@^1.0.0"
+      ]
+    },
+    {
+      "repo": "aico-product-ecosystem",
+      "supportedRange": "^1.0.0",
+      "requires": [
+        "software-factory-cross-repo-contracts@^1.0.0"
       ]
     }
   ]

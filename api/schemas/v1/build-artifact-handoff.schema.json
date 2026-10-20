@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.aico.example/v1/build-artifact-handoff.schema.json",
+  "title": "Build Artifact Handoff",
+  "type": "object",
+  "required": ["schemaVersion", "buildId", "tenant", "sourceRevision", "platform", "artifact", "completedAt"],
+  "properties": {
+    "schemaVersion": {"const": "1.0.0"},
+    "buildId": {"type": "string", "minLength": 1},
+    "tenant": {"$ref": "tenant-context.schema.json"},
+    "sourceRevision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "platform": {"enum": ["android", "ios", "macos", "windows", "linux", "web", "service"]},
+    "artifact": {
+      "type": "object",
+      "required": ["uri", "sha256", "sbomUri", "provenanceUri", "signatureUri", "scanUri"],
+      "properties": {
+        "uri": {"type": "string", "format": "uri"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "sbomUri": {"type": "string", "format": "uri"},
+        "provenanceUri": {"type": "string", "format": "uri"},
+        "signatureUri": {"type": "string", "format": "uri"},
+        "scanUri": {"type": "string", "format": "uri"}
+      },
+      "additionalProperties": false
+    },
+    "completedAt": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}
